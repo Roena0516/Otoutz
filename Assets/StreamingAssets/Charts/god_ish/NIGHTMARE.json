@@ -1,1795 +1,1795 @@
 {
-    "notes": [
-        {
-            "id": "",
-            "beat": 0.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 1.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 1.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 2.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 2.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 3.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 0.75,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "long",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 3.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 3.1666667461395265,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 3.3333332538604738,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 3.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 4.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 4.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 5.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 5.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 6.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 0.75,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "long",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 6.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 6.166666507720947,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 6.333333492279053,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 6.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.125,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.25,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.625,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 7.75,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 8.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 8.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 8.625,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 8.75,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 9.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 9.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 9.625,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 9.75,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 10.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 10.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "normal",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 10.125,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 10.25,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.0,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.125,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.25,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.375,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.5,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.625,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.75,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 11.875,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 12.0,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 12.125,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 12.25,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 12.375,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.5,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 12.5,
-            "ms": 0.0,
-            "width": 0.5,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "bell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 13.0,
-            "ms": 0.0,
-            "width": 2.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.5,
-            "type": "leftarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 14.0,
-            "ms": 0.0,
-            "width": 2.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.5,
-            "type": "rightarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 15.0,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "leftarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 15.25,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.5999999046325685,
-            "type": "leftarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 15.5,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.299999952316284,
-            "type": "leftarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 15.75,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "leftarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 16.0,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "rightarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 16.25,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.299999952316284,
-            "type": "rightarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 16.5,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.5999999046325685,
-            "type": "rightarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 16.75,
-            "ms": 0.0,
-            "width": 3.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "rightarrow",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 18.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 18.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 19.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 19.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 3.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 20.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 20.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 2.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 21.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 21.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "rbell",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 22.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "avoid",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 22.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "avoid",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 23.0,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 4.0,
-            "type": "avoid",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        },
-        {
-            "id": "",
-            "beat": 23.5,
-            "ms": 0.0,
-            "width": 1.0,
-            "length": 4.0,
-            "tick": 0.0,
-            "position": 1.0,
-            "type": "avoid",
-            "isInputed": false,
-            "isEndNote": false,
-            "isSyncRoom": false,
-            "noteObject": {
-                "instanceID": 0
-            },
-            "longObject": {
-                "instanceID": 0
-            },
-            "pressedTime": 0.0,
-            "isLongNotePressing": false,
-            "lastTickBeat": 0.0,
-            "startJudgement": "",
-            "longNoteStarted": false
-        }
-    ],
-    "info": {
-        "id": 0,
-        "title": "",
-        "jpTitle": "",
-        "artist": "",
-        "jpArtist": "",
-        "category": "",
-        "bpm": 160.0,
-        "eventName": "godish",
-        "fileLocation": "asdf",
-        "level": 0.0,
-        "difficulty": "",
-        "previewStart": 0,
-        "previewEnd": 20000
+  "notes": [
+    {
+      "id": "",
+      "beat": 0.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 1.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 1.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 2.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 2.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 3.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 0.75,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "long",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 3.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 3.1666667461395265,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 3.3333332538604738,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 3.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 4.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 4.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 5.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 5.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 6.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 0.75,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "long",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 6.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 6.166666507720947,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 6.333333492279053,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 6.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.125,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.25,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.625,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 7.75,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 8.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 8.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 8.625,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 8.75,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 9.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 9.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 9.625,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 9.75,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 10.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 10.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "normal",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 10.125,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 10.25,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.0,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.125,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.25,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.375,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.5,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.625,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.75,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 11.875,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 12.0,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 12.125,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 12.25,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 12.375,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.5,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 12.5,
+      "ms": 0.0,
+      "width": 0.5,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "bell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 13.0,
+      "ms": 0.0,
+      "width": 2.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.5,
+      "type": "leftarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 14.0,
+      "ms": 0.0,
+      "width": 2.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.5,
+      "type": "rightarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 15.0,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "leftarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 15.25,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.5999999046325685,
+      "type": "leftarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 15.5,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.299999952316284,
+      "type": "leftarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 15.75,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "leftarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 16.0,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "rightarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 16.25,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.299999952316284,
+      "type": "rightarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 16.5,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.5999999046325685,
+      "type": "rightarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 16.75,
+      "ms": 0.0,
+      "width": 3.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "rightarrow",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 18.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 18.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 19.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 19.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 3.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 20.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 20.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 2.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 21.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 21.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "rbell",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 22.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "avoid",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 22.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "avoid",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 23.0,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 4.0,
+      "type": "avoid",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
+    },
+    {
+      "id": "",
+      "beat": 23.5,
+      "ms": 0.0,
+      "width": 1.0,
+      "length": 4.0,
+      "tick": 0.0,
+      "position": 1.0,
+      "type": "avoid",
+      "isInputed": false,
+      "isEndNote": false,
+      "isSyncRoom": false,
+      "noteObject": {
+        "instanceID": 0
+      },
+      "longObject": {
+        "instanceID": 0
+      },
+      "pressedTime": 0.0,
+      "isLongNotePressing": false,
+      "lastTickBeat": 0.0,
+      "startJudgement": "",
+      "longNoteStarted": false
     }
+  ],
+  "info": {
+    "id": 0,
+    "title": "",
+    "jpTitle": "",
+    "artist": "",
+    "jpArtist": "",
+    "category": "",
+    "bpm": 80.0,
+    "eventName": "godish",
+    "fileLocation": "asdf",
+    "level": 0.0,
+    "difficulty": "",
+    "previewStart": 0,
+    "previewEnd": 20000
+  }
 }

@@ -6,6 +6,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class LineInputChecker : MonoBehaviour
 {
@@ -307,6 +308,27 @@ public class LineInputChecker : MonoBehaviour
             {
                 var action = mainThreadQueue.Dequeue();
                 action?.Invoke();
+            }
+        }
+
+        var joystick = Joystick.current;
+        if (joystick != null)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                var btn = joystick.TryGetChildControl<UnityEngine.InputSystem.Controls.ButtonControl>($"button{i + 1}");
+                if (btn == null) continue;
+
+                bool isPressed = btn.isPressed;
+
+                if (isPressed && !isHolding[i])
+                {
+                    DownInput(i);
+                }
+                else if (!isPressed && isHolding[i])
+                {
+                    UpInput(i);
+                }
             }
         }
 

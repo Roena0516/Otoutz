@@ -1,42 +1,62 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class LeverController : MonoBehaviour
 {
     [Header("설정")]
-    public float sensitivity = 17f; // 민감도
-    public float minPos = -14f;      // 왼쪽 끝 제한
-    public float maxPos = 14f;       // 오른쪽 끝 제한
+    public float sensitivity = 17f;
+    public float minPos = -14f;
+    public float maxPos = 14f;
 
-    private float currentX = 0f;    // 누적된 레버 위치
+    private float currentX = 0f;
+    private float prevRaw = 0f;
 
-    public string leverDirection; // "Left" || "Right"
+    public string leverDirection;
 
     void Update()
     {
-        // 1. 마우스의 좌우 움직임량(Delta X)을 읽어옵니다.
-        // 나중에 하드웨어가 오면 이 부분만 하드웨어 입력값으로 바꾸면 됩니다!
-        float deltaX = Mouse.current.delta.x.ReadValue();
+        var joystick = Joystick.current;
 
-        // 레버가 움직이는 방향을 감지합니다.
-        if (deltaX < 0)
-            leverDirection = "Left";
-        else if (deltaX > 0)
-            leverDirection = "Right";
+        if (joystick != null)
+        {
+            var zAxis = joystick.TryGetChildControl<AxisControl>("z");
+            if (zAxis != null)
+            {
+                float raw = zAxis.ReadValue();
+
+                // 이동 방향 감지
+                float delta = raw - prevRaw;
+                if (delta < -0.001f)
+                    leverDirection = "Left";
+                else if (delta > 0.001f)
+                    leverDirection = "Right";
+                else
+                    leverDirection = "Stop";
+
+                prevRaw = raw;
+
+                // -1~1을 minPos~maxPos로 매핑
+                float leverNormalized = Mathf.InverseLerp(-0.35f, 0.35f, raw);
+                currentX = Mathf.Lerp(minPos, maxPos, leverNormalized);
+            }
+        }
         else
-            leverDirection = "Stop";
+        {
+            // 하드웨어 없을 때 마우스로 대체
+            float leverValue = Mouse.current.delta.x.ReadValue() * 0.01f;
+            leverValue = Mathf.Clamp(leverValue, -1f, 1f);
 
-        // 2. 현재 위치에 변화량을 더합니다.
-        currentX += deltaX * sensitivity * Time.deltaTime;
+            if (leverValue < -0.01f)
+                leverDirection = "Left";
+            else if (leverValue > 0.01f)
+                leverDirection = "Right";
+            else
+                leverDirection = "Stop";
 
-        // 3. 레버가 범위를 벗어나지 않게 고정(Clamp)합니다.
-        currentX = Mathf.Clamp(currentX, minPos, maxPos);
+            currentX = Mathf.Lerp(minPos, maxPos, (leverValue + 1f) / 2f);
+        }
 
-        // 4. 실제 오브젝트의 위치나 회전에 적용합니다.
-        // 위치 이동의 경우:
         transform.position = new Vector3(currentX, transform.position.y, transform.position.z);
-
-        // 만약 회전하는 레버라면:
-        // transform.rotation = Quaternion.Euler(0, 0, currentX * 10f);
     }
 }
