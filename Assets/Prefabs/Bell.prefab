@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4599738470430026931}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.5, y: 2, z: 20}
   m_LocalScale: {x: 7, y: 0, z: 2}
   m_ConstrainProportionsScale: 0
@@ -125,16 +125,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e4bf7c7cb194feeb7c68f3332f4d1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Note
+  BPM: 0
   isSet: 0
   ms: 0
   isEndNote: 0
   isInputed: 0
   noteClass:
+    id: 
     beat: 0
     ms: 0
+    width: 1
+    length: 4
+    tick: 0
     position: 0
     type: 
+    angle: 0
+    speed: 1
     isInputed: 0
     isEndNote: 0
     isSyncRoom: 0
     noteObject: {fileID: 0}
+    longObject: {fileID: 0}
+    pressedTime: 0
+    isLongNotePressing: 0
+    lastTickBeat: 0
+    startJudgement: 
+    longNoteStarted: 0
