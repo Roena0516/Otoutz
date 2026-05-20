@@ -34,6 +34,8 @@ public class NoteClass
     public float tick;
     public float position;
     public string type;
+    public float angle = 0f;
+    public float speed = 1f;
 
     public bool isInputed = false;
     public bool isEndNote = false;

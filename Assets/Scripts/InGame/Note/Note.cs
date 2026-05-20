@@ -59,6 +59,10 @@ public class Note : MonoBehaviour
         {
             moveNoteRoutine = StartCoroutine(MoveLongNote());
         }
+        else if (noteClass.type == "avoid")
+        {
+            moveNoteRoutine = StartCoroutine(MoveAvoidNote());
+        }
         else
         {
             moveNoteRoutine = StartCoroutine(MoveNote());
@@ -128,6 +132,39 @@ public class Note : MonoBehaviour
 
         Destroy(gameObject);
         yield break;
+    }
+
+    public IEnumerator MoveAvoidNote()
+    {
+        float zer0Point = -10.5f;
+        float gap = 7f;
+        float baseX = zer0Point + gap * (noteClass.position - 1f);
+
+        while (true)
+        {
+            dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
+            double elapsedTime = line.currentTime - dropStartTime;
+
+            float progress = (float)(elapsedTime * speed / (startY - endY));
+            progress = Mathf.Clamp01(progress);
+
+            // 프리뷰의 t = 1 - progress (1=시작, 0=판정선)
+            float t = 1f - progress;
+
+            float ang = (noteClass.angle - 90f) * Mathf.Deg2Rad;
+            float spd = noteClass.speed > 0 ? noteClass.speed : 1f;
+            float te = t * spd;
+
+            // 수직 이동 (speed 배율 적용)
+            float currentZ = Mathf.Lerp(endY, startY, Mathf.Clamp01(te));
+
+            // 횡방향 드리프트 (프리뷰: position - cos(ang) * 2 * te, 게임 단위: * gap)
+            float driftX = -Mathf.Cos(ang) * 2f * te * gap;
+
+            transform.position = new Vector3(baseX + driftX, YPosition, currentZ);
+
+            yield return null;
+        }
     }
 
     private void Misser()
