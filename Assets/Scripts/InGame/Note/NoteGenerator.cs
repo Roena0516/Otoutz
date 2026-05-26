@@ -82,7 +82,7 @@ public class NoteGenerator : MonoBehaviour
         spawnPosition2 = new Vector3(Lines[1].transform.position.x, transform.position.y, 0);
         spawnPosition3 = new Vector3(Lines[2].transform.position.x, transform.position.y, 0);
         spawnPosition4 = new Vector3(Lines[3].transform.position.x, transform.position.y, 0);
-        spawnRotation = Quaternion.Euler(0f, 0f, 0f);
+        spawnRotation = Quaternion.Euler(90f, 0f, 0f);
 
         settings = SettingsManager.Instance;
 

@@ -54,7 +54,6 @@ public class Note : MonoBehaviour
 
         float oneBeatDuration = 60f / BPM * 1000f;
 
-
         if (noteClass.type == "null")
         {
             moveNoteRoutine = StartCoroutine(MoveLongNote());
@@ -88,7 +87,7 @@ public class Note : MonoBehaviour
             dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
             double elapsedTime = line.currentTime - dropStartTime;
             float progress = (float)(elapsedTime * speed / (startY - endY));
-            progress = Mathf.Clamp01(progress);  // 0 ~ 1 사이로 제한
+            progress = Mathf.Clamp01(progress);
             float currentY = Mathf.Lerp(startY, endY, progress);
             transform.position = new Vector3(transform.position.x, YPosition, currentY);
 
@@ -117,11 +116,10 @@ public class Note : MonoBehaviour
 
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, (float)remainingDistance);
 
-
             dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
             double elapsedTime = line.currentTime - dropStartTime;
             float progress = (float)(elapsedTime * speed / (startY - endY));
-            progress = Mathf.Clamp01(progress);  // 0 ~ 1 사이로 제한
+            progress = Mathf.Clamp01(progress);
             float currentY = Mathf.Lerp(startY, endY, progress);
 
             currentY += (float)remainingDistance / 2f;
@@ -140,25 +138,19 @@ public class Note : MonoBehaviour
         float gap = 7f;
         float baseX = zer0Point + gap * (noteClass.position - 1f);
 
+        float ang = (noteClass.angle - 90f) * Mathf.Deg2Rad;
+        float spd = noteClass.speed > 0 ? noteClass.speed : 1f;
+
         while (true)
         {
-            dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
-            double elapsedTime = line.currentTime - dropStartTime;
+            float currentSpeed = noteGenerator.speed;
+            float currentDistance = noteGenerator.distance;
 
-            float progress = (float)(elapsedTime * speed / (startY - endY));
-            progress = Mathf.Clamp01(progress);
+            double remainingMs = ms - line.currentTime * 1000d;
+            float te = (float)(remainingMs * currentSpeed / currentDistance / 1000d) * spd;
+            te = Mathf.Max(0f, te);
 
-            // 프리뷰의 t = 1 - progress (1=시작, 0=판정선)
-            float t = 1f - progress;
-
-            float ang = (noteClass.angle - 90f) * Mathf.Deg2Rad;
-            float spd = noteClass.speed > 0 ? noteClass.speed : 1f;
-            float te = t * spd;
-
-            // 수직 이동 (speed 배율 적용)
-            float currentZ = Mathf.Lerp(endY, startY, Mathf.Clamp01(te));
-
-            // 횡방향 드리프트 (프리뷰: position - cos(ang) * 2 * te, 게임 단위: * gap)
+            float currentZ = Mathf.Min(startY, (startY - currentDistance) + te * currentDistance);
             float driftX = -Mathf.Cos(ang) * 2f * te * gap;
 
             transform.position = new Vector3(baseX + driftX, YPosition, currentZ);
@@ -169,7 +161,6 @@ public class Note : MonoBehaviour
 
     private void Misser()
     {
-        // 롱노트와 longNote(null)는 JudgementManager에서 처리하므로 여기서 제외
         if (noteClass.type == "long" || noteClass.type == "null")
             return;
 
@@ -183,42 +174,76 @@ public class Note : MonoBehaviour
 
     private void BellPerformer()
     {
-        if (noteClass.type == "hold" && (noteClass.ms - (line.currentTime * 1000f) <= 0 && noteClass.ms - (line.currentTime * 1000f) >= -160))
+        if (noteClass.isInputed) return;
+
+        bool inTiming = noteClass.ms - (line.currentTime * 1000f) <= 0
+                     && noteClass.ms - (line.currentTime * 1000f) >= -160f;
+
+        if (noteClass.type == "hold" && inTiming)
         {
             if (Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
-            {
-                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
-                line.judgementManager.AddCombo(1);
-            }
-        }
-        if ((noteClass.type == "rbell" || noteClass.type == "avoid") && (noteClass.ms - (line.currentTime * 1000f) <= 0 && noteClass.ms - (line.currentTime * 1000f) >= -160))
-        {
-            if (Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
-            {
-                line.judgementManager.PerformAction(noteClass, "Miss", ms);
-                line.judgementManager.ClearCombo();
-            }
-        }
-        if (noteClass.type == "leftarrow" && (noteClass.ms - (line.currentTime * 1000f) <= 0 && noteClass.ms - (line.currentTime * 1000f) >= -160))
-        {
-            if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Left" && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
-            {
-                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
-                line.judgementManager.AddCombo(1);
-            }
-        }
-        if (noteClass.type == "rightarrow" && (noteClass.ms - (line.currentTime * 1000f) <= 0 && noteClass.ms - (line.currentTime * 1000f) >= -160))
-        {
-            if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Right" && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
             {
                 line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
                 line.judgementManager.AddCombo(1);
             }
         }
 
+        if (noteClass.type == "rbell" && inTiming)
+        {
+            if (Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
+            {
+                line.judgementManager.PerformAction(noteClass, "Miss", ms);
+                line.judgementManager.ClearCombo();
+                return;
+            }
+        }
+
+        if (noteClass.type == "avoid")
+        {
+            if (inTiming)
+            {
+                bool inRange = Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x)
+                             <= 3.5f + (1.75f * noteClass.width) + 2.25f;
+                if (inRange)
+                {
+                    line.judgementManager.PerformAction(noteClass, "Miss", ms);
+                    line.judgementManager.ClearCombo();
+                    return;
+                }
+            }
+
+            // 판정 윈도우가 완전히 지나면 피한 것으로 간주
+            if ((line.currentTime * 1000f) - ms >= 160f)
+            {
+                judgement.PerformAction(noteClass, "PerfectP", ms);
+            }
+            return;
+        }
+
+        if (noteClass.type == "leftarrow" && inTiming)
+        {
+            if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Left"
+                && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
+            {
+                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+                line.judgementManager.AddCombo(1);
+            }
+        }
+
+        if (noteClass.type == "rightarrow" && inTiming)
+        {
+            if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Right"
+                && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
+            {
+                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+                line.judgementManager.AddCombo(1);
+            }
+        }
+
+        // rbell/avoid 이외 타입: 시간 지나면 PerfectP (원본 로직 유지)
         if (!noteClass.isInputed && (line.currentTime * 1000f) - ms >= 0f)
         {
-            if (noteClass.type == "rbell" || noteClass.type == "avoid")
+            if (noteClass.type == "rbell")
             {
                 judgement.PerformAction(noteClass, "PerfectP", ms);
                 isSet = false;

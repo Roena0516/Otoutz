@@ -242,7 +242,7 @@ public class HorizontalSongListShower : MonoBehaviour
                 }
                 allOfInfos.Add(infos);
 
-                if (infos.difficulty == "MEMORY")
+                if (infos.difficulty == "ADVANCED")
                 {
                     setter.filePath[0] = infos.fileLocation;
 
@@ -263,7 +263,7 @@ public class HorizontalSongListShower : MonoBehaviour
 
                     setter.ids[0] = infos.id;
                 }
-                if (infos.difficulty == "ADVERSITY")
+                if (infos.difficulty == "EXPERT")
                 {
                     setter.filePath[1] = infos.fileLocation;
 
@@ -279,7 +279,7 @@ public class HorizontalSongListShower : MonoBehaviour
 
                     setter.ids[1] = infos.id;
                 }
-                if (infos.difficulty == "NIGHTMARE")
+                if (infos.difficulty == "MASTER")
                 {
                     setter.filePath[2] = infos.fileLocation;
 
@@ -295,7 +295,7 @@ public class HorizontalSongListShower : MonoBehaviour
 
                     setter.ids[2] = infos.id;
                 }
-                if (infos.difficulty == "INFERNO")
+                if (infos.difficulty == "LUNATIC")
                 {
                     setter.filePath[3] = infos.fileLocation;
 
@@ -741,22 +741,22 @@ public class HorizontalSongListShower : MonoBehaviour
 
         foreach (SongInfoClass infos in songList)
         {
-            if (infos.difficulty == "MEMORY")
+            if (infos.difficulty == "ADVANCED")
             {
                 bgnText.color = bgnText.color.SetAlpha(1f);
                 bgnText.text = $"{infos.level}";
             }
-            if (infos.difficulty == "ADVERSITY")
+            if (infos.difficulty == "EXPERT")
             {
                 midText.color = midText.color.SetAlpha(1f);
                 midText.text = $"{infos.level}";
             }
-            if (infos.difficulty == "NIGHTMARE")
+            if (infos.difficulty == "MASTER")
             {
                 endText.color = endText.color.SetAlpha(1f);
                 endText.text = $"{infos.level}";
             }
-            if (infos.difficulty == "INFERNO")
+            if (infos.difficulty == "LUNATIC")
             {
                 sndText.color = sndText.color.SetAlpha(1f);
                 sndText.text = $"{infos.level}";

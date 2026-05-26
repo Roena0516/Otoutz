@@ -21,9 +21,9 @@ public class LoadAllJSONs : MonoBehaviour
     {
         GetAll();
 #else
-private async void Start()
-{
-    await GetAllInWebGL();
+    private async void Start()
+    {
+        await GetAllInWebGL();
 #endif
         shower.Shower();
     }
@@ -81,19 +81,19 @@ private async void Start()
                 songDictionary[key].Add(temp);
             }
 
-            if (song.difficulty == "MEMORY")
+            if (song.difficulty == "ADVANCED")
             {
                 songDictionary[key][0] = info;
             }
-            if (song.difficulty == "ADVERSITY")
+            if (song.difficulty == "EXPERT")
             {
                 songDictionary[key][1] = info;
             }
-            if (song.difficulty == "NIGHTMARE")
+            if (song.difficulty == "MASTER")
             {
                 songDictionary[key][2] = info;
             }
-            if (song.difficulty == "INFERNO")
+            if (song.difficulty == "LUNATIC")
             {
                 songDictionary[key][3] = info;
             }
@@ -166,16 +166,16 @@ private async void Start()
 
                     switch (song.difficulty)
                     {
-                        case "MEMORY":
+                        case "ADVANCED":
                             songDictionary[key][0] = info;
                             break;
-                        case "ADVERSITY":
+                        case "EXPERT":
                             songDictionary[key][1] = info;
                             break;
-                        case "NIGHTMARE":
+                        case "MASTER":
                             songDictionary[key][2] = info;
                             break;
-                        case "INFERNO":
+                        case "LUNATIC":
                             songDictionary[key][3] = info;
                             break;
                     }

@@ -10,8 +10,8 @@
       "bpm": 142.0,
       "eventName": "godish",
       "fileLocation": "god_ish",
-      "level": 7.0,
-      "difficulty": "ADVERSITY"
+      "level": 3.0,
+      "difficulty": "EXPERT"
     },
     {
       "id": 1,
@@ -20,11 +20,11 @@
       "artist": "피노키오피",
       "jpArtist": "ピノキオピー",
       "category": "vocaloid",
-      "bpm": 60.0,
+      "bpm": 142.0,
       "eventName": "godish",
       "fileLocation": "god_ish",
       "level": 7.0,
-      "difficulty": "NIGHTMARE"
+      "difficulty": "MASTER"
     },
     {
       "id": 2,
@@ -37,7 +37,7 @@
       "eventName": "kyukurarin",
       "fileLocation": "kyu_kurarin",
       "level": 9.0,
-      "difficulty": "NIGHTMARE",
+      "difficulty": "MASTER",
       "previewStart": "108000",
       "previewEnd": "137000"
     },
@@ -52,7 +52,7 @@
       "eventName": "mimukauwanicetry",
       "fileLocation": "mimukauwa_nicetry",
       "level": 6.0,
-      "difficulty": "NIGHTMARE"
+      "difficulty": "MASTER"
     },
     {
       "id": 4,
@@ -65,7 +65,7 @@
       "eventName": "umiyurikaiteitan 3",
       "fileLocation": "umiyuri_kaiteitan",
       "level": 6.0,
-      "difficulty": "NIGHTMARE"
+      "difficulty": "MASTER"
     },
     {
       "id": 5,
@@ -78,7 +78,7 @@
       "eventName": "shoushitsu",
       "fileLocation": "shoushitsu",
       "level": 8.0,
-      "difficulty": "NIGHTMARE"
+      "difficulty": "MASTER"
     },
     {
       "id": 6,
@@ -91,7 +91,7 @@
       "eventName": "kyukurarin",
       "fileLocation": "kyu_kurarin",
       "level": 5.0,
-      "difficulty": "ADVERSITY",
+      "difficulty": "EXPERT",
       "previewStart": "108000",
       "previewEnd": "137000"
     },
@@ -106,7 +106,7 @@
       "eventName": "kyukurarin",
       "fileLocation": "kyu_kurarin",
       "level": 3.0,
-      "difficulty": "MEMORY",
+      "difficulty": "ADVANCED",
       "previewStart": "108000",
       "previewEnd": "137000"
     },
@@ -121,7 +121,7 @@
       "eventName": "umiyurikaiteitan 3",
       "fileLocation": "umiyuri_kaiteitan",
       "level": 5.0,
-      "difficulty": "ADVERSITY"
+      "difficulty": "EXPERT"
     }
   ]
 }
