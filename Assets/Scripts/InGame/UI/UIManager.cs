@@ -13,13 +13,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _judgeText;
     [SerializeField] private TextMeshProUGUI _plusJudgeText;
     [SerializeField] private TextMeshProUGUI _fastSlow;
-    [SerializeField] private TextMeshProUGUI _perfectpCountText;
-    [SerializeField] private TextMeshProUGUI _perfectCountText;
-    [SerializeField] private TextMeshProUGUI _greatCountText;
-    [SerializeField] private TextMeshProUGUI _goodCountText;
-    [SerializeField] private TextMeshProUGUI _missCountText;
+
+    [Header("Judge Count Texts")]
+    [SerializeField] private TextMeshPro _perfectpCountText;
+    [SerializeField] private TextMeshPro _perfectCountText;
+    [SerializeField] private TextMeshPro _greatCountText;
+    [SerializeField] private TextMeshPro _goodCountText;
+    [SerializeField] private TextMeshPro _missCountText;
+
+    [Header("Song Info Texts")]
     [SerializeField] private TextMeshProUGUI _titleText;
     [SerializeField] private TextMeshProUGUI _artistText;
+
+    [Header("FCAP Text")]
     [SerializeField] private TextMeshProUGUI _FCAPText;
     [SerializeField] private TextMeshProUGUI _speedText;
     [SerializeField] private List<TextMeshProUGUI> _fastIndicators;
@@ -29,12 +35,24 @@ public class UIManager : MonoBehaviour
     [SerializeField] private LoadManager _loadManager;
     private SettingsManager _settings;
 
+    [Header("Judgement Prefabs")]
+    [SerializeField] private Transform _leftJudgementFolder;
+    [SerializeField] private Transform _rightJudgementFolder;
+    [SerializeField] private GameObject _criticalBreakPrefab;
+    [SerializeField] private GameObject _breakPrefab;
+    [SerializeField] private GameObject _hitPrefab;
+    [SerializeField] private GameObject _missPrefab;
+
     // Coroutines
     private Coroutine _comboPopInRoutine;
     private Coroutine _currentJudgementRoutine;
     private Coroutine _currentLeftIndicatorRoutine;
     private Coroutine _currentRightIndicatorRoutine;
     private Coroutine _popInRoutine;
+    private Coroutine _leftJudgementRoutine;
+    private Coroutine _rightJudgementRoutine;
+    private GameObject _leftActiveJudgement;
+    private GameObject _rightActiveJudgement;
 
     private void Start()
     {
@@ -112,11 +130,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateJudgeCountText(Dictionary<string, int> judgeCount)
     {
-        _perfectpCountText.text = $"{judgeCount["PerfectP"]}";
-        _perfectCountText.text = $"{judgeCount["Perfect"]}";
-        _greatCountText.text = $"{judgeCount["Great"]}";
-        _goodCountText.text = $"{judgeCount["Good"]}";
-        _missCountText.text = $"{judgeCount["Miss"] + judgeCount["Bad"]}";
+        _perfectpCountText.text = $"{judgeCount["CriticalBreak"]}";
+        _perfectCountText.text = $"{judgeCount["Break"]}";
+        _greatCountText.text = $"{judgeCount["Hit"]}";
+        _goodCountText.text = "";
+        _missCountText.text = $"{judgeCount["Miss"]}";
     }
 
     public void ChangeRate(float rate)
@@ -129,14 +147,92 @@ public class UIManager : MonoBehaviour
         _FCAPText.text = FCAP;
     }
 
-    public IEnumerator JudgementTextShower(string judgement, double Ms, float position)
+    public void JudgementTextShower(string judgement, double Ms, float position, string noteType = "normal")
     {
-        if (_currentJudgementRoutine != null)
+        bool isLeft = position <= 2f;
+        Transform folder = isLeft ? _leftJudgementFolder : _rightJudgementFolder;
+        GameObject prefab = GetJudgementPrefab(judgement);
+
+        if (prefab == null || folder == null) return;
+
+        bool useNoteX = noteType != "normal" && noteType != "long" && noteType != "null";
+        float noteXPos = useNoteX ? -10.5f + 7f * (position - 1f) : folder.position.x;
+
+        if (useNoteX)
         {
-            StopCoroutine(_currentJudgementRoutine);
+            GameObject instance = Instantiate(prefab, folder);
+            StartCoroutine(AnimateJudgementPrefab(instance, noteXPos));
         }
-        _currentJudgementRoutine = StartCoroutine(ShowJudgementTextRoutine(judgement, Ms, position));
-        yield break;
+        else if (isLeft)
+        {
+            if (_leftJudgementRoutine != null) StopCoroutine(_leftJudgementRoutine);
+            if (_leftActiveJudgement != null) Destroy(_leftActiveJudgement);
+            _leftActiveJudgement = Instantiate(prefab, folder);
+            _leftJudgementRoutine = StartCoroutine(AnimateJudgementPrefab(_leftActiveJudgement, noteXPos));
+        }
+        else
+        {
+            if (_rightJudgementRoutine != null) StopCoroutine(_rightJudgementRoutine);
+            if (_rightActiveJudgement != null) Destroy(_rightActiveJudgement);
+            _rightActiveJudgement = Instantiate(prefab, folder);
+            _rightJudgementRoutine = StartCoroutine(AnimateJudgementPrefab(_rightActiveJudgement, noteXPos));
+        }
+    }
+
+    private GameObject GetJudgementPrefab(string judgement)
+    {
+        return judgement switch
+        {
+            "CriticalBreak" => _criticalBreakPrefab,
+            "Break" => _breakPrefab,
+            "Hit" => _hitPrefab,
+            "Miss" => _missPrefab,
+            _ => null
+        };
+    }
+
+    private IEnumerator AnimateJudgementPrefab(GameObject obj, float xPos)
+    {
+        Renderer r = obj.GetComponentInChildren<Renderer>();
+        if (r == null) { Destroy(obj); yield break; }
+
+        float zPos = obj.transform.position.z;
+        Color baseColor = r.material.GetColor("_BaseColor");
+
+        r.material.SetColor("_BaseColor", baseColor.SetAlpha(0f));
+        obj.transform.position = new Vector3(xPos, 4f, zPos);
+
+        float fadeInDuration = 0.15f;
+        float holdDuration = 0.35f;
+        float fadeOutDuration = 0.15f;
+
+        // y=4 → y=5 페이드 인
+        float t = 0f;
+        while (t < fadeInDuration)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / fadeInDuration);
+            r.material.SetColor("_BaseColor", baseColor.SetAlpha(p));
+            obj.transform.position = new Vector3(xPos, Mathf.Lerp(4f, 5f, p), zPos);
+            yield return null;
+        }
+        r.material.SetColor("_BaseColor", baseColor.SetAlpha(1f));
+        obj.transform.position = new Vector3(xPos, 5f, zPos);
+
+        yield return new WaitForSeconds(holdDuration);
+
+        // y=5 → y=6 페이드 아웃
+        t = 0f;
+        while (t < fadeOutDuration)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / fadeOutDuration);
+            r.material.SetColor("_BaseColor", baseColor.SetAlpha(1f - p));
+            obj.transform.position = new Vector3(xPos, Mathf.Lerp(5f, 6f, p), zPos);
+            yield return null;
+        }
+
+        Destroy(obj);
     }
 
     public IEnumerator ShowJudgementTextRoutine(string judgement, double Ms, float position)

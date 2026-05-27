@@ -64,11 +64,9 @@ public class JudgementManager : MonoBehaviour
         noteTypeRate["long"] = 0f;
         noteTypeRate["null"] = 0f;
 
-        judgeCount["PerfectP"] = 0;
-        judgeCount["Perfect"] = 0;
-        judgeCount["Great"] = 0;
-        judgeCount["Good"] = 0;
-        judgeCount["Bad"] = 0;
+        judgeCount["CriticalBreak"] = 0;
+        judgeCount["Break"] = 0;
+        judgeCount["Hit"] = 0;
         judgeCount["Miss"] = 0;
 
         ClearCombo();
@@ -107,32 +105,20 @@ public class JudgementManager : MonoBehaviour
             // }
             if (timeDifference <= perfectp && note.type == "normal" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "PerfectP", currentTimeMs);
+                PerformAction(note, "CriticalBreak", currentTimeMs);
                 AddCombo(1);
                 break;
             }
             if (timeDifference <= perfect && note.type == "normal" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "Perfect", currentTimeMs);
-                AddCombo(1);
-                break;
-            }
-            if (timeDifference <= great && note.type == "normal" && raneNumber + 1 == note.position && !note.isInputed)
-            {
-                PerformAction(note, "Great", currentTimeMs);
-                AddCombo(1);
-                break;
-            }
-            if (timeDifference <= good && note.type == "normal" && raneNumber + 1 == note.position && !note.isInputed)
-            {
-                PerformAction(note, "Good", currentTimeMs);
+                PerformAction(note, "Break", currentTimeMs);
                 AddCombo(1);
                 break;
             }
             if (timeDifference <= bad && note.type == "normal" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "Bad", currentTimeMs);
-                ClearCombo();
+                PerformAction(note, "Hit", currentTimeMs);
+                AddCombo(1);
                 break;
             }
 
@@ -147,52 +133,32 @@ public class JudgementManager : MonoBehaviour
 
                 if (timeDifference <= perfectp)
                 {
-                    note.startJudgement = "PerfectP";
+                    note.startJudgement = "CriticalBreak";
                     note.longNoteStarted = true;
                     note.isLongNotePressing = true;
-                    Destroy(note.noteObject); // 첫 노트 제거
-                    StartCoroutine(UIManager.JudgementTextShower("PerfectP", Ms, note.position));
+                    Destroy(note.noteObject);
+                    UIManager.JudgementTextShower("CriticalBreak", Ms, note.position, note.type);
                     AddCombo(1);
                     break;
                 }
                 else if (timeDifference <= perfect)
                 {
-                    note.startJudgement = "Perfect";
+                    note.startJudgement = "Break";
                     note.longNoteStarted = true;
                     note.isLongNotePressing = true;
-                    Destroy(note.noteObject); // 첫 노트 제거
-                    StartCoroutine(UIManager.JudgementTextShower("Perfect", Ms, note.position));
-                    AddCombo(1);
-                    break;
-                }
-                else if (timeDifference <= great)
-                {
-                    note.startJudgement = "Great";
-                    note.longNoteStarted = true;
-                    note.isLongNotePressing = true;
-                    Destroy(note.noteObject); // 첫 노트 제거
-                    StartCoroutine(UIManager.JudgementTextShower("Great", Ms, note.position));
-                    AddCombo(1);
-                    break;
-                }
-                else if (timeDifference <= good)
-                {
-                    note.startJudgement = "Good";
-                    note.longNoteStarted = true;
-                    note.isLongNotePressing = true;
-                    Destroy(note.noteObject); // 첫 노트 제거
-                    StartCoroutine(UIManager.JudgementTextShower("Good", Ms, note.position));
+                    Destroy(note.noteObject);
+                    UIManager.JudgementTextShower("Break", Ms, note.position, note.type);
                     AddCombo(1);
                     break;
                 }
                 else if (timeDifference <= bad)
                 {
-                    note.startJudgement = "Bad";
+                    note.startJudgement = "Hit";
                     note.longNoteStarted = true;
                     note.isLongNotePressing = true;
-                    Destroy(note.noteObject); // 첫 노트 제거
-                    StartCoroutine(UIManager.JudgementTextShower("Bad", Ms, note.position));
-                    ClearCombo();
+                    Destroy(note.noteObject);
+                    UIManager.JudgementTextShower("Hit", Ms, note.position, note.type);
+                    AddCombo(1);
                     break;
                 }
             }
@@ -223,19 +189,19 @@ public class JudgementManager : MonoBehaviour
 
             if (notAbsDiff >= -80 && notAbsDiff < 60 && note.type == "up" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "PerfectP", currentTimeMs);
+                PerformAction(note, "CriticalBreak", currentTimeMs);
                 AddCombo(1);
                 break;
             }
             if (notAbsDiff >= -200 && notAbsDiff < -80 && note.type == "up" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "Great", currentTimeMs);
+                PerformAction(note, "Hit", currentTimeMs);
                 AddCombo(1);
                 break;
             }
             if (notAbsDiff > 60 && notAbsDiff <= 130 && note.type == "up" && raneNumber + 1 == note.position && !note.isInputed)
             {
-                PerformAction(note, "Great", currentTimeMs);
+                PerformAction(note, "Hit", currentTimeMs);
                 AddCombo(1);
                 break;
             }
@@ -274,17 +240,9 @@ public class JudgementManager : MonoBehaviour
 
         Debug.Log($"{judgement}: {note.ms}, input: {currentTimeMs}, type: {normalizedType}, rate: {noteTypeRate[normalizedType]}");
 
-        if (judgement == "Great")
-        {
-            ChangeRate(noteTypeRate[normalizedType], 0.25f);
-        }
-        if (judgement == "Good")
+        if (judgement == "Hit")
         {
             ChangeRate(noteTypeRate[normalizedType], 0.5f);
-        }
-        if (judgement == "Bad")
-        {
-            ChangeRate(noteTypeRate[normalizedType], 1f);
         }
         if (judgement == "Miss")
         {
@@ -302,14 +260,13 @@ public class JudgementManager : MonoBehaviour
 
         if (note.isEndNote == true)
         {
-            if (judgeCount["Miss"] == 0 && judgeCount["Bad"] == 0)
+            if (judgeCount["Miss"] == 0)
             {
-                //UIManager.SetFCAPText("FULL COMBO");
                 _FCAPFolder.SetActive(true);
                 _unityAnimator.Play("New Animation");
                 isFC = true;
             }
-            if (judgeCount["Miss"] == 0 && judgeCount["Bad"] == 0 && judgeCount["Good"] == 0 && judgeCount["Great"] == 0)
+            if (judgeCount["Miss"] == 0 && judgeCount["Hit"] == 0 && judgeCount["Break"] == 0)
             {
                 UIManager.SetFCAPText("ALL PERFECT");
                 isAP = true;
@@ -319,7 +276,7 @@ public class JudgementManager : MonoBehaviour
 
             gameManager.isLevelEnd = true;
         }
-        StartCoroutine(UIManager.JudgementTextShower(judgement, Ms, note.position));
+        UIManager.JudgementTextShower(judgement, Ms, note.position, note.type);
 
         //if (judgement != "Miss")
         //{
@@ -401,7 +358,7 @@ public class JudgementManager : MonoBehaviour
         string currentJudgement = GetLongNoteJudgement(ratio, note.startJudgement);
 
         // 점수 반영 없이 텍스트만 표시
-        StartCoroutine(UIManager.JudgementTextShower(currentJudgement, 0, note.position));
+        UIManager.JudgementTextShower(currentJudgement, 0, note.position, note.type);
     }
 
     private void FinalLongNoteJudgement(NoteClass note, double currentTimeMs)
@@ -421,11 +378,7 @@ public class JudgementManager : MonoBehaviour
         PerformAction(note, finalJudgement, currentTimeMs);
 
         // 콤보 처리
-        if (finalJudgement == "PerfectP" || finalJudgement == "Perfect" || finalJudgement == "Great")
-        {
-            // 콤보는 시작 판정에서 이미 추가했으므로 유지
-        }
-        else
+        if (finalJudgement == "Miss")
         {
             ClearCombo();
         }
@@ -439,19 +392,19 @@ public class JudgementManager : MonoBehaviour
         Debug.Log($"Long Note Ratio: {ratio}");
         if (ratio >= 1f)
         {
-            judgementByRatio = "PerfectP";
+            judgementByRatio = "CriticalBreak";
         }
-        else if (ratio >= 0.8f)
+        else if (ratio >= 0.7f)
         {
-            judgementByRatio = "Perfect";
+            judgementByRatio = "Break";
         }
-        else if (ratio >= 0.5f)
+        else if (ratio >= 0.3f)
         {
-            judgementByRatio = "Great";
+            judgementByRatio = "Hit";
         }
         else
         {
-            judgementByRatio = "Good";
+            judgementByRatio = "Miss";
         }
 
         // 시작 판정을 넘을 수 없음
@@ -463,11 +416,10 @@ public class JudgementManager : MonoBehaviour
         // 판정 우선순위: PerfectP > Perfect > Great > Good > Bad
         Dictionary<string, int> priority = new Dictionary<string, int>
         {
-            { "PerfectP", 5 },
-            { "Perfect", 4 },
-            { "Great", 3 },
-            { "Good", 2 },
-            { "Bad", 1 }
+            { "CriticalBreak", 4 },
+            { "Break", 3 },
+            { "Hit", 2 },
+            { "Miss", 1 }
         };
 
         int p1 = priority.ContainsKey(judgement1) ? priority[judgement1] : 0;

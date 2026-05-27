@@ -183,7 +183,7 @@ public class Note : MonoBehaviour
         {
             if (Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
             {
-                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+                line.judgementManager.PerformAction(noteClass, "CriticalBreak", noteClass.ms);
                 line.judgementManager.AddCombo(1);
             }
         }
@@ -215,7 +215,7 @@ public class Note : MonoBehaviour
             // 판정 윈도우가 완전히 지나면 피한 것으로 간주
             if ((line.currentTime * 1000f) - ms >= 160f)
             {
-                judgement.PerformAction(noteClass, "PerfectP", ms);
+                judgement.PerformAction(noteClass, "CriticalBreak", ms);
             }
             return;
         }
@@ -225,7 +225,7 @@ public class Note : MonoBehaviour
             if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Left"
                 && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
             {
-                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+                line.judgementManager.PerformAction(noteClass, "CriticalBreak", noteClass.ms);
                 line.judgementManager.AddCombo(1);
             }
         }
@@ -235,7 +235,7 @@ public class Note : MonoBehaviour
             if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Right"
                 && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
             {
-                line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+                line.judgementManager.PerformAction(noteClass, "CriticalBreak", noteClass.ms);
                 line.judgementManager.AddCombo(1);
             }
         }
@@ -245,7 +245,7 @@ public class Note : MonoBehaviour
         {
             if (noteClass.type == "rbell")
             {
-                judgement.PerformAction(noteClass, "PerfectP", ms);
+                judgement.PerformAction(noteClass, "CriticalBreak", ms);
                 isSet = false;
             }
         }
@@ -255,7 +255,7 @@ public class Note : MonoBehaviour
     {
         if (line.isAutoPlay && !noteClass.isInputed && (noteClass.ms - (line.currentTime * 1000f) <= 0))
         {
-            line.judgementManager.PerformAction(noteClass, "PerfectP", noteClass.ms);
+            line.judgementManager.PerformAction(noteClass, "CriticalBreak", noteClass.ms);
             line.judgementManager.AddCombo(1);
 
             Debug.Log($"AutoPlay note.ms: {noteClass.ms}, currentTime: {line.currentTime * 1000f}");
