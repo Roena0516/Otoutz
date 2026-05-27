@@ -227,9 +227,20 @@ public class NoteGenerator : MonoBehaviour
         oneBeatDuration = 60f / BPM * 1000f;
         beatDuration = oneBeatDuration * beat;
 
+        Color laneColor = (position == 1f || position == 4f)
+            ? new Color(0.102f, 0.851f, 0.220f, 1f)
+            : new Color(0.306f, 0.345f, 0.886f, 1f);
+
         if (type == "normal")
         {
             note = Instantiate(notePrefab, ranePosition, R, notesFolder.transform);
+            Transform body = note.transform.Find("Body");
+            if (body != null)
+            {
+                Renderer bodyRenderer = body.GetComponent<Renderer>();
+                if (bodyRenderer != null)
+                    bodyRenderer.material.SetColor("_BaseColor", laneColor);
+            }
         }
         else if (type == "long")
         {
@@ -243,9 +254,17 @@ public class NoteGenerator : MonoBehaviour
 
             NoteClass longNoteClass = longNote.GetComponent<Note>().noteClass;
 
-            longNote.transform.localScale = new Vector3(6f, 0f, longNoteLength);
+            longNote.transform.localScale = new Vector3(6f, longNoteLength, 0f);
             longNotePosition.z += longNoteLength / 2f;
             longNote.transform.position = longNotePosition;
+
+            Transform back = longNote.transform.Find("Back");
+            if (back != null)
+            {
+                Renderer backRenderer = back.GetComponent<Renderer>();
+                if (backRenderer != null)
+                    backRenderer.material.SetColor("_BaseColor", laneColor);
+            }
 
             longNoteClass.type = "null";
             longNoteClass.noteObject = longNote;

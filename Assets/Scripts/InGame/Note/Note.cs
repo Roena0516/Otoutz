@@ -97,7 +97,7 @@ public class Note : MonoBehaviour
 
     public IEnumerator MoveLongNote()
     {
-        float originScaleZ = gameObject.transform.localScale.z;
+        float originScaleZ = gameObject.transform.localScale.y;
         double longNoteEndTimeMs = ms + (60000f / noteGenerator.BPM * noteClass.length);
         double remainingDistance = originScaleZ;
 
@@ -114,7 +114,7 @@ public class Note : MonoBehaviour
                 remainingDistance = originScaleZ;
             }
 
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, gameObject.transform.localScale.y, (float)remainingDistance);
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, (float)remainingDistance, gameObject.transform.localScale.z);
 
             dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
             double elapsedTime = line.currentTime - dropStartTime;
