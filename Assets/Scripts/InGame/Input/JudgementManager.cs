@@ -7,14 +7,24 @@ using System.Linq;
 
 public class JudgementManager : MonoBehaviour
 {
-    private float perfectp = 25f;
-    private float perfect = 50f;
-    private float great = 70f;
-    private float good = 110f;
-    private float bad = 160f;
+    private float perfectp = 33.33f;
+    private float perfect = 66.67f;
+    private float bad = 100f;
 
     public int combo;
     public float rate;
+    public int score;
+
+    private float _scorePerNormalWeight;
+    private float _scorePerBell;
+
+    private static readonly Dictionary<string, float> ScoreMultiplier = new Dictionary<string, float>
+    {
+        { "CriticalBreak", 1.0f },
+        { "Break", 0.8f },
+        { "Hit", 0.5f },
+        { "Miss", 0.0f }
+    };
 
     public NoteGenerator noteGenerator;
     public GameManager gameManager;
@@ -55,6 +65,7 @@ public class JudgementManager : MonoBehaviour
         settings = SettingsManager.Instance;
 
         rate = 100f;
+        score = 0;
 
         isAP = false;
         isFC = false;
@@ -81,6 +92,12 @@ public class JudgementManager : MonoBehaviour
         noteTypeRate["normal"] = (noteGenerator.noteTypeCounts["normal"] > 0) ? (noteGenerator.noteTypeCounts["normal"] / rateAllNote * 100 / noteGenerator.noteTypeCounts["normal"]) : 0;
         noteTypeRate["hold"] = (noteGenerator.noteTypeCounts["hold"] > 0) ? (noteGenerator.noteTypeCounts["hold"] / rateAllNote * 100) / noteGenerator.noteTypeCounts["hold"] : 0;
         noteTypeRate["long"] = (noteGenerator.noteTypeCounts["long"] > 0) ? (noteGenerator.noteTypeCounts["long"] * 2 / rateAllNote * 100) / noteGenerator.noteTypeCounts["long"] : 0;
+
+        int normalLongWeight = noteGenerator.noteTypeCounts["normal"] + noteGenerator.noteTypeCounts["long"] * 2;
+        _scorePerNormalWeight = normalLongWeight > 0 ? 1_000_000f / normalLongWeight : 0f;
+
+        int bellCount = noteGenerator.noteTypeCounts["hold"];
+        _scorePerBell = bellCount > 0 ? 10_000f / bellCount : 0f;
     }
 
     public void Judge(int raneNumber, double currentTimeMs)
@@ -248,6 +265,17 @@ public class JudgementManager : MonoBehaviour
         {
             ChangeRate(noteTypeRate[normalizedType], 1f);
         }
+        float multiplier = ScoreMultiplier.ContainsKey(judgement) ? ScoreMultiplier[judgement] : 0f;
+        float noteScore = 0f;
+        if (normalizedType == "normal")
+            noteScore = _scorePerNormalWeight;
+        else if (normalizedType == "long")
+            noteScore = _scorePerNormalWeight * 2f;
+        else if (normalizedType == "hold")
+            noteScore = _scorePerBell;
+        score += Mathf.RoundToInt(noteScore * multiplier);
+        UIManager.SetScore(score);
+
         double Ms = note.ms - currentTimeMs;
         judgeCount[judgement]++;
         UIManager.UpdateJudgeCountText(judgeCount);

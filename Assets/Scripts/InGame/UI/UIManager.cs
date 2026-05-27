@@ -7,8 +7,8 @@ public class UIManager : MonoBehaviour
 {
     // UI Components
     [SerializeField] private TextMeshProUGUI _levelText;
-    [SerializeField] private TextMeshProUGUI _comboText;
-    [SerializeField] private TextMeshProUGUI _comboTitleText;
+    [SerializeField] private TextMeshPro _comboText;
+    [SerializeField] private TextMeshPro _comboTitleText;
     [SerializeField] private TextMeshProUGUI _rateText;
     [SerializeField] private TextMeshProUGUI _judgeText;
     [SerializeField] private TextMeshProUGUI _plusJudgeText;
@@ -27,7 +27,8 @@ public class UIManager : MonoBehaviour
 
     [Header("FCAP Text")]
     [SerializeField] private TextMeshProUGUI _FCAPText;
-    [SerializeField] private TextMeshProUGUI _speedText;
+    [SerializeField] private TextMeshPro _speedText;
+    [SerializeField] private TextMeshPro _scoreText;
     [SerializeField] private List<TextMeshProUGUI> _fastIndicators;
     [SerializeField] private List<TextMeshProUGUI> _slowIndicators;
 
@@ -114,12 +115,6 @@ public class UIManager : MonoBehaviour
     {
         _comboText.text = $"{combo}";
         _comboTitleText.color = _comboTitleText.color.SetAlpha(1f);
-
-        if (_comboPopInRoutine != null)
-        {
-            StopCoroutine(_comboPopInRoutine);
-        }
-        _comboPopInRoutine = StartCoroutine(PopIn(_comboText.rectTransform));
     }
 
     public void ClearCombo()
@@ -140,6 +135,12 @@ public class UIManager : MonoBehaviour
     public void ChangeRate(float rate)
     {
         _rateText.text = $"{rate:F2}%";
+    }
+
+    public void SetScore(int score)
+    {
+        if (_scoreText != null)
+            _scoreText.text = $"{score:N0}";
     }
 
     public void SetFCAPText(string FCAP)
