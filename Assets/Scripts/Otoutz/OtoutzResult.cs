@@ -590,6 +590,7 @@ namespace Otoutz
         {
             _busy = true;
             OtoutzResultData.valid = false;
+            OtoutzFlow.OpenOnSelect = true; // land on the song-select screen, not the main menu
             SceneManager.LoadSceneAsync("Menu");
         }
     }

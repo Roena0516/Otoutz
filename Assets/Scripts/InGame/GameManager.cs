@@ -80,7 +80,9 @@ public class GameManager : MonoBehaviour
                 SceneManager.UnloadSceneAsync("InGame");
                 return;
             }
-            SceneManager.LoadSceneAsync("FreePlay");
+            // Exit mid-game → back to the Otoutz song-select with the previously chosen song.
+            Otoutz.OtoutzFlow.OpenOnSelect = true;
+            SceneManager.LoadSceneAsync("Menu");
         }
     }
 

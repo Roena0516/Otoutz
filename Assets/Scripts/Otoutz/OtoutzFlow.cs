@@ -37,6 +37,11 @@ namespace Otoutz
         int _songIndex = 0, _diffIndex = 3, _menuIndex = 0, _rowIndex = 0;
         bool _busy;
 
+        // When returning from gameplay/result, open directly on the song-select screen with the
+        // previously chosen song. Set by GameManager (mid-game exit) / OtoutzResult (next/esc).
+        public static bool OpenOnSelect;
+        static int _lastSongIndex = -1, _lastDiffIndex = 3;
+
         SettingsManager _sm;
 
         // local settings model (mirrors the handoff rows; persisted to SettingsManager on back)
@@ -49,6 +54,17 @@ namespace Otoutz
             _songs = OtoutzData.Load();
             if (_songs.Count == 0) _songs.Add(Placeholder());
             _songIndex = Mathf.Clamp(_songs.Count / 2, 0, _songs.Count - 1);
+
+            Screen start = Screen.Menu;
+            if (OpenOnSelect)
+            {
+                OpenOnSelect = false;
+                if (_lastSongIndex >= 0) _songIndex = Mathf.Clamp(_lastSongIndex, 0, _songs.Count - 1);
+                _diffIndex = Mathf.Clamp(_lastDiffIndex, 0, 3);
+                start = Screen.Select;
+            }
+            _screen = start;
+
             _sm = SettingsManager.Instance;
             PullSettings();
             BuildCanvas();
@@ -57,8 +73,9 @@ namespace Otoutz
             BuildSelect();
             BuildDifficulty();
             BuildSettings();
-            ShowOnly(Screen.Menu, instant: true);
+            ShowOnly(start, instant: true);
             RefreshMenu(); RefreshSelect(); RefreshDifficulty(); RefreshSettings();
+            if (start == Screen.Select) PlayPreview();
         }
 
         void LoadFonts()
@@ -1083,6 +1100,7 @@ namespace Otoutz
             }
 
             StopPreview();
+            _lastSongIndex = _songIndex; _lastDiffIndex = diff;
             OtoutzResultData.SetSong(s, diff);
             if (_sm != null)
             {
