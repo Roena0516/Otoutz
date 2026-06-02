@@ -99,16 +99,11 @@ public class GameManager : MonoBehaviour
 
         if (isTest) yield break;
 
-        void LoadResult()
-        {
-            DontDestroyOnLoad(gameObject);
-            SceneManager.LoadSceneAsync(isSyncRoom ? "SyncRoomResult" : "Result");
-        }
+        string scene = isSyncRoom ? "SyncRoomResult" : "Result";
 
-        // _animator is a serialized ref that may be unassigned in the scene; fall back to a
-        // scene lookup, and if there's still no fader just transition straight to the result.
-        if (_animator == null) _animator = FindObjectOfType<InGameAnimation>();
-        if (_animator != null) _animator.FadeIn(1f, LoadResult);
-        else LoadResult();
+        // Fade to black, then load the result scene (which fades back in via its own OtoutzFade).
+        var fade = Otoutz.OtoutzFade.Instance;
+        if (fade != null) fade.FadeOutAndLoad(scene, 0.6f);
+        else SceneManager.LoadSceneAsync(scene);
     }
 }
