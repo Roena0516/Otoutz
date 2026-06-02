@@ -55,6 +55,7 @@ public class SongListShower : MonoBehaviour
 
     private float originX;
     private float indicatorOriginX;
+    private float indicatorStep;
     private float originY;
 
     public int listNum;
@@ -92,8 +93,12 @@ public class SongListShower : MonoBehaviour
     private void UIInit()
     {
         originX = contentFolder.transform.position.x;
-        indicatorOriginX = difficultyIndicator.transform.position.x;
         originY = contentFolder.transform.position.y;
+
+        var advTab = GameObject.Find("ADVANCED");
+        var expTab = GameObject.Find("EXPERT");
+        indicatorOriginX = advTab != null ? advTab.transform.position.x : difficultyIndicator.transform.position.x;
+        indicatorStep = (advTab != null && expTab != null) ? expTab.transform.position.x - advTab.transform.position.x : 109.75f;
 
         listNum = 1;
         selectedDifficulty = 1;
@@ -695,7 +700,8 @@ public class SongListShower : MonoBehaviour
 
     private void DifficultySetter(string key)
     {
-        List<SongInfoClass> songList = loader.songDictionary[key];
+        if (!loader.songDictionary.TryGetValue(key, out List<SongInfoClass> songList))
+            return;
 
         bgnText.color = bgnText.color.SetAlpha(0f);
         bgnText.text = $"0";
@@ -781,13 +787,19 @@ public class SongListShower : MonoBehaviour
                 SetResult(found);
             }
 
-            SongInfoClass foundInfoClass = allOfInfos.FirstOrDefault(info => info.id == setter.ids[selectedDifficulty - 1]);
-            if (foundInfoClass == null)
+            string songKey = setter.artist + "-" + setter.title;
+            SongInfoClass foundInfoClass = null;
+            if (loader.songDictionary.TryGetValue(songKey, out var diffList))
             {
-                Debug.LogError($"info is not found: {setter.ids[selectedDifficulty - 1]} id");
+                var candidate = diffList[selectedDifficulty - 1];
+                if (!string.IsNullOrEmpty(candidate?.difficulty))
+                    foundInfoClass = candidate;
             }
-            SetSelectedSongInfo(foundInfoClass);
-            SetJacketImage($"Images/Jackets/{foundInfoClass.eventName}/{foundInfoClass.difficulty}");
+            if (foundInfoClass != null)
+            {
+                SetSelectedSongInfo(foundInfoClass);
+                SetJacketImage($"Images/Jackets/{foundInfoClass.eventName}/{foundInfoClass.difficulty}");
+            }
 
             if (currentSetDifficultyRoutine != null)
             {
@@ -811,7 +823,7 @@ public class SongListShower : MonoBehaviour
         float elapsedTime = 0f;
         Vector3 startPos = new(T.position.x, T.position.y, 0f);
         float duration = 0.15f;
-        Vector3 targetPos = new(indicatorOriginX + 109.75f * index, T.position.y, 0f);
+        Vector3 targetPos = new(indicatorOriginX + indicatorStep * index, T.position.y, 0f);
 
         while (elapsedTime < duration)
         {

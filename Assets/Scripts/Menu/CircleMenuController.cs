@@ -1,61 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CircleMenuController : MonoBehaviour
 {
     [Header("Circle")]
-    public RectTransform circleRect;     // 원 이미지 RectTransform (지름 1324px)
-    public float radius;
-    [Tooltip("가운데(선택) 항목이 위치할 각도(도 단위, 0°=우, 90°=상, 180°=좌, 270°=하)")]
+    public RectTransform circleRect;
+    public float radius = 350f;
     private float centerAngleDeg = 180f;
 
     [Header("Items")]
     public List<RectTransform> items = new List<RectTransform>();
-    [Tooltip("한 칸 이동 시 회전 각도(도)")]
-    private float stepAngleDeg = 22.5f;
+    public float stepAngleDeg = 30f;
 
     [Header("Tween")]
     private float tweenDuration = 0.18f;
 
-    // 내부 상태
-    private float _offsetDeg = 0f;    // 현재 회전 오프셋(도)
+    private float _offsetDeg = 0f;
     private Coroutine _moveCo;
-    public int currentIndex = 1;     // 현재 선택된 인덱스 (가운데 아이템이 기본 선택)
+    public int currentIndex = 1;
 
     void Start()
     {
-        if (circleRect == null)
-        {
-            Debug.LogWarning("circleRect가 비어있습니다.");
-            return;
-        }
-        radius = circleRect.rect.width * 0.5f;
-
-        // 시작 배치
+        if (circleRect != null)
+            radius = circleRect.rect.width * 0.5f;
         LayoutItemsInstant();
     }
 
-    void Update()
-    {
-        // 위 / 아래 입력
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            Move(1); // 반시계(위로)
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            Move(-1);  // 시계(아래로)
-    }
-
-    public void Move(int dir) // dir: +1 아래(시계), -1 위(반시계)
+    public void Move(int dir)
     {
         int newIndex = Mathf.Clamp(currentIndex + dir, 0, items.Count - 1);
-
-        // 범위를 벗어나면 이동 안 함
         if (newIndex == currentIndex) return;
-
         currentIndex = newIndex;
-
-        float target = (currentIndex - 1) * stepAngleDeg; // 가운데(index=1) 기준
+        float target = (currentIndex - 1) * stepAngleDeg;
         if (_moveCo != null) StopCoroutine(_moveCo);
         _moveCo = StartCoroutine(AnimateOffset(_offsetDeg, target, tweenDuration));
     }
@@ -76,22 +53,17 @@ public class CircleMenuController : MonoBehaviour
         _moveCo = null;
     }
 
-    // 배치 로직
     private void LayoutItemsInstant()
     {
-        if (items == null || items.Count == 0 || circleRect == null) return;
-
-        float r = circleRect.rect.width * 0.5f;
+        if (items == null || items.Count == 0) return;
 
         for (int i = 0; i < items.Count; i++)
         {
-            int rel = i - 1; // 가운데(index=1) 기준
+            int rel = i - 1;
             float deg = centerAngleDeg + _offsetDeg + rel * stepAngleDeg;
             float rad = deg * Mathf.Deg2Rad;
-
-            Vector2 p = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * r;
+            Vector2 p = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * radius;
             items[i].anchoredPosition = p;
-
             items[i].localRotation = Quaternion.identity;
             items[i].localScale = Vector3.one;
         }

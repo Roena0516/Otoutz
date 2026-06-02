@@ -12,6 +12,7 @@ public class JudgementManager : MonoBehaviour
     private float bad = 100f;
 
     public int combo;
+    public int maxCombo;
     public float rate;
     public int score;
 
@@ -69,6 +70,7 @@ public class JudgementManager : MonoBehaviour
 
         isAP = false;
         isFC = false;
+        maxCombo = 0;
 
         noteTypeRate["normal"] = 0f;
         noteTypeRate["hold"] = 0f;
@@ -228,6 +230,7 @@ public class JudgementManager : MonoBehaviour
     public void AddCombo(int amount)
     {
         combo += amount;
+        if (combo > maxCombo) maxCombo = combo;
         UIManager.SetCombo(combo);
     }
 
@@ -301,6 +304,17 @@ public class JudgementManager : MonoBehaviour
             }
 
             Debug.Log($"{note.ms}, {note.type}, {note.position}, {note.isEndNote}, {note.beat}");
+
+            Otoutz.OtoutzResultData.SetPlayResult(
+                perfect: judgeCount["CriticalBreak"],
+                great: judgeCount["Break"],
+                good: judgeCount["Hit"],
+                miss: judgeCount["Miss"],
+                score: score,
+                acc: rate,
+                maxCombo: maxCombo,
+                isFC: isFC,
+                isAP: isAP);
 
             gameManager.isLevelEnd = true;
         }

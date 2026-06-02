@@ -95,23 +95,18 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
 
-        if (!isTest)
-        {
-            _animator.FadeIn(1f, () =>
-            {
-                DontDestroyOnLoad(gameObject);
+        if (isTest) yield break;
 
-                if (isSyncRoom)
-                {
-                    SceneManager.LoadSceneAsync("SyncRoomResult");
-                }
-                else
-                {
-                    SceneManager.LoadSceneAsync("Result");
-                }
-            });
+        void LoadResult()
+        {
+            DontDestroyOnLoad(gameObject);
+            SceneManager.LoadSceneAsync(isSyncRoom ? "SyncRoomResult" : "Result");
         }
 
-        yield break;
+        // _animator is a serialized ref that may be unassigned in the scene; fall back to a
+        // scene lookup, and if there's still no fader just transition straight to the result.
+        if (_animator == null) _animator = FindObjectOfType<InGameAnimation>();
+        if (_animator != null) _animator.FadeIn(1f, LoadResult);
+        else LoadResult();
     }
 }
