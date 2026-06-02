@@ -75,7 +75,49 @@ namespace Otoutz
             BuildSettings();
             ShowOnly(start, instant: true);
             RefreshMenu(); RefreshSelect(); RefreshDifficulty(); RefreshSettings();
-            if (start == Screen.Select) PlayPreview();
+            if (start == Screen.Select)
+            {
+                PlayPreview();
+                // Returning from gameplay/result: play the handoff's "back" enter animation
+                // (slide in from the left + fade) so the cross-scene return feels continuous.
+                StartCoroutine(EnterAnim(Screen.Select, "back"));
+            }
+        }
+
+        // Plays a single screen's "enter" animation (no outgoing screen), matching Transition's
+        // presets. Used for the initial animated entrance when arriving from another scene.
+        IEnumerator EnterAnim(Screen to, string cls)
+        {
+            _busy = true;
+            var rt = _screens[to]; var cg = _groups[to];
+            rt.gameObject.SetActive(true);
+            rt.SetAsLastSibling();
+
+            float dur = (cls == "zoom" || cls == "zoomout") ? 0.42f : 0.40f;
+            Vector2 fromPos = Vector2.zero; float fromScale = 0.99f;
+            switch (cls)
+            {
+                case "fwd": fromPos = new Vector2(64, 0); break;
+                case "back": fromPos = new Vector2(-64, 0); break;
+                case "zoom": fromScale = 0.93f; break;
+                case "zoomout": fromScale = 1.07f; break;
+            }
+
+            // Pre-set the start state this frame so the settled state never flashes first.
+            cg.alpha = 0.2f; rt.anchoredPosition = fromPos; rt.localScale = Vector3.one * fromScale;
+
+            float t = 0f;
+            while (t < dur)
+            {
+                t += Time.unscaledDeltaTime;
+                float k = Ease.OutBack(t / dur);
+                cg.alpha = Mathf.Lerp(0.2f, 1f, Ease.OutCubic(t / dur));
+                rt.anchoredPosition = Vector2.Lerp(fromPos, Vector2.zero, k);
+                rt.localScale = Vector3.one * Mathf.Lerp(fromScale, 1f, k);
+                yield return null;
+            }
+            cg.alpha = 1f; rt.anchoredPosition = Vector2.zero; rt.localScale = Vector3.one;
+            _busy = false;
         }
 
         void LoadFonts()
