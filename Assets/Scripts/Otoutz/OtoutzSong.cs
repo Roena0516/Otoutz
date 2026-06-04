@@ -21,9 +21,12 @@ namespace Otoutz
         public int[] ids = new int[4];
         public SongInfoClass[] infos = new SongInfoClass[4];
 
-        // procedural jacket art
+        // procedural jacket art (fallback when no jacket.png is present)
         public Color artA, artB, artBlob;
         public string glyph;
+
+        // real jacket loaded from the chart folder's jacket.png (null = use procedural art)
+        public Sprite jacketSprite;
 
         public bool HasDiff(int i) => levels[i] > 0f && infos[i] != null;
 

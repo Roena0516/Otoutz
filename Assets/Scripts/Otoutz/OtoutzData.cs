@@ -34,7 +34,9 @@ namespace Otoutz
                 var info = MakeInfo(song, chart);
                 Insert(dict, order, info);
             }
-            return Build(dict, order);
+            var songs = Build(dict, order);
+            foreach (var s in songs) s.jacketSprite = LoadJacketFile(ChartPathOf(s));
+            return songs;
         }
 
         public static async Task<List<OtoutzSong>> LoadWebGL()
@@ -62,7 +64,9 @@ namespace Otoutz
                     Insert(dict, order, info);
                 }
             }
-            return Build(dict, order);
+            var songs = Build(dict, order);
+            foreach (var s in songs) s.jacketSprite = await LoadJacketWeb(ChartPathOf(s));
+            return songs;
         }
 
         static SongInfoClass MakeInfo(SongInfoClass song, string filePath)
@@ -138,6 +142,48 @@ namespace Otoutz
             s.artB = Color.HSVToRGB(Mathf.Repeat(hue + 0.12f, 1f), 0.42f, 0.96f);
             s.artBlob = Color.HSVToRGB(Mathf.Repeat(hue + 0.50f, 1f), 0.45f, 1.00f);
             s.glyph = string.IsNullOrWhiteSpace(s.title) ? "♪" : s.title.Trim().Substring(0, 1);
+        }
+
+        // first assigned chart path; the jacket lives in the same folder as the chart .json
+        static string ChartPathOf(OtoutzSong s)
+        {
+            foreach (var p in s.filePaths) if (!string.IsNullOrEmpty(p)) return p;
+            return null;
+        }
+
+        static Sprite MakeSprite(Texture2D tex)
+        {
+            tex.wrapMode = TextureWrapMode.Clamp;
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect);
+        }
+
+        // standalone/editor: read jacket.png next to the chart via the file system
+        static Sprite LoadJacketFile(string chartPath)
+        {
+            if (string.IsNullOrEmpty(chartPath)) return null;
+            string dir = Path.GetDirectoryName(chartPath);
+            if (string.IsNullOrEmpty(dir)) return null;
+            string jacketPath = Path.Combine(dir, "jacket.png");
+            if (!File.Exists(jacketPath)) return null;
+            var tex = new Texture2D(2, 2);
+            if (!tex.LoadImage(File.ReadAllBytes(jacketPath))) { Object.Destroy(tex); return null; }
+            return MakeSprite(tex);
+        }
+
+        // WebGL: fetch jacket.png next to the chart URL
+        static async Task<Sprite> LoadJacketWeb(string chartUrl)
+        {
+            if (string.IsNullOrEmpty(chartUrl)) return null;
+            int slash = chartUrl.LastIndexOf('/');
+            if (slash < 0) return null;
+            string jacketUrl = chartUrl.Substring(0, slash) + "/jacket.png";
+            using (var req = UnityWebRequestTexture.GetTexture(jacketUrl))
+            {
+                var op = req.SendWebRequest();
+                while (!op.isDone) await Task.Yield();
+                if (req.result != UnityWebRequest.Result.Success) return null;
+                return MakeSprite(DownloadHandlerTexture.GetContent(req));
+            }
         }
     }
 }
