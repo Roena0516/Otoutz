@@ -25,15 +25,17 @@ public class HitEffect : MonoBehaviour
     private Material _glowMat;  // soft radial glow (ring burst)
     private Material _starMat;  // 5-point star (flying)
     private Material _trailMat; // comet tail behind the star
+    private Material _flashMat; // bright sparkle flare at the hit
 
     private void Awake()
     {
         _cam = Camera.main;
         _quad = BuildQuad();
-        // glow under the notes (gear=3001, notes=3005); stars/trails on top of everything
+        // glow under the notes (gear=3001, notes=3005); stars/trails/flash on top of everything
         _glowMat = MakeAdditiveMaterial(MakeGlowTexture(128), 3003);
         _starMat = MakeAdditiveMaterial(MakeStarTexture(96), 3006);
         _trailMat = MakeAdditiveMaterial(null, 3005); // null tex → shader's default white
+        _flashMat = MakeAdditiveMaterial(MakeFlareTexture(160), 3007);
     }
 
     /// <param name="pos">World position of the hit (the lane's judgement point).</param>
@@ -44,6 +46,7 @@ public class HitEffect : MonoBehaviour
         Color c = LaneColors[Mathf.Clamp(laneIndex, 0, LaneColors.Length - 1)];
 
         StartCoroutine(RingBurst(pos, c));
+        StartCoroutine(Flash(pos, c));
 
         // left lanes spray to the left, right lanes to the right
         float outward = pos.x >= 0f ? 1f : -1f;
@@ -78,6 +81,40 @@ public class HitEffect : MonoBehaviour
         Destroy(go);
     }
 
+    // ── bright sparkle flare at the hit ───────────────────────────────────────
+    private IEnumerator Flash(Vector3 pos, Color color)
+    {
+        var go = NewQuad(_flashMat, "HitFlash");
+        var mr = go.GetComponent<MeshRenderer>();
+        var mpb = new MaterialPropertyBlock();
+        var tr = go.transform;
+        tr.position = pos;
+        // mostly white with a hint of the lane colour, pushed past 1 so the additive core blows
+        // out to a bright white sparkle (and blooms if post-processing is on)
+        Color fc = Color.Lerp(color, Color.white, 0.85f);
+        const float bright = 2.6f;
+        float spin = Random.Range(-25f, 25f);
+
+        float dur = 0.2f;
+        float t = 0f;
+        while (t < dur)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / dur);
+
+            if (_cam != null)
+                tr.rotation = Quaternion.LookRotation(pos - _cam.transform.position, Vector3.up)
+                              * Quaternion.Euler(0f, 0f, spin);
+            float s = Mathf.Lerp(4f, 8.5f, Mathf.Sqrt(p)); // quick pop then ease
+            tr.localScale = new Vector3(s, s, s);
+            float a = Mathf.Pow(1f - p, 1.6f); // bright at the hit, then fade
+            mpb.SetColor("_BaseColor", new Color(fc.r * bright, fc.g * bright, fc.b * bright, a));
+            mr.SetPropertyBlock(mpb);
+            yield return null;
+        }
+        Destroy(go);
+    }
+
     // ── stars flying toward the player ────────────────────────────────────────
     private IEnumerator StarFly(Vector3 pos, Color color, float outward)
     {
@@ -106,7 +143,7 @@ public class HitEffect : MonoBehaviour
         // comet tail following the star
         var trail = go.AddComponent<TrailRenderer>();
         trail.sharedMaterial = _trailMat;
-        trail.time = 0.22f;
+        trail.time = 0.4f;
         trail.startWidth = 0.6f * baseScale;
         trail.endWidth = 0f;
         trail.numCapVertices = 3;
@@ -134,6 +171,13 @@ public class HitEffect : MonoBehaviour
             tr.rotation = face * Quaternion.Euler(0f, 0f, spin * t);
             yield return null;
         }
+
+        // hide the head and let the comet tail drain away over its own lifetime instead of
+        // popping out all at once when the object is destroyed
+        mr.enabled = false;
+        float drain = trail.time + 0.1f;
+        float dt = 0f;
+        while (dt < drain) { dt += Time.deltaTime; yield return null; }
         Destroy(go);
     }
 
@@ -189,6 +233,33 @@ public class HitEffect : MonoBehaviour
             float glow = Mathf.Pow(Mathf.Clamp01(1f - d), 1.8f);
             float ring = Mathf.Exp(-40f * (d - 0.72f) * (d - 0.72f)); // bright rim
             float a = Mathf.Clamp01(glow * 0.7f + ring * 0.8f);
+            px[y * size + x] = new Color(1f, 1f, 1f, a);
+        }
+        tex.SetPixels(px);
+        tex.Apply();
+        return tex;
+    }
+
+    // bright 4-point sparkle flare: glowing core + thin horizontal/vertical spikes + faint diagonals
+    private static Texture2D MakeFlareTexture(int size)
+    {
+        var tex = new Texture2D(size, size, TextureFormat.RGBA32, false) { wrapMode = TextureWrapMode.Clamp };
+        float r = size * 0.5f;
+        var px = new Color[size * size];
+        for (int y = 0; y < size; y++)
+        for (int x = 0; x < size; x++)
+        {
+            float u = (x + 0.5f - r) / r;
+            float v = (y + 0.5f - r) / r;
+
+            float core = Mathf.Exp(-(u * u + v * v) * 9f);
+            float horiz = Mathf.Exp(-(v * v) * 340f) * Mathf.Exp(-(u * u) * 2.2f);
+            float vert = Mathf.Exp(-(u * u) * 340f) * Mathf.Exp(-(v * v) * 2.2f);
+            float a1 = (u + v) * 0.70710678f, b1 = (u - v) * 0.70710678f;
+            float diag = (Mathf.Exp(-(b1 * b1) * 600f) * Mathf.Exp(-(a1 * a1) * 4f)
+                        + Mathf.Exp(-(a1 * a1) * 600f) * Mathf.Exp(-(b1 * b1) * 4f)) * 0.4f;
+
+            float a = Mathf.Clamp01(core + horiz + vert + diag);
             px[y * size + x] = new Color(1f, 1f, 1f, a);
         }
         tex.SetPixels(px);

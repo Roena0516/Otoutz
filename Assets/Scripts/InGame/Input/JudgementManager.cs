@@ -193,6 +193,15 @@ public class JudgementManager : MonoBehaviour
         note.isInputed = true;
     }
 
+    // spawns the note-hit visual effect at the given lane's judgement point
+    private void SpawnHitEffect(float position)
+    {
+        if (_hitEffect == null || lineInputChecker == null || lineInputChecker.buttons == null) return;
+        int lane = Mathf.Clamp((int)position - 1, 0, 3);
+        if (lane < lineInputChecker.buttons.Count && lineInputChecker.buttons[lane] != null)
+            _hitEffect.Play(lineInputChecker.buttons[lane].transform.position, lane);
+    }
+
     public void UpJudge(int raneNumber, double currentTimeMs)
     {
         var filteredNotes = noteGenerator.notes
@@ -289,12 +298,7 @@ public class JudgementManager : MonoBehaviour
 
         if (judgement != "Miss")
         {
-            int lane = Mathf.Clamp((int)note.position - 1, 0, 3);
-            if (_hitEffect != null && lineInputChecker != null && lineInputChecker.buttons != null
-                && lane < lineInputChecker.buttons.Count && lineInputChecker.buttons[lane] != null)
-            {
-                _hitEffect.Play(lineInputChecker.buttons[lane].transform.position, lane);
-            }
+            SpawnHitEffect(note.position);
             // SFXLoader.Instance.PlaySFX("hitsound_tamb.wav"); // SFXLoader 클래스가 존재하지 않아 제거됨
         }
 
@@ -410,6 +414,10 @@ public class JudgementManager : MonoBehaviour
 
         // 점수 반영 없이 텍스트만 표시
         UIManager.JudgementTextShower(currentJudgement, 0, note.position, note.type);
+
+        // 홀드 중이면 틱마다 히트이펙트도 표시
+        if (note.isLongNotePressing && currentJudgement != "Miss")
+            SpawnHitEffect(note.position);
     }
 
     private void FinalLongNoteJudgement(NoteClass note, double currentTimeMs)

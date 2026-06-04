@@ -227,9 +227,10 @@ public class NoteGenerator : MonoBehaviour
         oneBeatDuration = 60f / BPM * 1000f;
         beatDuration = oneBeatDuration * beat;
 
+        // brighter neon lane colours (slight >1 push so they glow with the scene bloom)
         Color laneColor = (position == 1f || position == 4f)
-            ? new Color(0.102f, 0.851f, 0.220f, 1f)
-            : new Color(0.306f, 0.345f, 0.886f, 1f);
+            ? new Color(0.30f, 1.18f, 0.45f, 1f)
+            : new Color(0.48f, 0.66f, 1.20f, 1f);
 
         if (type == "normal")
         {
