@@ -9426,6 +9426,10 @@ MonoBehaviour:
   isAutoPlay: 0
   originX: []
   originY: 0
+  beamColor: {r: 0.55, g: 0.8, b: 1, a: 1}
+  beamAlpha: 0.03
+  beamFadeIn: 0.05
+  beamFadeOut: 0.05
   OnPlay:
     m_PersistentCalls:
       m_Calls: []

@@ -41,6 +41,8 @@ public class JudgementManager : MonoBehaviour
 
     public GameObject tsumabuki;
 
+    private HitEffect _hitEffect;
+
     public bool isAP;
     public bool isFC;
 
@@ -85,6 +87,8 @@ public class JudgementManager : MonoBehaviour
         ClearCombo();
         UIManager.UpdateJudgeCountText(judgeCount);
         UIManager.ChangeRate(rate);
+
+        _hitEffect = new GameObject("HitEffectManager").AddComponent<HitEffect>();
     }
 
     public void CalcRate()
@@ -285,7 +289,12 @@ public class JudgementManager : MonoBehaviour
 
         if (judgement != "Miss")
         {
-            // _animator.SpawnKeyBombEffect(note.position - 1);
+            int lane = Mathf.Clamp((int)note.position - 1, 0, 3);
+            if (_hitEffect != null && lineInputChecker != null && lineInputChecker.buttons != null
+                && lane < lineInputChecker.buttons.Count && lineInputChecker.buttons[lane] != null)
+            {
+                _hitEffect.Play(lineInputChecker.buttons[lane].transform.position, lane);
+            }
             // SFXLoader.Instance.PlaySFX("hitsound_tamb.wav"); // SFXLoader 클래스가 존재하지 않아 제거됨
         }
 

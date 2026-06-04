@@ -39,6 +39,14 @@ public class LineInputChecker : MonoBehaviour
     public List<float> originX;
     public float originY;
 
+    [Header("Key Beam")]
+    [SerializeField] private Color beamColor = new Color(0.55f, 0.8f, 1f, 1f);
+    [SerializeField] private float beamAlpha = 0.65f;
+    [SerializeField] private float beamFadeIn = 0.04f;
+    [SerializeField] private float beamFadeOut = 0.18f;
+    private Material[] beamMaterials;
+    private Coroutine[] beamRoutines;
+
     public List<Coroutine> currentDownButtonRoutines;
     public List<Coroutine> currentUpButtonRoutines;
 
@@ -229,6 +237,8 @@ public class LineInputChecker : MonoBehaviour
             originX[i] = buttons[i].transform.position.x;
         }
 
+        SetupBeams();
+
         Play();
     }
 
@@ -382,7 +392,7 @@ public class LineInputChecker : MonoBehaviour
 
         judgementManager.Judge(raneNumber, currentTimeMs);
 
-        // StartCoroutine(DownLines(raneNumber));
+        TriggerBeam(raneNumber, true);
 
         // if (currentDownButtonRoutines[raneNumber] != null)
         // {
@@ -404,7 +414,7 @@ public class LineInputChecker : MonoBehaviour
 
         judgementManager.UpJudge(raneNumber, currentTimeMs);
 
-        // StartCoroutine(UpLines(raneNumber));
+        TriggerBeam(raneNumber, false);
 
         // if (currentUpButtonRoutines[raneNumber] != null)
         // {
@@ -439,28 +449,65 @@ public class LineInputChecker : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator DownLines(int lineNumber)
+    // Builds a per-lane material instance for the floor strip so each lane can be lit
+    // independently (the asset material is shared across all four lanes). Configured for
+    // additive blending so an input "key beam" brightens the lane over the dark stage.
+    private void SetupBeams()
     {
-        SpriteRenderer renderer = Lines[lineNumber].GetComponent<SpriteRenderer>();
+        if (Lines == null) return;
+
+        beamMaterials = new Material[Lines.Count];
+        beamRoutines = new Coroutine[Lines.Count];
+
+        for (int i = 0; i < Lines.Count; i++)
+        {
+            if (Lines[i] == null) continue;
+            var mr = Lines[i].GetComponent<MeshRenderer>();
+            if (mr == null) continue;
+
+            var mat = mr.material; // per-renderer instance (clones the shared material)
+            mat.DisableKeyword("_ALPHATEST_ON");
+            if (mat.HasProperty("_AlphaClip")) mat.SetFloat("_AlphaClip", 0f);
+            mat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            if (mat.HasProperty("_Surface")) mat.SetFloat("_Surface", 1f);
+            if (mat.HasProperty("_SrcBlend")) mat.SetFloat("_SrcBlend", (float)UnityEngine.Rendering.BlendMode.SrcAlpha);
+            if (mat.HasProperty("_DstBlend")) mat.SetFloat("_DstBlend", (float)UnityEngine.Rendering.BlendMode.One);
+            if (mat.HasProperty("_ZWrite")) mat.SetFloat("_ZWrite", 0f);
+            // Draw above the gear/playfield (Background "Gear" is queue 3001) but below the
+            // notes (queue 3005) so the beam lights the lane without covering the notes.
+            mat.renderQueue = 3002;
+            mat.SetColor("_BaseColor", new Color(beamColor.r, beamColor.g, beamColor.b, 0f));
+
+            beamMaterials[i] = mat;
+        }
+    }
+
+    // Fades a lane's key beam in (on press) or out (on release).
+    private void TriggerBeam(int lane, bool on)
+    {
+        if (beamMaterials == null || lane < 0 || lane >= beamMaterials.Length || beamMaterials[lane] == null)
+            return;
+
+        if (beamRoutines[lane] != null) StopCoroutine(beamRoutines[lane]);
+        beamRoutines[lane] = StartCoroutine(BeamFade(lane, on ? beamAlpha : 0f, on ? beamFadeIn : beamFadeOut));
+    }
+
+    private IEnumerator BeamFade(int lane, float targetAlpha, float duration)
+    {
+        Material mat = beamMaterials[lane];
+        float startAlpha = mat.GetColor("_BaseColor").a;
 
         float elapsedTime = 0f;
-        float startAlpha = 0f;
-        float duration = 0.01f;
-        float targetAlpha = 0.05f;
-
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
-
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, alpha);
-
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, Mathf.Clamp01(elapsedTime / duration));
+            mat.SetColor("_BaseColor", new Color(beamColor.r, beamColor.g, beamColor.b, alpha));
             yield return null;
         }
 
-        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, targetAlpha);
-
-        yield break;
+        mat.SetColor("_BaseColor", new Color(beamColor.r, beamColor.g, beamColor.b, targetAlpha));
+        beamRoutines[lane] = null;
     }
 
     private IEnumerator UpButton(int raneNumber)
@@ -485,30 +532,6 @@ public class LineInputChecker : MonoBehaviour
         T.position = targetPos;
 
         currentUpButtonRoutines[raneNumber] = null;
-
-        yield break;
-    }
-
-    private IEnumerator UpLines(int lineNumber)
-    {
-        SpriteRenderer renderer = Lines[lineNumber].GetComponent<SpriteRenderer>();
-
-        float elapsedTime = 0f;
-        float startAlpha = 0.07f;
-        float duration = 0.01f;
-        float targetAlpha = 0f;
-
-        while (elapsedTime < duration)
-        {
-            elapsedTime += Time.deltaTime;
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration);
-
-            renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, alpha);
-
-            yield return null;
-        }
-
-        renderer.color = new Color(renderer.color.r, renderer.color.g, renderer.color.b, targetAlpha);
 
         yield break;
     }
