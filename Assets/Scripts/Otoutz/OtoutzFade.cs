@@ -14,6 +14,8 @@ namespace Otoutz
     /// </summary>
     public class OtoutzFade : MonoBehaviour
     {
+        [Tooltip("How long to hold on solid black after load before the fade-in begins.")]
+        public float holdDuration = 0.45f;
         [Tooltip("Duration of the fade-in-from-black played on scene start.")]
         public float enterDuration = 0.45f;
         public Color color = Color.black;
@@ -39,7 +41,32 @@ namespace Otoutz
             OtoutzUI.Stretch(_img.rectTransform);
 
             SetAlpha(1f);
-            StartCoroutine(FadeRoutine(1f, 0f, enterDuration, null));
+            StartCoroutine(EnterRoutine());
+        }
+
+        // Fade in from black AFTER the scene's heavy first-frame load (chart parse, note spawn,
+        // FMOD) has passed, so the big initial delta-time doesn't make the fade snap to 0 instantly.
+        IEnumerator EnterRoutine()
+        {
+            _canvas.enabled = true; _img.raycastTarget = true;
+            SetColorAlpha(1f);
+            // let the load hitch happen while the screen is held black
+            yield return null;
+            yield return null;
+            yield return new WaitForEndOfFrame();
+
+            // hold on black a beat so the blackout reads before the scene reveals
+            if (holdDuration > 0f) yield return new WaitForSecondsRealtime(holdDuration);
+
+            float t = 0f;
+            while (t < enterDuration)
+            {
+                // clamp per-step delta so a stray slow frame can't skip the fade
+                t += Mathf.Min(Time.unscaledDeltaTime, 0.05f);
+                SetColorAlpha(Mathf.Lerp(1f, 0f, Ease.OutCubic(t / enterDuration)));
+                yield return null;
+            }
+            SetAlpha(0f);
         }
 
         void SetAlpha(float a)

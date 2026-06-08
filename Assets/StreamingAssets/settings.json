@@ -1,6 +1,6 @@
 {
     "isFirstStart": true,
-    "speed": 10.0,
+    "speed": 9.5,
     "effectOption": "None",
     "playerName": "Player",
     "displayMode": 0,
@@ -11,7 +11,7 @@
     "judgementLineHeight": 0,
     "sync": 0,
     "fastSlowExp": 3,
-    "musicVolume": 6,
+    "musicVolume": 5,
     "sfxVolume": 9,
     "KeyBinds": [
         "keyboard/D",

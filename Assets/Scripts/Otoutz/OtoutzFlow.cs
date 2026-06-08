@@ -47,6 +47,17 @@ namespace Otoutz
         // local settings model (mirrors the handoff rows; persisted to SettingsManager on back)
         float _setSpeed = 6f; int _setOffset = 0, _setVolume = 80, _setSe = 70;
 
+        // intro / title splash (shown on first entry; any key -> menu, the background stays)
+        RectTransform _introRoot; CanvasGroup _introGroup;
+        Image _introChar; TextMeshProUGUI _pressText, _pressSub;
+        bool _intro;
+
+        // cached Otoutz wordmark sprite (Otoutz_blur), reused for every logo lockup
+        Sprite _wordmark;
+
+        // sky layer for occasional shooting stars (behind every screen, above the background art)
+        RectTransform _meteorLayer;
+
         void Awake()
         {
             Application.runInBackground = true;
@@ -82,6 +93,16 @@ namespace Otoutz
                 // (slide in from the left + fade) so the cross-scene return feels continuous.
                 StartCoroutine(EnterAnim(Screen.Select, "back"));
             }
+            else if (start == Screen.Menu)
+            {
+                // First entry: show the title splash (artwork + "press any key"); the menu sits
+                // behind it, hidden, and is revealed when the player presses a key.
+                BuildIntro();
+                _intro = true;
+                _screens[Screen.Menu].gameObject.SetActive(false);
+            }
+
+            StartCoroutine(MeteorSpawner());
         }
 
         // Plays a single screen's "enter" animation (no outgoing screen), matching Transition's
@@ -179,11 +200,23 @@ namespace Otoutz
 
         void BuildBackground()
         {
-            var bg = OtoutzUI.Image("Background", _root, OtoutzSprites.PageGradient(), Color.white);
-            OtoutzUI.Stretch(bg.rectTransform);
-
-            var dots = OtoutzUI.Image("Dots", _root, OtoutzSprites.DotTile(), OtoutzTheme.A(OtoutzTheme.glow, 0.22f), Image.Type.Tiled);
-            OtoutzUI.Stretch(dots.rectTransform);
+            // Starry artwork (149-3) cover-fits the screen and persists across the title splash and
+            // every menu screen — so when the title's character fades out, this stays put.
+            var sky = LoadArt("149-3");
+            if (sky != null)
+            {
+                CoverImage("Background", _root, sky);
+                // gentle dark scrim so the white menu UI keeps contrast over the bright sky
+                var scrim = OtoutzUI.Image("Scrim", _root, OtoutzSprites.RoundedRect(2), OtoutzTheme.A(Color.black, 0.20f), Image.Type.Sliced);
+                OtoutzUI.Stretch(scrim.rectTransform);
+            }
+            else
+            {
+                var bg = OtoutzUI.Image("Background", _root, OtoutzSprites.PageGradient(), Color.white);
+                OtoutzUI.Stretch(bg.rectTransform);
+                var dots = OtoutzUI.Image("Dots", _root, OtoutzSprites.DotTile(), OtoutzTheme.A(OtoutzTheme.glow, 0.22f), Image.Type.Tiled);
+                OtoutzUI.Stretch(dots.rectTransform);
+            }
 
             // bottom vignette
             var vig = OtoutzUI.Image("Vignette", _root, OtoutzSprites.Glow(), OtoutzTheme.A(Color.black, 0.45f));
@@ -191,6 +224,178 @@ namespace Otoutz
             vr.anchorMin = new Vector2(0.5f, 0f); vr.anchorMax = new Vector2(0.5f, 0f); vr.pivot = new Vector2(0.5f, 0.5f);
             vr.sizeDelta = new Vector2(REF_W * 2.2f, REF_H * 1.4f);
             vr.anchoredPosition = new Vector2(0, -REF_H * 0.3f);
+
+            // sky meteors render here — above the background art, behind every screen/intro
+            _meteorLayer = OtoutzUI.Rect("Meteors", _root);
+            OtoutzUI.Stretch(_meteorLayer);
+        }
+
+        // Loads a PNG from Resources/OtoutzArt and wraps it in a Sprite (matches OtoutzData.MakeSprite;
+        // works regardless of the texture's import type, and Resources is always included in builds).
+        static Sprite LoadArt(string name)
+        {
+            var tex = Resources.Load<Texture2D>("OtoutzArt/" + name);
+            if (tex == null) { Debug.LogWarning("[Otoutz] missing art Resources/OtoutzArt/" + name); return null; }
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect);
+        }
+
+        // Otoutz wordmark (Otoutz_blur) sized to a target height — replaces the procedural star+text
+        // lockup wherever the logo appears.
+        Image Wordmark(string name, Transform parent, float height)
+        {
+            if (_wordmark == null) _wordmark = LoadArt("Otoutz_blur");
+            var img = OtoutzUI.Image(name, parent, _wordmark, Color.white);
+            float ratio = (_wordmark != null && _wordmark.texture != null)
+                ? (float)_wordmark.texture.width / _wordmark.texture.height : 8.715f;
+            img.rectTransform.sizeDelta = new Vector2(height * ratio, height);
+            return img;
+        }
+
+        // Full-screen "cover" fit (fills the parent, cropping overflow) via AspectRatioFitter.
+        Image CoverImage(string name, Transform parent, Sprite sprite)
+        {
+            var img = OtoutzUI.Image(name, parent, sprite, Color.white);
+            var rt = img.rectTransform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = Vector2.zero;
+            var arf = img.gameObject.AddComponent<AspectRatioFitter>();
+            arf.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            arf.aspectRatio = (sprite != null && sprite.texture != null)
+                ? (float)sprite.texture.width / sprite.texture.height : 16f / 9f;
+            return img;
+        }
+
+        // ============================ Sky meteors (occasional shooting stars) ============================
+        IEnumerator MeteorSpawner()
+        {
+            yield return new WaitForSecondsRealtime(2f);
+            while (true)
+            {
+                if (_meteorLayer != null) StartCoroutine(MeteorRoutine());
+                yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(2f, 5f));
+            }
+        }
+
+        IEnumerator MeteorRoutine()
+        {
+            // streak diagonally down across the upper sky (mostly down-left)
+            bool leftward = UnityEngine.Random.value > 0.3f;
+            Vector2 dir = new Vector2(leftward ? -1f : 1f, -0.62f).normalized;
+            float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            var m = OtoutzUI.Rect("Meteor", _meteorLayer);
+            m.localEulerAngles = new Vector3(0, 0, ang);
+            var cg = m.gameObject.AddComponent<CanvasGroup>();
+            cg.alpha = 0f;
+
+            // tail: thin streak fading from transparent (far) to white (head)
+            float len = UnityEngine.Random.Range(150f, 240f);
+            var tail = OtoutzUI.Image("Tail", m, OtoutzSprites.RoundedRect(2), Color.white, Image.Type.Sliced);
+            tail.rectTransform.pivot = new Vector2(1f, 0.5f);
+            tail.rectTransform.sizeDelta = new Vector2(len, 3.5f);
+            tail.rectTransform.anchoredPosition = Vector2.zero;
+            OtoutzUI.AddGradient(tail, OtoutzTheme.A(Color.white, 0f), Color.white, 0f);
+
+            // head: soft bright glow at the leading point
+            var head = OtoutzUI.Image("Head", m, OtoutzSprites.Glow(), Color.white);
+            head.rectTransform.sizeDelta = new Vector2(20f, 20f);
+
+            float startX = leftward ? UnityEngine.Random.Range(120f, 980f) : UnityEngine.Random.Range(-980f, -120f);
+            float startY = UnityEngine.Random.Range(220f, 520f);
+            Vector2 start = new Vector2(startX, startY);
+            Vector2 end = start + dir * UnityEngine.Random.Range(1300f, 1700f);
+            float dur = UnityEngine.Random.Range(0.75f, 1.1f);
+
+            float t = 0f;
+            while (t < dur)
+            {
+                t += Time.unscaledDeltaTime;
+                float k = Mathf.Clamp01(t / dur);
+                m.anchoredPosition = Vector2.Lerp(start, end, k);
+                // fade in quickly, fade out toward the end
+                cg.alpha = Mathf.Min(Mathf.Clamp01(k / 0.12f), Mathf.Clamp01((1f - k) / 0.35f));
+                yield return null;
+            }
+            Destroy(m.gameObject);
+        }
+
+        // ============================ INTRO / TITLE SPLASH ============================
+        void BuildIntro()
+        {
+            _introRoot = OtoutzUI.Rect("Intro", _root);
+            OtoutzUI.Stretch(_introRoot);
+            _introGroup = _introRoot.gameObject.AddComponent<CanvasGroup>();
+            _introRoot.SetAsLastSibling();
+
+            // character (149-4) shares the exact cover-fit of the background, so it overlays in place
+            var charSprite = LoadArt("149-4");
+            if (charSprite != null) _introChar = CoverImage("Character", _introRoot, charSprite);
+
+            // Otoutz wordmark (Otoutz_blur) near the top centre
+            var logo = Wordmark("Logo", _introRoot, 124);
+            logo.rectTransform.anchorMin = logo.rectTransform.anchorMax = new Vector2(0.5f, 1f);
+            logo.rectTransform.pivot = new Vector2(0.5f, 1f);
+            logo.rectTransform.anchoredPosition = new Vector2(0, -86);
+
+            // blinking "press any key" prompt — raised so it clears the character's legs
+            _pressText = OtoutzUI.Text("Press", _introRoot, "PRESS ANY KEY", 34, OtoutzTheme.ink, true, FontStyles.Bold);
+            _pressText.characterSpacing = 12;
+            _pressText.rectTransform.anchorMin = _pressText.rectTransform.anchorMax = new Vector2(0.5f, 0f);
+            _pressText.rectTransform.pivot = new Vector2(0.5f, 0f);
+            _pressText.rectTransform.sizeDelta = new Vector2(800, 48);
+            _pressText.rectTransform.anchoredPosition = new Vector2(0, 226);
+
+            _pressSub = OtoutzUI.Text("PressSub", _introRoot, "아무 키나 눌러 시작", 18, OtoutzTheme.sub, false, FontStyles.Bold);
+            _pressSub.characterSpacing = 8;
+            _pressSub.rectTransform.anchorMin = _pressSub.rectTransform.anchorMax = new Vector2(0.5f, 0f);
+            _pressSub.rectTransform.pivot = new Vector2(0.5f, 0f);
+            _pressSub.rectTransform.sizeDelta = new Vector2(800, 26);
+            _pressSub.rectTransform.anchoredPosition = new Vector2(0, 190);
+        }
+
+        static bool AnyStart()
+        {
+            var kb = Keyboard.current;
+            if (kb != null && kb.anyKey.wasPressedThisFrame) return true;
+            var m = Mouse.current;
+            if (m != null && (m.leftButton.wasPressedThisFrame || m.rightButton.wasPressedThisFrame)) return true;
+            var gp = Gamepad.current;
+            if (gp != null && (gp.buttonSouth.wasPressedThisFrame || gp.buttonEast.wasPressedThisFrame || gp.startButton.wasPressedThisFrame)) return true;
+            return false;
+        }
+
+        // Fade the splash (character + wordmark + prompt) out while the menu fades/zooms in.
+        // The background image is on _root and untouched, so it stays exactly as on the title.
+        IEnumerator ExitIntro()
+        {
+            if (_busy) yield break;
+            _busy = true; _intro = false;
+
+            _screen = Screen.Menu;
+            RefreshMenu();
+            var menuRt = _screens[Screen.Menu]; var menuCg = _groups[Screen.Menu];
+            menuRt.gameObject.SetActive(true);
+            menuRt.SetAsLastSibling();
+            _introRoot.SetAsLastSibling();   // keep the splash above the menu while it fades out
+            menuCg.alpha = 0f;
+
+            const float dur = 0.75f; float t = 0f;
+            while (t < dur)
+            {
+                t += Time.unscaledDeltaTime;
+                float k = t / dur;
+                // character fades out in place (no upward drift)
+                _introGroup.alpha = 1f - Ease.OutCubic(Mathf.Clamp01(k * 1.25f));
+                float mk = Mathf.Clamp01((k - 0.25f) / 0.75f);
+                menuCg.alpha = Ease.OutCubic(mk);
+                menuRt.localScale = Vector3.one * Mathf.Lerp(0.97f, 1f, Ease.OutBack(mk));
+                yield return null;
+            }
+            menuCg.alpha = 1f; menuRt.localScale = Vector3.one;
+            if (_introRoot != null) Destroy(_introRoot.gameObject);
+            _introRoot = null; _introChar = null; _pressText = null; _pressSub = null;
+            _busy = false;
         }
 
         RectTransform NewScreen(Screen s)
@@ -243,28 +448,17 @@ namespace Otoutz
             bar.anchorMin = new Vector2(0, 1); bar.anchorMax = new Vector2(1, 1); bar.pivot = new Vector2(0.5f, 1);
             bar.sizeDelta = new Vector2(0, 120); bar.anchoredPosition = Vector2.zero;
 
-            // left logo + titles
-            var logo = OtoutzUI.Panel("Logo", bar, 16, OtoutzTheme.accent);
-            logo.rectTransform.anchorMin = logo.rectTransform.anchorMax = new Vector2(0, 0.5f);
-            logo.rectTransform.pivot = new Vector2(0, 0.5f);
-            logo.rectTransform.sizeDelta = new Vector2(52, 52);
-            logo.rectTransform.anchoredPosition = new Vector2(70, 0);
-            logo.rectTransform.localEulerAngles = new Vector3(0, 0, -8);
-            var lstar = OtoutzUI.Image("Star", logo.transform, OtoutzSprites.Star(), Color.white);
-            lstar.rectTransform.sizeDelta = new Vector2(30, 30);
-            lstar.rectTransform.localEulerAngles = new Vector3(0, 0, 8);
-
-            var name = OtoutzUI.Text("Name", bar, "Otoutz", 30, OtoutzTheme.ink, true, FontStyles.Bold, TextAlignmentOptions.Left);
+            // left: Otoutz wordmark + section label
+            var name = Wordmark("Name", bar, 46);
             name.rectTransform.anchorMin = name.rectTransform.anchorMax = new Vector2(0, 0.5f);
             name.rectTransform.pivot = new Vector2(0, 0.5f);
-            name.rectTransform.sizeDelta = new Vector2(300, 40);
-            name.rectTransform.anchoredPosition = new Vector2(140, 8);
+            name.rectTransform.anchoredPosition = new Vector2(58, 14);
             var sub = OtoutzUI.Text("Sub", bar, selectLabel ? "MUSIC SELECT" : "DIFFICULTY", 13, OtoutzTheme.sub, false, FontStyles.Bold, TextAlignmentOptions.Left);
             sub.characterSpacing = 14;
             sub.rectTransform.anchorMin = sub.rectTransform.anchorMax = new Vector2(0, 0.5f);
             sub.rectTransform.pivot = new Vector2(0, 0.5f);
             sub.rectTransform.sizeDelta = new Vector2(300, 20);
-            sub.rectTransform.anchoredPosition = new Vector2(140, -16);
+            sub.rectTransform.anchoredPosition = new Vector2(88, -26);
 
             // right: sort pill + counter
             var pill = OtoutzUI.Panel("Sort", bar, 20, OtoutzTheme.A(OtoutzTheme.panel, 0.5f));
@@ -321,24 +515,8 @@ namespace Otoutz
             glow.rectTransform.sizeDelta = new Vector2(900, 360);
             glow.rectTransform.anchoredPosition = new Vector2(0, 0);
 
-            var logo = OtoutzUI.Panel("Logo", titleBlock, 30, Color.white);
-            OtoutzUI.AddGradient(logo, OtoutzTheme.accent, OtoutzTheme.accent2, 140f);
-            logo.rectTransform.sizeDelta = new Vector2(110, 110);
-            logo.rectTransform.anchoredPosition = new Vector2(-280, 0);
-            logo.rectTransform.localEulerAngles = new Vector3(0, 0, -8);
-            var lstar = OtoutzUI.Image("Star", logo.transform, OtoutzSprites.Star(), Color.white);
-            lstar.rectTransform.sizeDelta = new Vector2(62, 62);
-            lstar.rectTransform.localEulerAngles = new Vector3(0, 0, 8);
-
-            var word = OtoutzUI.Text("Word", titleBlock, "Otoutz", 138, OtoutzTheme.ink, true, FontStyles.Bold);
-            word.rectTransform.sizeDelta = new Vector2(700, 160);
-            word.rectTransform.anchoredPosition = new Vector2(110, 0);
-            word.alignment = TextAlignmentOptions.Left;
-
-            // decorative sparkles
-            Sparkle(titleBlock, 30, OtoutzTheme.accent, new Vector2(360, 72));
-            Sparkle(titleBlock, 17, OtoutzTheme.glow, new Vector2(420, 30));
-            Sparkle(titleBlock, 14, OtoutzTheme.accent2, new Vector2(-150, 60));
+            var word = Wordmark("Word", titleBlock, 150);
+            word.rectTransform.anchoredPosition = new Vector2(0, 8);
 
             var subtitle = OtoutzUI.Text("Subtitle", titleBlock, "ARCADE RHYTHM", 19, OtoutzTheme.sub, false, FontStyles.Bold);
             subtitle.characterSpacing = 26;
@@ -394,13 +572,6 @@ namespace Otoutz
             cr.rectTransform.anchoredPosition = new Vector2(-70, 40); cr.rectTransform.sizeDelta = new Vector2(200, 24);
 
             BuildHintBar(root, new[] { ("↑ ↓", "이동"), ("Enter", "결정") });
-        }
-
-        void Sparkle(Transform parent, float size, Color color, Vector2 pos)
-        {
-            var s = OtoutzUI.Image("Sparkle", parent, OtoutzSprites.Star(), color);
-            s.rectTransform.sizeDelta = new Vector2(size, size);
-            s.rectTransform.anchoredPosition = pos;
         }
 
         void RefreshMenu()
@@ -1052,6 +1223,23 @@ namespace Otoutz
         // ============================ Input ============================
         void Update()
         {
+            if (_intro)
+            {
+                if (_busy) return;
+                float a = 0.35f + 0.65f * (0.5f + 0.5f * Mathf.Sin(Time.unscaledTime * 3.2f));
+                if (_pressText != null) _pressText.alpha = a;
+                if (_pressSub != null) _pressSub.alpha = a;
+                // gentle floating: the character drifts up/down very slowly with a faint sway + tilt
+                if (_introChar != null)
+                {
+                    float ti = Time.unscaledTime;
+                    _introChar.rectTransform.anchoredPosition = new Vector2(Mathf.Sin(ti * 0.45f) * 5f, Mathf.Sin(ti * 0.7f) * 9f);
+                    _introChar.rectTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(ti * 0.5f) * 0.6f);
+                }
+                if (AnyStart()) StartCoroutine(ExitIntro());
+                return;
+            }
+
             var kb = Keyboard.current;
             if (kb == null || _busy) return;
 
@@ -1120,28 +1308,9 @@ namespace Otoutz
         IEnumerator StartRoutine(OtoutzSong s, int diff)
         {
             _busy = true;
-            var d = OtoutzTheme.Diffs[diff];
-            var overlay = OtoutzUI.Image("Flash", _root, OtoutzSprites.RoundedRect(2), OtoutzTheme.A(d.deep, 0f), Image.Type.Sliced);
-            OtoutzUI.Stretch(overlay.rectTransform);
-            overlay.raycastTarget = true;
-            var holder = OtoutzUI.Rect("FlashText", overlay.transform);
-            var l1 = OtoutzUI.Text("L1", holder, $"{d.label} · LV {s.LevelText(diff)}", 22, Color.white, false, FontStyles.Bold);
-            l1.characterSpacing = 16; l1.rectTransform.anchoredPosition = new Vector2(0, 80); l1.rectTransform.sizeDelta = new Vector2(1200, 30);
-            var l2 = OtoutzUI.Text("L2", holder, "NOW LOADING", 90, Color.white, true, FontStyles.Bold);
-            l2.rectTransform.sizeDelta = new Vector2(1400, 110);
-            var l3 = OtoutzUI.Text("L3", holder, $"{s.title} — {s.artist}", 20, OtoutzTheme.A(Color.white, 0.8f), false, FontStyles.Bold);
-            l3.rectTransform.anchoredPosition = new Vector2(0, -90); l3.rectTransform.sizeDelta = new Vector2(1400, 30);
-
-            float t = 0f;
-            while (t < 0.9f)
-            {
-                t += Time.unscaledDeltaTime;
-                float a = t < 0.25f ? t / 0.25f : 1f;
-                overlay.color = OtoutzTheme.A(d.deep, a * 0.92f);
-                yield return null;
-            }
-
             StopPreview();
+
+            // prep the launch data up front so the load is ready the moment we go black
             _lastSongIndex = _songIndex; _lastDiffIndex = diff;
             OtoutzResultData.SetSong(s, diff);
             if (_sm != null)
@@ -1152,6 +1321,35 @@ namespace Otoutz
                 _sm.SetSongArtist(s.artist);
                 _sm.Info = s.infos[diff];
             }
+
+            var overlay = OtoutzUI.Image("Flash", _root, OtoutzSprites.RoundedRect(2), OtoutzTheme.A(Color.white, 0f), Image.Type.Sliced);
+            OtoutzUI.Stretch(overlay.rectTransform);
+            overlay.raycastTarget = true;
+            overlay.transform.SetAsLastSibling();
+
+            // 1) burst of light — a near-instant bright white flash
+            float t = 0f; const float flashIn = 0.05f;
+            while (t < flashIn)
+            {
+                t += Time.unscaledDeltaTime;
+                overlay.color = OtoutzTheme.A(Color.white, Ease.OutCubic(t / flashIn));
+                yield return null;
+            }
+            overlay.color = Color.white;
+            yield return new WaitForSecondsRealtime(0.03f);   // brief hold at peak white
+
+            // 2) blackout — fade the flash down into solid black
+            t = 0f; const float toBlack = 0.3f;
+            while (t < toBlack)
+            {
+                t += Time.unscaledDeltaTime;
+                overlay.color = Color.Lerp(Color.white, Color.black, Ease.OutCubic(t / toBlack));
+                yield return null;
+            }
+            overlay.color = Color.black;
+            yield return null;   // guarantee one fully-black frame before the scene swaps
+
+            // 3) load InGame — its OtoutzFade reveals the scene from black, so black→black→fade-in is seamless
             SceneManager.LoadSceneAsync("InGame");
         }
 

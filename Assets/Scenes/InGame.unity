@@ -4134,7 +4134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8188d61a4628547508d05d27c5586106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Otoutz.OtoutzFade
-  enterDuration: 0.45
+  holdDuration: 0.45
+  enterDuration: 1.1
   color: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &605536785
 Transform:

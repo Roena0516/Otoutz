@@ -114,23 +114,103 @@ namespace Otoutz
 
         void BuildBackground()
         {
-            var bg = OtoutzUI.Image("Background", _root, OtoutzSprites.PageGradient(), Color.white);
-            OtoutzUI.Stretch(bg.rectTransform);
-            var dots = OtoutzUI.Image("Dots", _root, OtoutzSprites.DotTile(), OtoutzTheme.A(OtoutzTheme.glow, 0.22f), Image.Type.Tiled);
-            OtoutzUI.Stretch(dots.rectTransform);
-
-            var rank = RankFor(OtoutzResultData.acc);
-            // song-tinted ambient glow (lower-left) + rank-tinted glow (upper-right)
-            var g1 = OtoutzUI.Image("GlowSong", _root, OtoutzSprites.Glow(), OtoutzTheme.A(OtoutzResultData.artB, 0.26f));
-            g1.rectTransform.sizeDelta = new Vector2(1500, 1100);
-            g1.rectTransform.anchoredPosition = new Vector2(-540, 40);
-            var g2 = OtoutzUI.Image("GlowRank", _root, OtoutzSprites.Glow(), OtoutzTheme.A(rank.glow, 0.2f));
-            g2.rectTransform.sizeDelta = new Vector2(1100, 900);
-            g2.rectTransform.anchoredPosition = new Vector2(640, 300);
+            // Same starry backdrop as the Menu: cover-fit artwork + dark scrim + vignette, no
+            // ambient colour glows. Shooting stars keep it alive like the menu screen.
+            var sky = LoadArt("149-3");
+            if (sky != null)
+            {
+                CoverImage("Background", _root, sky);
+                var scrim = OtoutzUI.Image("Scrim", _root, OtoutzSprites.RoundedRect(2), OtoutzTheme.A(Color.black, 0.20f), Image.Type.Sliced);
+                OtoutzUI.Stretch(scrim.rectTransform);
+            }
+            else
+            {
+                var bg = OtoutzUI.Image("Background", _root, OtoutzSprites.PageGradient(), Color.white);
+                OtoutzUI.Stretch(bg.rectTransform);
+                var dots = OtoutzUI.Image("Dots", _root, OtoutzSprites.DotTile(), OtoutzTheme.A(OtoutzTheme.glow, 0.22f), Image.Type.Tiled);
+                OtoutzUI.Stretch(dots.rectTransform);
+            }
 
             var vig = OtoutzUI.Image("Vignette", _root, OtoutzSprites.Glow(), OtoutzTheme.A(Color.black, 0.45f));
             vig.rectTransform.sizeDelta = new Vector2(REF_W * 2.2f, REF_H * 1.4f);
             vig.rectTransform.anchoredPosition = new Vector2(0, -REF_H * 0.3f);
+
+            _meteorLayer = OtoutzUI.Rect("Meteors", _root);
+            OtoutzUI.Stretch(_meteorLayer);
+            StartCoroutine(MeteorSpawner());
+        }
+
+        // ---- shared starry-background helpers (mirror OtoutzFlow) ----
+        static Sprite LoadArt(string name)
+        {
+            var tex = Resources.Load<Texture2D>("OtoutzArt/" + name);
+            if (tex == null) return null;
+            return Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100f, 0, SpriteMeshType.FullRect);
+        }
+
+        Image CoverImage(string name, Transform parent, Sprite sprite)
+        {
+            var img = OtoutzUI.Image(name, parent, sprite, Color.white);
+            var rt = img.rectTransform;
+            rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+            rt.pivot = new Vector2(0.5f, 0.5f);
+            rt.anchoredPosition = Vector2.zero;
+            var arf = img.gameObject.AddComponent<AspectRatioFitter>();
+            arf.aspectMode = AspectRatioFitter.AspectMode.EnvelopeParent;
+            arf.aspectRatio = (sprite != null && sprite.texture != null)
+                ? (float)sprite.texture.width / sprite.texture.height : 16f / 9f;
+            return img;
+        }
+
+        RectTransform _meteorLayer;
+
+        IEnumerator MeteorSpawner()
+        {
+            yield return new WaitForSecondsRealtime(1.2f);
+            while (true)
+            {
+                if (_meteorLayer != null) StartCoroutine(MeteorRoutine());
+                yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(2f, 5f));
+            }
+        }
+
+        IEnumerator MeteorRoutine()
+        {
+            bool leftward = UnityEngine.Random.value > 0.3f;
+            Vector2 dir = new Vector2(leftward ? -1f : 1f, -0.62f).normalized;
+            float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+            var m = OtoutzUI.Rect("Meteor", _meteorLayer);
+            m.localEulerAngles = new Vector3(0, 0, ang);
+            var cg = m.gameObject.AddComponent<CanvasGroup>();
+            cg.alpha = 0f;
+
+            float len = UnityEngine.Random.Range(150f, 240f);
+            var tail = OtoutzUI.Image("Tail", m, OtoutzSprites.RoundedRect(2), Color.white, Image.Type.Sliced);
+            tail.rectTransform.pivot = new Vector2(1f, 0.5f);
+            tail.rectTransform.sizeDelta = new Vector2(len, 3.5f);
+            tail.rectTransform.anchoredPosition = Vector2.zero;
+            OtoutzUI.AddGradient(tail, OtoutzTheme.A(Color.white, 0f), Color.white, 0f);
+
+            var head = OtoutzUI.Image("Head", m, OtoutzSprites.Glow(), Color.white);
+            head.rectTransform.sizeDelta = new Vector2(20f, 20f);
+
+            float startX = leftward ? UnityEngine.Random.Range(120f, 980f) : UnityEngine.Random.Range(-980f, -120f);
+            float startY = UnityEngine.Random.Range(220f, 520f);
+            Vector2 start = new Vector2(startX, startY);
+            Vector2 end = start + dir * UnityEngine.Random.Range(1300f, 1700f);
+            float dur = UnityEngine.Random.Range(0.75f, 1.1f);
+
+            float t = 0f;
+            while (t < dur)
+            {
+                t += Time.unscaledDeltaTime;
+                float k = Mathf.Clamp01(t / dur);
+                m.anchoredPosition = Vector2.Lerp(start, end, k);
+                cg.alpha = Mathf.Min(Mathf.Clamp01(k / 0.12f), Mathf.Clamp01((1f - k) / 0.35f));
+                yield return null;
+            }
+            Destroy(m.gameObject);
         }
 
         // ============================ Content ============================
@@ -270,6 +350,7 @@ namespace Otoutz
                 title = OtoutzResultData.title, artist = OtoutzResultData.artist,
                 genre = OtoutzResultData.genre, glyph = OtoutzResultData.glyph,
                 artA = OtoutzResultData.artA, artB = OtoutzResultData.artB, artBlob = OtoutzResultData.artBlob,
+                jacketSprite = OtoutzResultData.jacketSprite,
             };
         }
 

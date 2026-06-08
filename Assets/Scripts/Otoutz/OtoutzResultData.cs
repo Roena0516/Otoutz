@@ -20,6 +20,9 @@ namespace Otoutz
         public static Color artA = OtoutzTheme.accent, artB = OtoutzTheme.accent2, artBlob = OtoutzTheme.glow;
         public static int diffIndex = 3;
 
+        // real jacket.png sprite carried from the picked song (null = procedural fallback)
+        public static Sprite jacketSprite;
+
         // ---- play result (set at level end) ----
         public static int total, perfect, great, good, miss, maxCombo;
         public static int score;
@@ -40,6 +43,7 @@ namespace Otoutz
             bpm = s.bpm;
             artA = s.artA; artB = s.artB; artBlob = s.artBlob;
             diffIndex = diff;
+            jacketSprite = s.jacketSprite;
         }
 
         /// <summary>Snapshot the finished play. clear/fc/ap force maxCombo to total like the spec.</summary>
