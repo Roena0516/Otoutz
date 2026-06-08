@@ -1170,7 +1170,11 @@ namespace Otoutz
 
             var prev = _screen;
             _screen = target;
-            if (target == Screen.Select) { RefreshSelect(); PlayPreview(); }
+            // leaving song-select for anywhere but the difficulty screen stops the song preview
+            if (prev == Screen.Select && target != Screen.Difficulty) StopPreview();
+            // entering song-select: (re)start the preview, but NOT when coming back from the
+            // difficulty screen — the same song's preview kept playing there, so let it continue
+            if (target == Screen.Select) { RefreshSelect(); if (prev != Screen.Difficulty) PlayPreview(); }
             if (target == Screen.Difficulty) RefreshDifficulty();
             if (target == Screen.Settings) { _rowIndex = 0; RefreshSettings(); }
             if (target == Screen.Menu) RefreshMenu();
@@ -1369,6 +1373,7 @@ namespace Otoutz
         IEnumerator PreviewRoutine(OtoutzSong s)
         {
             yield return new WaitForSecondsRealtime(0.35f);
+            if (_screen != Screen.Select) yield break;   // left song-select during the delay
             try
             {
                 _preview = FMODUnity.RuntimeManager.CreateInstance($"event:/{s.eventName}");
@@ -1384,6 +1389,7 @@ namespace Otoutz
 
         void StopPreview()
         {
+            if (_previewCo != null) { StopCoroutine(_previewCo); _previewCo = null; }   // cancel a pending (delayed) start too
             if (_previewValid)
             {
                 try { _preview.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); _preview.release(); } catch { }
