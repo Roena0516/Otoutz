@@ -1061,6 +1061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 182538726}
   - component: {fileID: 182538727}
+  - component: {fileID: 182538728}
   m_Layer: 0
   m_Name: Tsumabuki
   m_TagString: Untagged
@@ -1103,6 +1104,25 @@ MonoBehaviour:
   minPos: -14
   maxPos: 14
   leverDirection: 
+--- !u!114 &182538728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182538725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fef0f8db8118f4bb49cc77844d278723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TsumabukiStar
+  _coreColor: {r: 1.05, g: 1.15, b: 1.3, a: 1}
+  _glowColor: {r: 0.45, g: 0.7, b: 1, a: 1}
+  _coreSize: 2.6
+  _glowSize: 6.5
+  _tailHeight: 5
+  _tailWidth: 1.1
+  _spinSpeed: 35
 --- !u!1 &193426466
 GameObject:
   m_ObjectHideFlags: 0
@@ -7507,7 +7527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InGameNebula
   sortingOrder: -999
-  _timeOffset: 1
+  _bands: 256
+  _gain: 90
+  _attack: 0.6
+  _decay: 0.06
 --- !u!4 &1314904478
 Transform:
   m_ObjectHideFlags: 0
