@@ -326,7 +326,10 @@ public class LineInputChecker : MonoBehaviour
         {
             for (int i = 0; i < 4; i++)
             {
-                var btn = joystick.TryGetChildControl<UnityEngine.InputSystem.Controls.ButtonControl>($"button{i + 1}");
+                // This controller reports physical button 1 as the joystick "trigger" control,
+                // not "button1"; lanes 2-4 still map to button2/button3/button4.
+                string controlName = i == 0 ? "trigger" : $"button{i + 1}";
+                var btn = joystick.TryGetChildControl<UnityEngine.InputSystem.Controls.ButtonControl>(controlName);
                 if (btn == null) continue;
 
                 bool isPressed = btn.isPressed;

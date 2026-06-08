@@ -16,14 +16,15 @@ public class JudgementManager : MonoBehaviour
     public float rate;
     public int score;
 
-    private float _scorePerNormalWeight;
-    private float _scorePerBell;
+    private float _scorePerWeight;
 
+    // Judgement payout ratios. A full chart of Critical Breaks pays 101% of the
+    // 1,000,000 base pool = the 1,010,000 theoretical max.
     private static readonly Dictionary<string, float> ScoreMultiplier = new Dictionary<string, float>
     {
-        { "CriticalBreak", 1.0f },
-        { "Break", 0.8f },
-        { "Hit", 0.5f },
+        { "CriticalBreak", 1.01f },
+        { "Break", 1.0f },
+        { "Hit", 0.9f },
         { "Miss", 0.0f }
     };
 
@@ -99,11 +100,13 @@ public class JudgementManager : MonoBehaviour
         noteTypeRate["hold"] = (noteGenerator.noteTypeCounts["hold"] > 0) ? (noteGenerator.noteTypeCounts["hold"] / rateAllNote * 100) / noteGenerator.noteTypeCounts["hold"] : 0;
         noteTypeRate["long"] = (noteGenerator.noteTypeCounts["long"] > 0) ? (noteGenerator.noteTypeCounts["long"] * 2 / rateAllNote * 100) / noteGenerator.noteTypeCounts["long"] : 0;
 
-        int normalLongWeight = noteGenerator.noteTypeCounts["normal"] + noteGenerator.noteTypeCounts["long"] * 2;
-        _scorePerNormalWeight = normalLongWeight > 0 ? 1_000_000f / normalLongWeight : 0f;
-
-        int bellCount = noteGenerator.noteTypeCounts["hold"];
-        _scorePerBell = bellCount > 0 ? 10_000f / bellCount : 0f;
+        // Single 1,000,000-point pool shared across every scored note by weight
+        // (normal x1, long x2, bell-family x1). With Critical Break paying 101%,
+        // a full Critical Break chart reaches the 1,010,000 theoretical max.
+        int totalWeight = noteGenerator.noteTypeCounts["normal"]
+                        + noteGenerator.noteTypeCounts["long"] * 2
+                        + noteGenerator.noteTypeCounts["hold"];
+        _scorePerWeight = totalWeight > 0 ? 1_000_000f / totalWeight : 0f;
     }
 
     public void Judge(int raneNumber, double currentTimeMs)
@@ -260,7 +263,7 @@ public class JudgementManager : MonoBehaviour
 
         string normalizedType = note.type;
 
-        if (note.type == "rbell" || note.type == "avoid" || note.type == "leftarrow" || note.type == "rightarrow")
+        if (note.type == "bell" || note.type == "rbell" || note.type == "avoid" || note.type == "leftarrow" || note.type == "rightarrow")
         {
             normalizedType = "hold"; // Bell, RBell, Avoid, Arrow 노트는 hold로 간주
         }
@@ -284,11 +287,11 @@ public class JudgementManager : MonoBehaviour
         float multiplier = ScoreMultiplier.ContainsKey(judgement) ? ScoreMultiplier[judgement] : 0f;
         float noteScore = 0f;
         if (normalizedType == "normal")
-            noteScore = _scorePerNormalWeight;
+            noteScore = _scorePerWeight;
         else if (normalizedType == "long")
-            noteScore = _scorePerNormalWeight * 2f;
+            noteScore = _scorePerWeight * 2f;
         else if (normalizedType == "hold")
-            noteScore = _scorePerBell;
+            noteScore = _scorePerWeight;
         score += Mathf.RoundToInt(noteScore * multiplier);
         UIManager.SetScore(score);
 
