@@ -8,6 +8,8 @@ public class LeverController : MonoBehaviour
     public float sensitivity = 17f;
     public float minPos = -14f;
     public float maxPos = 14f;
+    [Tooltip("마우스 이동량(픽셀) 당 레버 이동 단위")]
+    public float mouseSensitivity = 0.05f;
 
     private float currentX = 0f;
     private float prevRaw = 0f;
@@ -43,18 +45,22 @@ public class LeverController : MonoBehaviour
         }
         else
         {
-            // 하드웨어 없을 때 마우스로 대체
-            float leverValue = Mouse.current.delta.x.ReadValue() * 0.01f;
-            leverValue = Mathf.Clamp(leverValue, -1f, 1f);
+            // 하드웨어 없을 때 마우스로 대체: delta(프레임당 이동량)를 위치에 '누적'한다.
+            // (절대 위치로 매핑하면 마우스를 멈췄을 때 매 프레임 중앙으로 리셋되는 문제가 생긴다.)
+            var mouse = Mouse.current;
+            if (mouse != null)
+            {
+                float deltaX = mouse.delta.x.ReadValue() * mouseSensitivity;
 
-            if (leverValue < -0.01f)
-                leverDirection = "Left";
-            else if (leverValue > 0.01f)
-                leverDirection = "Right";
-            else
-                leverDirection = "Stop";
+                if (deltaX < -0.001f)
+                    leverDirection = "Left";
+                else if (deltaX > 0.001f)
+                    leverDirection = "Right";
+                else
+                    leverDirection = "Stop";
 
-            currentX = Mathf.Lerp(minPos, maxPos, (leverValue + 1f) / 2f);
+                currentX = Mathf.Clamp(currentX + deltaX, minPos, maxPos);
+            }
         }
 
         transform.position = new Vector3(currentX, transform.position.y, transform.position.z);

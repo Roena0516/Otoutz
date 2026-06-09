@@ -82,10 +82,19 @@ public class Note : MonoBehaviour
 
     public IEnumerator MoveNote()
     {
+        // Notes are all spawned up front and parked at the far horizon until their drop time.
+        // Keep them hidden until they actually start falling, so wide bell/arrow bars don't sit
+        // visibly at the top of the lane before their turn.
+        var rends = GetComponentsInChildren<Renderer>(true);
         while (true)
         {
             dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
             double elapsedTime = line.currentTime - dropStartTime;
+
+            bool visible = elapsedTime >= 0d;
+            for (int i = 0; i < rends.Length; i++)
+                if (rends[i] != null && rends[i].enabled != visible) rends[i].enabled = visible;
+
             float progress = (float)(elapsedTime * speed / (startY - endY));
             progress = Mathf.Clamp01(progress);
             float currentY = Mathf.Lerp(startY, endY, progress);

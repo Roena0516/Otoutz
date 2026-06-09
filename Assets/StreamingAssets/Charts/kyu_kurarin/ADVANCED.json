@@ -1,0 +1,4171 @@
+{
+    "notes": [
+        {
+            "beat": 12,
+            "ms": 4272.7275390625,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -41438
+            }
+        },
+        {
+            "id": "",
+            "beat": 14,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 16,
+            "ms": 5363.63623046875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -41486
+            }
+        },
+        {
+            "id": "",
+            "beat": 20,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 22,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 24,
+            "ms": 7545.45458984375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -41606
+            }
+        },
+        {
+            "id": "",
+            "beat": 28,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 30,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 32,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 36,
+            "ms": 10818.181640625,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -41774
+            }
+        },
+        {
+            "beat": 38,
+            "ms": 11363.63671875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -41798
+            }
+        },
+        {
+            "id": "",
+            "beat": 40,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 44,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 46,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 48,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 52,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 54,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 56,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 60,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 62,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 64,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 68,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 70,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 72,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 72,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 76,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 80,
+            "ms": 22818.181640625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42350
+            }
+        },
+        {
+            "id": "",
+            "beat": 84,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 88,
+            "ms": 24454.544921875,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42422
+            }
+        },
+        {
+            "beat": 92,
+            "ms": 26363.63671875,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42506
+            }
+        },
+        {
+            "beat": 94,
+            "ms": 27454.544921875,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42554
+            }
+        },
+        {
+            "beat": 96,
+            "ms": 27727.2734375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42566
+            }
+        },
+        {
+            "beat": 100,
+            "ms": 28000,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42578
+            }
+        },
+        {
+            "beat": 102,
+            "ms": 28272.7265625,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42590
+            }
+        },
+        {
+            "beat": 104,
+            "ms": 29090.908203125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42626
+            }
+        },
+        {
+            "id": "",
+            "beat": 108,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 112,
+            "ms": 31545.455078125,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42734
+            }
+        },
+        {
+            "id": "",
+            "beat": 116,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 120,
+            "ms": 33727.2734375,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42830
+            }
+        },
+        {
+            "beat": 124,
+            "ms": 34818.18359375,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42878
+            }
+        },
+        {
+            "beat": 126,
+            "ms": 35363.63671875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42902
+            }
+        },
+        {
+            "beat": 128,
+            "ms": 35909.08984375,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42926
+            }
+        },
+        {
+            "beat": 132,
+            "ms": 37000,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42974
+            }
+        },
+        {
+            "beat": 134,
+            "ms": 37545.453125,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -42998
+            }
+        },
+        {
+            "beat": 136,
+            "ms": 38090.91015625,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43022
+            }
+        },
+        {
+            "id": "",
+            "beat": 140,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 141,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 142,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 143,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 144,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 145,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 146,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 147,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 148,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 149,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 150,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 151,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 152,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 153,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 154,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 155,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 156,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 158,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "leftarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 162,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "rightarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 168,
+            "ms": 0,
+            "width": 1.5,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "rbell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 168,
+            "ms": 0,
+            "width": 1.5,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "rbell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 172,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 172,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 180,
+            "ms": 50090.91015625,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43322
+            }
+        },
+        {
+            "beat": 182,
+            "ms": 50636.36328125,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43346
+            }
+        },
+        {
+            "beat": 184,
+            "ms": 51181.81640625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43370
+            }
+        },
+        {
+            "beat": 188,
+            "ms": 52000,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43406
+            }
+        },
+        {
+            "beat": 190,
+            "ms": 52818.18359375,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43442
+            }
+        },
+        {
+            "beat": 192,
+            "ms": 53090.91015625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43454
+            }
+        },
+        {
+            "beat": 196,
+            "ms": 54454.546875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43514
+            }
+        },
+        {
+            "beat": 198,
+            "ms": 55000,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43538
+            }
+        },
+        {
+            "beat": 200,
+            "ms": 55545.453125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43562
+            }
+        },
+        {
+            "beat": 204,
+            "ms": 56636.36328125,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43610
+            }
+        },
+        {
+            "beat": 206,
+            "ms": 57181.81640625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43634
+            }
+        },
+        {
+            "beat": 208,
+            "ms": 57727.2734375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43658
+            }
+        },
+        {
+            "id": "",
+            "beat": 212,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 214,
+            "ms": 59363.63671875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43730
+            }
+        },
+        {
+            "beat": 216,
+            "ms": 59909.08984375,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43754
+            }
+        },
+        {
+            "id": "",
+            "beat": 221.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "leftarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 225.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "rightarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 230,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 231,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 232,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 236,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 237,
+            "ms": 65636.359375,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43922
+            }
+        },
+        {
+            "beat": 238,
+            "ms": 65909.09375,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43934
+            }
+        },
+        {
+            "beat": 239,
+            "ms": 66181.8125,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43946
+            }
+        },
+        {
+            "beat": 240,
+            "ms": 66454.546875,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43958
+            }
+        },
+        {
+            "beat": 241,
+            "ms": 66727.2734375,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43970
+            }
+        },
+        {
+            "beat": 242,
+            "ms": 67000,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43982
+            }
+        },
+        {
+            "beat": 243,
+            "ms": 67272.7265625,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -43994
+            }
+        },
+        {
+            "beat": 244,
+            "ms": 67545.453125,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44006
+            }
+        },
+        {
+            "beat": 245,
+            "ms": 67818.1796875,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44018
+            }
+        },
+        {
+            "beat": 246,
+            "ms": 68090.90625,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44030
+            }
+        },
+        {
+            "beat": 247,
+            "ms": 68363.6328125,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44042
+            }
+        },
+        {
+            "beat": 248,
+            "ms": 68636.3671875,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44054
+            }
+        },
+        {
+            "beat": 249,
+            "ms": 68909.09375,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44066
+            }
+        },
+        {
+            "beat": 250,
+            "ms": 69181.8203125,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44078
+            }
+        },
+        {
+            "id": "",
+            "beat": 252,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 253,
+            "ms": 70000,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44102
+            }
+        },
+        {
+            "beat": 254,
+            "ms": 70272.7265625,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44114
+            }
+        },
+        {
+            "beat": 255,
+            "ms": 70545.453125,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44126
+            }
+        },
+        {
+            "beat": 256,
+            "ms": 70818.1796875,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44138
+            }
+        },
+        {
+            "beat": 257,
+            "ms": 71090.90625,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44150
+            }
+        },
+        {
+            "beat": 258,
+            "ms": 71363.6328125,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44162
+            }
+        },
+        {
+            "beat": 259,
+            "ms": 71636.3671875,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44174
+            }
+        },
+        {
+            "beat": 260,
+            "ms": 71909.09375,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44186
+            }
+        },
+        {
+            "beat": 261,
+            "ms": 72181.8203125,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44198
+            }
+        },
+        {
+            "beat": 262,
+            "ms": 72454.546875,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44210
+            }
+        },
+        {
+            "beat": 263,
+            "ms": 72727.2734375,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44222
+            }
+        },
+        {
+            "beat": 264,
+            "ms": 73000,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44234
+            }
+        },
+        {
+            "beat": 265,
+            "ms": 73272.7265625,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44246
+            }
+        },
+        {
+            "beat": 266,
+            "ms": 73545.453125,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44258
+            }
+        },
+        {
+            "id": "",
+            "beat": 268,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 269,
+            "ms": 74363.6328125,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44282
+            }
+        },
+        {
+            "beat": 270,
+            "ms": 74636.3671875,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44294
+            }
+        },
+        {
+            "beat": 271,
+            "ms": 74909.09375,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44306
+            }
+        },
+        {
+            "beat": 272,
+            "ms": 75181.8203125,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44318
+            }
+        },
+        {
+            "beat": 273,
+            "ms": 75454.546875,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44330
+            }
+        },
+        {
+            "beat": 274,
+            "ms": 75727.2734375,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44342
+            }
+        },
+        {
+            "beat": 275,
+            "ms": 76000,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44354
+            }
+        },
+        {
+            "beat": 276,
+            "ms": 76272.7265625,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44366
+            }
+        },
+        {
+            "beat": 277,
+            "ms": 76545.453125,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44378
+            }
+        },
+        {
+            "beat": 278,
+            "ms": 76818.1796875,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44390
+            }
+        },
+        {
+            "beat": 279,
+            "ms": 77090.90625,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44402
+            }
+        },
+        {
+            "beat": 280,
+            "ms": 77363.6328125,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44414
+            }
+        },
+        {
+            "beat": 281,
+            "ms": 77636.3671875,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44426
+            }
+        },
+        {
+            "beat": 282,
+            "ms": 77909.09375,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44438
+            }
+        },
+        {
+            "id": "",
+            "beat": 284,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 285,
+            "ms": 78727.2734375,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44462
+            }
+        },
+        {
+            "beat": 286,
+            "ms": 79000,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44474
+            }
+        },
+        {
+            "beat": 287,
+            "ms": 79272.7265625,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44486
+            }
+        },
+        {
+            "beat": 288,
+            "ms": 79545.453125,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44498
+            }
+        },
+        {
+            "beat": 289,
+            "ms": 79818.1796875,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44510
+            }
+        },
+        {
+            "beat": 290,
+            "ms": 80090.90625,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44522
+            }
+        },
+        {
+            "beat": 291,
+            "ms": 80363.6328125,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44534
+            }
+        },
+        {
+            "beat": 292,
+            "ms": 80636.3671875,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44546
+            }
+        },
+        {
+            "beat": 293,
+            "ms": 80909.09375,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44558
+            }
+        },
+        {
+            "beat": 294,
+            "ms": 81181.8203125,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44570
+            }
+        },
+        {
+            "beat": 295,
+            "ms": 81454.546875,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44582
+            }
+        },
+        {
+            "beat": 296,
+            "ms": 81727.2734375,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44594
+            }
+        },
+        {
+            "beat": 297,
+            "ms": 82000,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44606
+            }
+        },
+        {
+            "beat": 298,
+            "ms": 82272.7265625,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44618
+            }
+        },
+        {
+            "beat": 300,
+            "ms": 82818.1796875,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44630
+            }
+        },
+        {
+            "beat": 304,
+            "ms": 83909.09375,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44642
+            }
+        },
+        {
+            "beat": 308,
+            "ms": 85000,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44654
+            }
+        },
+        {
+            "beat": 316,
+            "ms": 87045.453125,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44666
+            }
+        },
+        {
+            "beat": 320,
+            "ms": 88272.7265625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44678
+            }
+        },
+        {
+            "beat": 324,
+            "ms": 89363.6328125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44690
+            }
+        },
+        {
+            "beat": 332,
+            "ms": 91545.453125,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44702
+            }
+        },
+        {
+            "beat": 334,
+            "ms": 92090.90625,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44714
+            }
+        },
+        {
+            "beat": 336,
+            "ms": 92636.3671875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44726
+            }
+        },
+        {
+            "beat": 340,
+            "ms": 93727.2734375,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44738
+            }
+        },
+        {
+            "beat": 342,
+            "ms": 94272.7265625,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44750
+            }
+        },
+        {
+            "beat": 344,
+            "ms": 94818.1796875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -44762
+            }
+        },
+        {
+            "id": "",
+            "beat": 348,
+            "ms": 0,
+            "width": 1,
+            "length": 1.5,
+            "tick": 0,
+            "position": 3,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 352,
+            "ms": 0,
+            "width": 1,
+            "length": 1.5,
+            "tick": 0,
+            "position": 2,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 356,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 364,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 365,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 366,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 367,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 368,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 369,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 370,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 371,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 372,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 373,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 374,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 375,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 376,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 377,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 378,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 379,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 380,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 382,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 3.5,
+            "type": "leftarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 386,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 1.5,
+            "type": "rightarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 392,
+            "ms": 0,
+            "width": 1.5,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "rbell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 392,
+            "ms": 0,
+            "width": 1.5,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "rbell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 396,
+            "ms": 0,
+            "width": 1.5,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 400,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 400,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 408,
+            "ms": 112272.7265625,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45170
+            }
+        },
+        {
+            "beat": 410,
+            "ms": 112818.1796875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45194
+            }
+        },
+        {
+            "beat": 412,
+            "ms": 113363.6328125,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45218
+            }
+        },
+        {
+            "beat": 416,
+            "ms": 114181.8203125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45254
+            }
+        },
+        {
+            "beat": 418,
+            "ms": 115000,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45290
+            }
+        },
+        {
+            "beat": 420,
+            "ms": 115545.453125,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45314
+            }
+        },
+        {
+            "beat": 424,
+            "ms": 116909.09375,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45374
+            }
+        },
+        {
+            "beat": 426,
+            "ms": 117181.8203125,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45386
+            }
+        },
+        {
+            "beat": 428,
+            "ms": 117454.546875,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45410
+            }
+        },
+        {
+            "id": "",
+            "beat": 432,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 4,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 434,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 436,
+            "ms": 119636.3671875,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45506
+            }
+        },
+        {
+            "id": "",
+            "beat": 440,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 442,
+            "ms": 121545.453125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45590
+            }
+        },
+        {
+            "beat": 444,
+            "ms": 122090.90625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45614
+            }
+        },
+        {
+            "id": "",
+            "beat": 449.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "leftarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 453.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "rightarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 456,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 458,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 460,
+            "ms": 126454.546875,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45758
+            }
+        },
+        {
+            "beat": 462,
+            "ms": 127000,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45782
+            }
+        },
+        {
+            "beat": 464,
+            "ms": 127545.453125,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45806
+            }
+        },
+        {
+            "beat": 465,
+            "ms": 127818.1796875,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45818
+            }
+        },
+        {
+            "beat": 466,
+            "ms": 128090.90625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45830
+            }
+        },
+        {
+            "beat": 468,
+            "ms": 128636.3671875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45854
+            }
+        },
+        {
+            "beat": 470,
+            "ms": 129181.8203125,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45878
+            }
+        },
+        {
+            "beat": 472,
+            "ms": 129727.2734375,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45902
+            }
+        },
+        {
+            "beat": 473,
+            "ms": 130000,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45914
+            }
+        },
+        {
+            "beat": 474,
+            "ms": 130272.7265625,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -45926
+            }
+        },
+        {
+            "id": "",
+            "beat": 476,
+            "ms": 0,
+            "width": 1,
+            "length": 2,
+            "tick": 0,
+            "position": 4,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 478,
+            "ms": 0,
+            "width": 1,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 480,
+            "ms": 0,
+            "width": 1,
+            "length": 2,
+            "tick": 0,
+            "position": 1,
+            "type": "long",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 482,
+            "ms": 132454.546875,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46022
+            }
+        },
+        {
+            "beat": 484,
+            "ms": 133000,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46046
+            }
+        },
+        {
+            "beat": 485,
+            "ms": 133272.734375,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46058
+            }
+        },
+        {
+            "beat": 486,
+            "ms": 133545.453125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46070
+            }
+        },
+        {
+            "beat": 488,
+            "ms": 134090.90625,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46094
+            }
+        },
+        {
+            "beat": 489,
+            "ms": 134363.640625,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46106
+            }
+        },
+        {
+            "beat": 490,
+            "ms": 134636.359375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46118
+            }
+        },
+        {
+            "beat": 492,
+            "ms": 135181.8125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46178
+            }
+        },
+        {
+            "beat": 494,
+            "ms": 135727.265625,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46202
+            }
+        },
+        {
+            "beat": 496,
+            "ms": 136000,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46214
+            }
+        },
+        {
+            "beat": 497,
+            "ms": 136272.734375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46226
+            }
+        },
+        {
+            "beat": 498,
+            "ms": 136545.453125,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46238
+            }
+        },
+        {
+            "beat": 499,
+            "ms": 136818.1875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46250
+            }
+        },
+        {
+            "beat": 500,
+            "ms": 137363.640625,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46274
+            }
+        },
+        {
+            "beat": 502,
+            "ms": 137636.359375,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46286
+            }
+        },
+        {
+            "beat": 504,
+            "ms": 138454.546875,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46322
+            }
+        },
+        {
+            "beat": 505,
+            "ms": 138727.265625,
+            "position": 2,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46334
+            }
+        },
+        {
+            "beat": 506,
+            "ms": 139000,
+            "position": 3,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46346
+            }
+        },
+        {
+            "beat": 507,
+            "ms": 139272.734375,
+            "position": 4,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46358
+            }
+        },
+        {
+            "beat": 508,
+            "ms": 139545.453125,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46370
+            }
+        },
+        {
+            "id": "",
+            "beat": 509.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "leftarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "beat": 512,
+            "ms": 140636.359375,
+            "position": 1,
+            "type": "normal",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": -46394
+            }
+        },
+        {
+            "id": "",
+            "beat": 513.5,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "rightarrow",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 516,
+            "ms": 0,
+            "width": 2,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 518,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 3,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 519,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2.5,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        },
+        {
+            "id": "",
+            "beat": 520,
+            "ms": 0,
+            "width": 0.75,
+            "length": 4,
+            "tick": 0,
+            "position": 2,
+            "type": "bell",
+            "isInputed": false,
+            "isEndNote": false,
+            "isSyncRoom": false,
+            "noteObject": {
+                "instanceID": 0
+            },
+            "longObject": {
+                "instanceID": 0
+            },
+            "pressedTime": 0,
+            "isLongNotePressing": false,
+            "lastTickBeat": 0,
+            "startJudgement": "",
+            "longNoteStarted": false
+        }
+    ],
+    "info": {
+        "id": 0,
+        "title": "두근 어질",
+        "jpTitle": "",
+        "artist": "이요와",
+        "jpArtist": "",
+        "category": "",
+        "bpm": 220,
+        "eventName": "",
+        "fileLocation": "",
+        "level": 5,
+        "difficulty": "MEMORY",
+        "previewStart": 0,
+        "previewEnd": 20000
+    }
+}

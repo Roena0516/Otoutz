@@ -131,6 +131,11 @@ public class NoteGenerator : MonoBehaviour
 
         notes = loadManager.notes;
         info = loadManager.info;
+
+        // long notes with no tick default to a tick of 1
+        foreach (NoteClass note in notes)
+            if (note.type == "long" && note.tick == 0f) note.tick = 1f;
+
         if (!gameManager.isTest)
         {
             BPM = info.bpm;
@@ -283,6 +288,7 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(bellPrefab, ranePosition, R, bellsFolder.transform);
+            note.AddComponent<BellNoteVisual>();
         }
         else if (type == "rbell")
         {
@@ -291,6 +297,7 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(rBellPrefab, ranePosition, R, bellsFolder.transform);
+            note.AddComponent<BellNoteVisual>();
         }
         else if (type == "avoid")
         {
@@ -307,6 +314,7 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(leftArrowPrefab, ranePosition, R, bellsFolder.transform);
+            note.AddComponent<ArrowNoteVisual>().pointLeft = true;
         }
         else if (type == "rightarrow")
         {
@@ -315,6 +323,7 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(rightArrowPrefab, ranePosition, R, bellsFolder.transform);
+            note.AddComponent<ArrowNoteVisual>().pointLeft = false;
         }
         else
         {
