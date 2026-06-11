@@ -196,13 +196,23 @@ public class JudgementManager : MonoBehaviour
         note.isInputed = true;
     }
 
-    // spawns the note-hit visual effect at the given lane's judgement point
-    private void SpawnHitEffect(float position)
+    // spawns the note-hit visual effect at the note's judgement point
+    private void SpawnHitEffect(NoteClass note)
     {
         if (_hitEffect == null || lineInputChecker == null || lineInputChecker.buttons == null) return;
-        int lane = Mathf.Clamp((int)position - 1, 0, 3);
-        if (lane < lineInputChecker.buttons.Count && lineInputChecker.buttons[lane] != null)
-            _hitEffect.Play(lineInputChecker.buttons[lane].transform.position, lane);
+        int lane = Mathf.Clamp(Mathf.RoundToInt(note.position) - 1, 0, 3);
+        if (lane >= lineInputChecker.buttons.Count || lineInputChecker.buttons[lane] == null) return;
+
+        Vector3 pos = lineInputChecker.buttons[lane].transform.position;
+        // Bell-family notes use the full-width layout (not the 4 lane buttons); their centre is a
+        // float position, so place the effect at the real centre instead of an integer lane x.
+        if (note.type == "hold" || note.type == "bell" || note.type == "rbell" ||
+            note.type == "avoid" || note.type == "leftarrow" || note.type == "rightarrow")
+        {
+            const float zer0Point = -10.5f, gap = 7f;
+            pos.x = zer0Point + gap * (note.position - 1f);
+        }
+        _hitEffect.Play(pos, lane);
     }
 
     public void UpJudge(int raneNumber, double currentTimeMs)
@@ -241,6 +251,50 @@ public class JudgementManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    // Force-finish the chart immediately (forfeit): every note not yet judged counts as a Miss,
+    // then the result data is filled. The caller handles the scene transition. Does NOT set
+    // isLevelEnd (the caller goes to Result at once, skipping the normal post-clear delay).
+    public void ForceEnd()
+    {
+        if (noteGenerator == null || noteGenerator.notes == null) return;
+
+        foreach (NoteClass note in noteGenerator.notes)
+        {
+            if (note == null || note.isInputed) continue;
+
+            string t = note.type;
+            if (string.IsNullOrEmpty(t) || t == "null")   // long-note body: just clear its visuals
+            {
+                if (note.noteObject != null) Destroy(note.noteObject);
+                if (note.longObject != null) Destroy(note.longObject);
+                continue;
+            }
+
+            note.isInputed = true;
+            judgeCount["Miss"]++;
+            string nt = (t == "bell" || t == "rbell" || t == "avoid" || t == "leftarrow" || t == "rightarrow") ? "hold" : t;
+            if (noteTypeRate.ContainsKey(nt)) ChangeRate(noteTypeRate[nt], 1f);
+
+            if (note.noteObject != null) Destroy(note.noteObject);
+            if (note.longObject != null) Destroy(note.longObject);
+        }
+
+        ClearCombo();
+        isFC = false; isAP = false;
+        UIManager.UpdateJudgeCountText(judgeCount);
+
+        Otoutz.OtoutzResultData.SetPlayResult(
+            perfect: judgeCount["CriticalBreak"],
+            great: judgeCount["Break"],
+            good: judgeCount["Hit"],
+            miss: judgeCount["Miss"],
+            score: score,
+            acc: rate,
+            maxCombo: maxCombo,
+            isFC: false,
+            isAP: false);
     }
 
     public void AddCombo(int amount)
@@ -301,7 +355,7 @@ public class JudgementManager : MonoBehaviour
 
         if (judgement != "Miss")
         {
-            SpawnHitEffect(note.position);
+            SpawnHitEffect(note);
             // SFXLoader.Instance.PlaySFX("hitsound_tamb.wav"); // SFXLoader 클래스가 존재하지 않아 제거됨
         }
 
@@ -385,6 +439,11 @@ public class JudgementManager : MonoBehaviour
                         note.isLongNotePressing = true;
                     }
 
+                    // 누르고 있으면 기본 색, 떼고 있으면 약간 어둡게
+                    if (note.longBackRenderer != null)
+                        note.longBackRenderer.material.SetColor("_BaseColor",
+                            note.isLongNotePressing ? note.longBaseColor : note.longBaseColor * 0.55f);
+
                     // tick마다 현재 판정 표시
                     if (note.tick > 0)
                     {
@@ -420,7 +479,7 @@ public class JudgementManager : MonoBehaviour
 
         // 홀드 중이면 틱마다 히트이펙트도 표시
         if (note.isLongNotePressing && currentJudgement != "Miss")
-            SpawnHitEffect(note.position);
+            SpawnHitEffect(note);
     }
 
     private void FinalLongNoteJudgement(NoteClass note, double currentTimeMs)

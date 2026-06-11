@@ -269,7 +269,12 @@ public class NoteGenerator : MonoBehaviour
             {
                 Renderer backRenderer = back.GetComponent<Renderer>();
                 if (backRenderer != null)
+                {
                     backRenderer.material.SetColor("_BaseColor", laneColor);
+                    // remember for the hold/release dimming in JudgementManager
+                    noteClass.longBackRenderer = backRenderer;
+                    noteClass.longBaseColor = laneColor;
+                }
             }
 
             longNoteClass.type = "null";

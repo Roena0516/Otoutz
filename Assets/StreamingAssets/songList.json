@@ -55,6 +55,21 @@
       "difficulty": "ADVANCED",
       "previewStart": "108000",
       "previewEnd": "137000"
+    },
+    {
+      "id": 4,
+      "title": "두근 어질",
+      "jpTitle": "きゅうくらりん",
+      "artist": "이요와",
+      "jpArtist": "いよわ",
+      "category": "vocaloid",
+      "bpm": 220.0,
+      "eventName": "kyukurarin",
+      "fileLocation": "kyu_kurarin",
+      "level": 7.0,
+      "difficulty": "EXPERT",
+      "previewStart": "108000",
+      "previewEnd": "137000"
     }
   ]
 }

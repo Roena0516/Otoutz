@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     private LevelEditer levelEditor;
 
+    private bool _ending;            // guards against double result transitions
+    private float _forfeitTimer;     // seconds buttons 1-6 have been held together
+
     private void Awake()
     {
         if (Instance == null)
@@ -52,6 +55,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Forfeit: hold buttons 1-6 together for 3s -> jump straight to the result screen.
+        if (!isTest && !_ending)
+        {
+            if (ForfeitHeld())
+            {
+                _forfeitTimer += Time.unscaledDeltaTime;
+                if (_forfeitTimer >= 3f) ForfeitToResult();
+            }
+            else _forfeitTimer = 0f;
+        }
+
         if (Input.GetKeyDown(KeyCode.F5) && !isTest)
         {
             SceneManager.LoadSceneAsync("InGame");
@@ -96,11 +110,32 @@ public class GameManager : MonoBehaviour
     IEnumerator ChangeToResult()
     {
         yield return new WaitForSeconds(5f);
+        if (isTest || _ending) yield break;
+        _ending = true;
+        LoadResult();
+    }
 
-        if (isTest) yield break;
+    // Buttons 1-6 (keyboard digits or controller buttons) all held together.
+    private bool ForfeitHeld()
+    {
+        bool kb = Input.GetKey(KeyCode.Alpha1) && Input.GetKey(KeyCode.Alpha2) && Input.GetKey(KeyCode.Alpha3)
+               && Input.GetKey(KeyCode.Alpha4) && Input.GetKey(KeyCode.Alpha5) && Input.GetKey(KeyCode.Alpha6);
+        bool js = Input.GetKey(KeyCode.JoystickButton0) && Input.GetKey(KeyCode.JoystickButton1) && Input.GetKey(KeyCode.JoystickButton2)
+               && Input.GetKey(KeyCode.JoystickButton3) && Input.GetKey(KeyCode.JoystickButton4) && Input.GetKey(KeyCode.JoystickButton5);
+        return kb || js;
+    }
 
+    private void ForfeitToResult()
+    {
+        if (_ending || isTest) return;
+        _ending = true;
+        if (JudgementManager.Instance != null) JudgementManager.Instance.ForceEnd(); // remaining notes -> Miss + fills result
+        LoadResult();   // straight to result, no post-clear delay
+    }
+
+    private void LoadResult()
+    {
         string scene = isSyncRoom ? "SyncRoomResult" : "Result";
-
         // Fade to black, then load the result scene (which fades back in via its own OtoutzFade).
         var fade = Otoutz.OtoutzFade.Instance;
         if (fade != null) fade.FadeOutAndLoad(scene, 0.6f);

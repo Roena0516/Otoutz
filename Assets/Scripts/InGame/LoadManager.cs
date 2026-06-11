@@ -51,6 +51,10 @@ public class NoteClass
     public float lastTickBeat = 0f;       // 마지막으로 표시한 tick 비트
     public string startJudgement = "";    // 시작 판정 (최대 판정)
     public bool longNoteStarted = false;  // 롱노트 시작 판정을 받았는지
+
+    // 롱노트 바디 색 처리용 (런타임)
+    public Renderer longBackRenderer;     // 긴 노트 몸체의 Back 렌더러
+    public Color longBaseColor = Color.white; // 눌렀을 때의 기본 색
 }
 
 public class LoadManager : MonoBehaviour
