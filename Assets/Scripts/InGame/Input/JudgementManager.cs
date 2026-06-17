@@ -464,16 +464,23 @@ public class JudgementManager : MonoBehaviour
                     note.isInputed = true;
                 }
             }
-            // 시작 판정을 한 번도 못 받은 롱노트: 시작 윈도우(200ms, 일반 노트 미스와 동일)가
-            // 완전히 지나면 통째로 Miss 처리하고 콤보를 끊는다. (일찍 눌러 잡고 있어서 윈도우
-            // 구간에 key-down이 안 들어온 경우 등 — 기존엔 조용히 사라져 콤보가 안 까였다.)
+            // 시작 판정을 한 번도 못 받은 롱노트. (일찍 눌러 잡고 있어 윈도우 구간에 key-down이
+            // 안 들어온 경우 등 — 기존엔 조용히 사라져 콤보가 안 까이고 몸체도 안 어두워졌다.)
             else if (note.type == "long" && !note.longNoteStarted && !note.isInputed
-                     && note.noteObject != null   // 아직 생성 안 된 노트는 ms=0 이므로 제외
-                     && currentTimeMs - note.ms >= 200d)
+                     && note.noteObject != null)   // 아직 생성 안 된 노트는 ms=0 이므로 제외
             {
-                if (note.longObject != null) Destroy(note.longObject);
-                PerformAction(note, "Miss", currentTimeMs); // noteObject 제거 + 미스 카운트/레이트 반영
-                ClearCombo();
+                // 시작 윈도우(±bad)가 닫히면 더는 시작할 수 없으므로, 시작된 롱노트를 '떼고 있을' 때와
+                // 동일하게 몸체를 어둡게 표시한다.
+                if (currentTimeMs - note.ms > bad && note.longBackRenderer != null)
+                    note.longBackRenderer.material.SetColor("_BaseColor", note.longBaseColor * 0.55f);
+
+                // 미스 타이밍(200ms, 일반 노트와 동일)이 지나면 통째로 Miss 처리하고 콤보를 끊는다.
+                // 머리(noteObject)만 제거하고 몸체(longObject)는 남겨 끝까지 흘려보낸다.
+                if (currentTimeMs - note.ms >= 200d)
+                {
+                    PerformAction(note, "Miss", currentTimeMs); // noteObject 제거 + 미스 카운트/레이트 반영
+                    ClearCombo();
+                }
             }
         }
     }

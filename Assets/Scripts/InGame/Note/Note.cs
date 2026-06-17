@@ -106,33 +106,35 @@ public class Note : MonoBehaviour
 
     public IEnumerator MoveLongNote()
     {
-        float originScaleZ = gameObject.transform.localScale.y;
-        double longNoteEndTimeMs = ms + (60000f / noteGenerator.BPM * noteClass.length);
-        double remainingDistance = originScaleZ;
+        // Re-fit the body from the CURRENT scroll speed every frame (speed can change mid-song), by
+        // mapping the note's [start(ms), end(endMs)] time window onto the lane. A note of time T sits
+        // at Z = lineZ + speed*(T - now); the leading end pins to the judgement line once the head
+        // passes it. No length is baked at spawn, so a mid-song speed change re-sizes it correctly.
+        double endMs = ms + (60000.0 / noteGenerator.BPM * noteClass.length);
+        float lineZ = startY - noteGenerator.distance;   // judgement line (head reaches it at t = ms)
+        float lastLength = float.NaN;
 
-        endY = 10f;
-
-        while (longNoteEndTimeMs - (line.currentTime * 1000f) >= -200f)
+        while (endMs - (line.currentTime * 1000.0) >= -200.0)
         {
-            double currentTimeMs = line.currentTime * 1000f;
-            double duration = longNoteEndTimeMs - currentTimeMs;
-            remainingDistance = speed * (duration / 1000f);
+            float spd = noteGenerator.speed;             // live speed
+            double now = line.currentTime;               // seconds
 
-            if (line.currentTime * 1000f <= ms)
+            // clamp both ends to [lineZ .. startY]: leading end pins to the judgement line after the
+            // head passes; both ends cap at the spawn line so the body never extends behind the
+            // curtain and has length 0 before the note drops.
+            float zFront = Mathf.Min(startY, lineZ + Mathf.Max(0f, (float)(spd * (ms / 1000.0 - now))));
+            float zBack  = Mathf.Min(startY, lineZ + (float)(spd * (endMs / 1000.0 - now)));
+            float length = Mathf.Max(0f, zBack - zFront);
+
+            // optimisation: only write the scale when the length actually changed
+            if (!Mathf.Approximately(length, lastLength))
             {
-                remainingDistance = originScaleZ;
+                Vector3 s = transform.localScale;
+                transform.localScale = new Vector3(s.x, length, s.z);
+                lastLength = length;
             }
 
-            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x, (float)remainingDistance, gameObject.transform.localScale.z);
-
-            dropStartTime = (ms - noteGenerator.fallTime) / 1000f;
-            double elapsedTime = line.currentTime - dropStartTime;
-            float progress = (float)(elapsedTime * speed / (startY - endY));
-            progress = Mathf.Clamp01(progress);
-            float currentY = Mathf.Lerp(startY, endY, progress);
-
-            currentY += (float)remainingDistance / 2f;
-            transform.position = new Vector3(transform.position.x, YPosition, currentY);
+            transform.position = new Vector3(transform.position.x, YPosition, (zFront + zBack) * 0.5f);
 
             yield return null;
         }
