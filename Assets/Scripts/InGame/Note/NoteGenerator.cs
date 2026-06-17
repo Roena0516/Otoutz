@@ -384,6 +384,12 @@ public class NoteGenerator : MonoBehaviour
             ms -= levelEditor.currentMusicTime;
         }
 
+        // Judge offset: shift the note's input/judgement time (and its visual arrival, which is
+        // derived from ms) instead of delaying the music. Matches the old direction (a +offset that
+        // used to delay the music by X is equivalent to bringing the notes X earlier).
+        if (settings != null && settings.settings != null)
+            ms -= settings.settings.sync;
+
         noteClass.ms = ms;
 
         noteScript.noteClass = noteClass;

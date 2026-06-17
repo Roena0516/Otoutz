@@ -37,6 +37,11 @@ namespace Otoutz
         int _songIndex = 0, _diffIndex = 3, _menuIndex = 0, _rowIndex = 0;
         bool _busy;
 
+        // controller (Joystick) navigation state: button5/6 = confirm (single) / cancel (both),
+        // button8/9 = select prev/next, button10/11 = difficulty up/down (with auto-repeat).
+        bool _comboFired;                                                   // 5+6 cancel latched this hold
+        readonly Dictionary<string, float> _repeatNext = new Dictionary<string, float>(); // per-button next repeat time
+
         // When returning from gameplay/result, open directly on the song-select screen with the
         // previously chosen song. Set by GameManager (mid-game exit) / OtoutzResult (next/esc).
         public static bool OpenOnSelect;
@@ -362,6 +367,14 @@ namespace Otoutz
             if (m != null && (m.leftButton.wasPressedThisFrame || m.rightButton.wasPressedThisFrame)) return true;
             var gp = Gamepad.current;
             if (gp != null && (gp.buttonSouth.wasPressedThisFrame || gp.buttonEast.wasPressedThisFrame || gp.startButton.wasPressedThisFrame)) return true;
+            // arcade controller is a generic HID Joystick (not a Gamepad): any button/trigger starts
+            var j = Joystick.current;
+            if (j != null)
+            {
+                if (j.trigger != null && j.trigger.wasPressedThisFrame) return true;
+                foreach (var c in j.allControls)
+                    if (c is UnityEngine.InputSystem.Controls.ButtonControl bc && bc.wasPressedThisFrame) return true;
+            }
             return false;
         }
 
@@ -1049,7 +1062,7 @@ namespace Otoutz
         readonly string[] _setSubs = { "노트 낙하 속도", "판정 타이밍 보정", "전체 음량", "효과음 음량" };
         readonly float[] _setMin = { 1, -100, 0, 0 };
         readonly float[] _setMax = { 10, 100, 100, 100 };
-        readonly float[] _setStep = { 0.5f, 5, 5, 5 };
+        readonly float[] _setStep = { 0.5f, 1, 5, 5 };
 
         void BuildSettings()
         {
@@ -1244,8 +1257,15 @@ namespace Otoutz
                 return;
             }
 
+            if (_busy) return;
+            HandleKeyboard();
+            HandleController();
+        }
+
+        void HandleKeyboard()
+        {
             var kb = Keyboard.current;
-            if (kb == null || _busy) return;
+            if (kb == null) return;
 
             switch (_screen)
             {
@@ -1253,6 +1273,7 @@ namespace Otoutz
                     if (kb.upArrowKey.wasPressedThisFrame || kb.wKey.wasPressedThisFrame) { _menuIndex = (_menuIndex + 1) % 2; RefreshMenu(); }
                     else if (kb.downArrowKey.wasPressedThisFrame || kb.sKey.wasPressedThisFrame) { _menuIndex = (_menuIndex + 1) % 2; RefreshMenu(); } // 2 items: toggle
                     else if (kb.enterKey.wasPressedThisFrame || kb.spaceKey.wasPressedThisFrame) SelectMenu(_menuIndex);
+                    else if (kb.escapeKey.wasPressedThisFrame) EnterIntro();   // ESC -> back to title splash
                     break;
                 case Screen.Select:
                     if (kb.leftArrowKey.wasPressedThisFrame) Move(-1);
@@ -1275,6 +1296,85 @@ namespace Otoutz
                     else if (kb.escapeKey.wasPressedThisFrame || kb.backspaceKey.wasPressedThisFrame || kb.enterKey.wasPressedThisFrame) Go(Screen.Menu);
                     break;
             }
+        }
+
+        // ---- Controller (Joystick) navigation ----
+        void HandleController()
+        {
+            switch (_screen)
+            {
+                case Screen.Menu:
+                    ConfirmCancel(() => SelectMenu(_menuIndex), EnterIntro);
+                    break;
+                case Screen.Select:
+                    ConfirmCancel(() => Go(Screen.Difficulty), () => Go(Screen.Menu));
+                    if (EncoderStep("button8")) Move(-1);        // 8: 왼쪽 (엔코더)
+                    else if (EncoderStep("button9")) Move(1);    // 9: 오른쪽 (엔코더)
+                    break;
+                case Screen.Difficulty:
+                    ConfirmCancel(StartGame, () => Go(Screen.Select));
+                    if (EncoderStep("button10")) MoveDiff(-1);   // 10: 위 (엔코더)
+                    else if (EncoderStep("button11")) MoveDiff(1); // 11: 아래 (엔코더)
+                    break;
+            }
+        }
+
+        // button5 / button6: a clean single press (released without the other) = confirm; both held
+        // together = cancel. Confirm fires on release so the 5+6 combo can be detected first.
+        void ConfirmCancel(Action confirm, Action cancel)
+        {
+            bool b5 = JHeld("button5"), b6 = JHeld("button6");
+            if (b5 && b6)
+            {
+                if (!_comboFired) { _comboFired = true; cancel?.Invoke(); }
+                return;
+            }
+            if (!_comboFired && (JUp("button5") || JUp("button6")) && !b5 && !b6)
+                confirm?.Invoke();
+            if (!b5 && !b6) _comboFired = false;
+        }
+
+        // Encoder throttle: buttons 8-11 are a rotary encoder that fires a burst of very fast pulses
+        // per detent, so we accept at most one step per `cooldown` seconds regardless of how fast the
+        // pulses arrive. Catches sub-frame pulses (wasPressedThisFrame) as well as a level held high.
+        bool EncoderStep(string name, float cooldown = 0.12f)
+        {
+            if (!(JHeld(name) || JDown(name))) return false;
+            float now = Time.unscaledTime;
+            if (_repeatNext.TryGetValue(name, out float next) && now < next) return false;
+            _repeatNext[name] = now + cooldown;
+            return true;
+        }
+
+        static UnityEngine.InputSystem.Controls.ButtonControl JBtn(string name)
+        {
+            var j = Joystick.current;
+            return j != null ? j.TryGetChildControl<UnityEngine.InputSystem.Controls.ButtonControl>(name) : null;
+        }
+        static bool JDown(string name) { var b = JBtn(name); return b != null && b.wasPressedThisFrame; }
+        static bool JHeld(string name) { var b = JBtn(name); return b != null && b.isPressed; }
+        static bool JUp(string name) { var b = JBtn(name); return b != null && b.wasReleasedThisFrame; }
+
+        // Return to the title splash from the main menu (ESC / cancel-combo). Rebuilds the intro over
+        // the still-present background and hides the menu; any key/button resumes via ExitIntro.
+        void EnterIntro()
+        {
+            if (_busy || _intro) return;
+            if (_introRoot != null) { Destroy(_introRoot.gameObject); _introRoot = null; }
+            BuildIntro();
+            _intro = true;
+            _comboFired = false;
+            if (_screens.TryGetValue(Screen.Menu, out var mrt)) mrt.gameObject.SetActive(false);
+            StartCoroutine(FadeIntroIn());
+        }
+
+        IEnumerator FadeIntroIn()
+        {
+            if (_introGroup == null) yield break;
+            _introGroup.alpha = 0f;
+            float t = 0f; const float dur = 0.4f;
+            while (t < dur) { t += Time.unscaledDeltaTime; _introGroup.alpha = Mathf.Clamp01(t / dur); yield return null; }
+            _introGroup.alpha = 1f;
         }
 
         float _wheelLock;

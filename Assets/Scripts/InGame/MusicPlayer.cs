@@ -16,6 +16,14 @@ public class MusicPlayer : MonoBehaviour
     public GameManager gameManager;
     public LineInputChecker line;
 
+    // Music is non-diegetic: it must not attenuate with the camera's distance. The MusicPlayer sits
+    // at the origin but the FMOD listener is on the Main Camera (~21u away), so a 3D music event was
+    // being distance-attenuated in-game while the menu preview (listener ~on the source) played full.
+    // Anchoring playback to the listener keeps distance ~0, so both play at the intended volume.
+    private GameObject _listenerGo;
+    private GameObject Listener => (_listenerGo != null) ? _listenerGo
+        : (_listenerGo = (Camera.main != null ? Camera.main.gameObject : gameObject));
+
     public static MusicPlayer Instance { get; private set; }
 
     private void Awake()
@@ -34,7 +42,9 @@ public class MusicPlayer : MonoBehaviour
     {
         settings = SettingsManager.Instance;
 
-        sync = (settings.settings.sync / 1000f) + 0.8f;
+        // Judge offset no longer shifts the music start; it's applied to each note's input time (ms)
+        // in NoteGenerator instead. Music always starts at the fixed base delay.
+        sync = 0.8f;
     }
 
     void OnEnable()
@@ -57,7 +67,7 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(Listener));
     }
 
     void OnDestroy()
@@ -85,7 +95,7 @@ public class MusicPlayer : MonoBehaviour
 
         Debug.Log($"{eventName}, sync: {sync}, currentTime: {line.currentTime}");
 
-        eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(gameObject));
+        eventInstance.set3DAttributes(RuntimeUtils.To3DAttributes(Listener));
 
         eventInstance.setVolume(0.5f * (settings.settings.musicVolume / 10f));
         eventInstance.setTimelinePosition(timeLinePosition);
