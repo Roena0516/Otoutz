@@ -464,6 +464,17 @@ public class JudgementManager : MonoBehaviour
                     note.isInputed = true;
                 }
             }
+            // 시작 판정을 한 번도 못 받은 롱노트: 시작 윈도우(200ms, 일반 노트 미스와 동일)가
+            // 완전히 지나면 통째로 Miss 처리하고 콤보를 끊는다. (일찍 눌러 잡고 있어서 윈도우
+            // 구간에 key-down이 안 들어온 경우 등 — 기존엔 조용히 사라져 콤보가 안 까였다.)
+            else if (note.type == "long" && !note.longNoteStarted && !note.isInputed
+                     && note.noteObject != null   // 아직 생성 안 된 노트는 ms=0 이므로 제외
+                     && currentTimeMs - note.ms >= 200d)
+            {
+                if (note.longObject != null) Destroy(note.longObject);
+                PerformAction(note, "Miss", currentTimeMs); // noteObject 제거 + 미스 카운트/레이트 반영
+                ClearCombo();
+            }
         }
     }
 

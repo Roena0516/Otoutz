@@ -293,7 +293,9 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(bellPrefab, ranePosition, R, bellsFolder.transform);
+            Color bellColor = ReadBaseColor(note);
             note.AddComponent<BellNoteVisual>();
+            AddTelegraph(note, bellColor);
         }
         else if (type == "rbell")
         {
@@ -302,7 +304,9 @@ public class NoteGenerator : MonoBehaviour
             ranePosition = new Vector3(zer0Point + gap * (position - 1), spawnPosition1.y, 0);
 
             note = Instantiate(rBellPrefab, ranePosition, R, bellsFolder.transform);
+            Color rbellColor = ReadBaseColor(note);
             note.AddComponent<BellNoteVisual>();
+            AddTelegraph(note, rbellColor);
         }
         else if (type == "avoid")
         {
@@ -320,6 +324,7 @@ public class NoteGenerator : MonoBehaviour
 
             note = Instantiate(leftArrowPrefab, ranePosition, R, bellsFolder.transform);
             note.AddComponent<ArrowNoteVisual>().pointLeft = true;
+            AddTelegraph(note, new Color(0.85f, 0.42f, 0.06f, 1f)); // matches ArrowNoteVisual.barColor
         }
         else if (type == "rightarrow")
         {
@@ -329,6 +334,7 @@ public class NoteGenerator : MonoBehaviour
 
             note = Instantiate(rightArrowPrefab, ranePosition, R, bellsFolder.transform);
             note.AddComponent<ArrowNoteVisual>().pointLeft = false;
+            AddTelegraph(note, new Color(0.85f, 0.42f, 0.06f, 1f)); // matches ArrowNoteVisual.barColor
         }
         else
         {
@@ -347,6 +353,23 @@ public class NoteGenerator : MonoBehaviour
 
 
         StartCoroutine(NoteSetter(noteClass, note, beatDuration));
+    }
+
+    // Reads the bell/rbell prefab's bar colour so the entrance telegraph star matches the note.
+    private Color ReadBaseColor(GameObject note)
+    {
+        Renderer r = note.GetComponentInChildren<Renderer>();
+        if (r != null && r.sharedMaterial != null && r.sharedMaterial.HasProperty("_BaseColor"))
+            return r.sharedMaterial.GetColor("_BaseColor");
+        return Color.white;
+    }
+
+    // Attaches the lever-note entrance telegraph (a colour-matched spinning star that fades in 4
+    // beats before the drop and shrinks to nothing).
+    private void AddTelegraph(GameObject note, Color color)
+    {
+        var tg = note.AddComponent<NoteTelegraphStar>();
+        tg.noteColor = color;
     }
 
     IEnumerator NoteSetter(NoteClass noteClass, GameObject note, float beatDuration)

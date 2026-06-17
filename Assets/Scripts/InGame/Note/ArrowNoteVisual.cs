@@ -18,11 +18,11 @@ public class ArrowNoteVisual : MonoBehaviour
     [Tooltip("Bright chevron colour.")]
     public Color chevronColor = new Color(1.0f, 0.62f, 0.08f, 1f);
     public float emission = 1.4f;
-    public float scrollSpeed = 0.22f;   // UV/sec across the strip (12 chevrons) — gentle
-    public float chevronHeight = 1.25f; // world height of the floating chevron row
-    public float chevronRise = 1.6f;    // how far above the bar the chevron row floats
+    public float scrollSpeed = 0.22f;   // UV/sec across the strip — gentle
+    public float chevronHeight = 1.9f;  // world height of the floating chevron row
+    public float chevronRise = 1.8f;    // how far above the bar the chevron row floats
 
-    const int Chevrons = 12;
+    const int Chevrons = 9;
     static Texture2D _glossTex, _stripLeft, _stripRight;
     Transform _deco, _strip;
     Material _stripMat;
