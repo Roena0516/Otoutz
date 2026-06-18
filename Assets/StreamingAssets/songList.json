@@ -40,7 +40,7 @@
       "bpm": 220.0,
       "eventName": "kyukurarin",
       "fileLocation": "kyu_kurarin",
-      "level": 6.0,
+      "level": 7.0,
       "difficulty": "EXPERT",
       "previewStart": "108000",
       "previewEnd": "137000"
@@ -57,6 +57,21 @@
       "fileLocation": "marbleblue",
       "level": 10.0,
       "difficulty": "LUNATIC",
+      "previewStart": "0",
+      "previewEnd": "137000"
+    },
+    {
+      "id": 4,
+      "title": "MarbleBlue.",
+      "jpTitle": "MarbleBlue.",
+      "artist": "MisoilePunch♪",
+      "jpArtist": "MisoilePunch♪",
+      "category": "variety",
+      "bpm": 198.22,
+      "eventName": "marbleblue",
+      "fileLocation": "marbleblue",
+      "level": 6.0,
+      "difficulty": "EXPERT",
       "previewStart": "0",
       "previewEnd": "137000"
     }
