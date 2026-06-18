@@ -361,17 +361,12 @@ public class JudgementManager : MonoBehaviour
 
         if (note.isEndNote == true)
         {
-            if (judgeCount["Miss"] == 0)
-            {
-                _FCAPFolder.SetActive(true);
-                _unityAnimator.Play("New Animation");
-                isFC = true;
-            }
-            if (judgeCount["Miss"] == 0 && judgeCount["Hit"] == 0 && judgeCount["Break"] == 0)
-            {
-                UIManager.SetFCAPText("ALL PERFECT");
-                isAP = true;
-            }
+            // FC = no miss, AP = every note a Critical Break. The in-game FCAP animation is removed;
+            // the result screen shows FULL COMBO / ALL BREAK from these flags. (Calling into the
+            // animator here previously could throw before isLevelEnd was set below, so the result
+            // screen never opened on an FC/AP clear.)
+            if (judgeCount["Miss"] == 0) isFC = true;                                  // FULL COMBO: no miss
+            if (judgeCount["Miss"] == 0 && judgeCount["Hit"] == 0) isAP = true;         // ALL BREAK: no hit, no miss (Break ok)
 
             Debug.Log($"{note.ms}, {note.type}, {note.position}, {note.isEndNote}, {note.beat}");
 

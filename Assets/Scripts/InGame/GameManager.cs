@@ -94,8 +94,9 @@ public class GameManager : MonoBehaviour
                 SceneManager.UnloadSceneAsync("InGame");
                 return;
             }
-            // Exit mid-game → back to the Otoutz song-select with the previously chosen song.
-            Otoutz.OtoutzFlow.OpenOnSelect = true;
+            // Exit mid-game → abandon the track: log out and return to the title/intro (1 track per entry).
+            PlayerSession.Clear();
+            Otoutz.OtoutzFlow.OpenOnSelect = false;
             SceneManager.LoadSceneAsync("Menu");
         }
     }

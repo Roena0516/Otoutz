@@ -57,6 +57,14 @@ namespace Otoutz
         Image _introChar; TextMeshProUGUI _pressText, _pressSub;
         bool _intro;
 
+        // RFID card entry: new users type a name (physical keyboard) before entering.
+        bool _nameEntry; string _nameBuffer = ""; string _pendingUid;
+        RectTransform _nameRoot; TextMeshProUGUI _nameValue;
+
+        // intro RFID port picker (detected serial ports + baud)
+        RectTransform _portList; TextMeshProUGUI _portCurrent, _portStatus, _baudText; bool _portOpen;
+        static readonly int[] _bauds = { 9600, 19200, 38400, 57600, 115200 };
+
         // cached Otoutz wordmark sprite (Otoutz_blur), reused for every logo lockup
         Sprite _wordmark;
 
@@ -344,19 +352,133 @@ namespace Otoutz
             logo.rectTransform.anchoredPosition = new Vector2(0, -86);
 
             // blinking "press any key" prompt — raised so it clears the character's legs
-            _pressText = OtoutzUI.Text("Press", _introRoot, "PRESS ANY KEY", 34, OtoutzTheme.ink, true, FontStyles.Bold);
+            _pressText = OtoutzUI.Text("Press", _introRoot, "TAP YOUR CARD", 34, OtoutzTheme.ink, true, FontStyles.Bold);
             _pressText.characterSpacing = 12;
             _pressText.rectTransform.anchorMin = _pressText.rectTransform.anchorMax = new Vector2(0.5f, 0f);
             _pressText.rectTransform.pivot = new Vector2(0.5f, 0f);
             _pressText.rectTransform.sizeDelta = new Vector2(800, 48);
             _pressText.rectTransform.anchoredPosition = new Vector2(0, 226);
 
-            _pressSub = OtoutzUI.Text("PressSub", _introRoot, "아무 키나 눌러 시작", 18, OtoutzTheme.sub, false, FontStyles.Bold);
+            _pressSub = OtoutzUI.Text("PressSub", _introRoot, "카드를 대주세요", 18, OtoutzTheme.sub, false, FontStyles.Bold);
             _pressSub.characterSpacing = 8;
             _pressSub.rectTransform.anchorMin = _pressSub.rectTransform.anchorMax = new Vector2(0.5f, 0f);
             _pressSub.rectTransform.pivot = new Vector2(0.5f, 0f);
             _pressSub.rectTransform.sizeDelta = new Vector2(800, 26);
             _pressSub.rectTransform.anchoredPosition = new Vector2(0, 190);
+
+            BuildPortSelector(_introRoot);
+        }
+
+        // ---- intro RFID port picker ----
+        void BuildPortSelector(Transform parent)
+        {
+            _portOpen = false;
+            var bar = OtoutzUI.Rect("PortBar", parent);
+            bar.anchorMin = bar.anchorMax = new Vector2(0, 0); bar.pivot = new Vector2(0, 0);
+            bar.anchoredPosition = new Vector2(40, 40);
+            bar.sizeDelta = new Vector2(560, 52);
+
+            var label = OtoutzUI.Text("Lbl", bar, "RFID PORT", 12, OtoutzTheme.sub, false, FontStyles.Bold, TextAlignmentOptions.Left);
+            label.characterSpacing = 6;
+            label.rectTransform.anchorMin = label.rectTransform.anchorMax = new Vector2(0, 1); label.rectTransform.pivot = new Vector2(0, 1);
+            label.rectTransform.sizeDelta = new Vector2(200, 16); label.rectTransform.anchoredPosition = new Vector2(2, 0);
+
+            // current selection / open dropdown
+            var btn = OtoutzUI.Panel("PortBtn", bar, 10, OtoutzTheme.A(OtoutzTheme.panel, 0.6f));
+            btn.rectTransform.anchorMin = btn.rectTransform.anchorMax = new Vector2(0, 0); btn.rectTransform.pivot = new Vector2(0, 0);
+            btn.rectTransform.sizeDelta = new Vector2(340, 32); btn.rectTransform.anchoredPosition = new Vector2(0, 0);
+            OtoutzUI.Ring(btn.transform, 10, 2, OtoutzTheme.line);
+            _portCurrent = OtoutzUI.Text("Cur", btn.transform, "", 14, OtoutzTheme.ink, false, FontStyles.Bold, TextAlignmentOptions.Left);
+            OtoutzUI.Stretch(_portCurrent.rectTransform, 12, 28, 0, 0);
+            var chev = OtoutzUI.Text("Chev", btn.transform, "▾", 14, OtoutzTheme.accent, false, FontStyles.Bold, TextAlignmentOptions.Right);
+            OtoutzUI.Stretch(chev.rectTransform, 0, 10, 0, 0);
+            OtoutzUI.MakeClickable(btn, TogglePortList);
+
+            // baud cycle
+            var baudBtn = OtoutzUI.Panel("BaudBtn", bar, 10, OtoutzTheme.A(OtoutzTheme.panel, 0.6f));
+            baudBtn.rectTransform.anchorMin = baudBtn.rectTransform.anchorMax = new Vector2(0, 0); baudBtn.rectTransform.pivot = new Vector2(0, 0);
+            baudBtn.rectTransform.sizeDelta = new Vector2(96, 32); baudBtn.rectTransform.anchoredPosition = new Vector2(350, 0);
+            OtoutzUI.Ring(baudBtn.transform, 10, 2, OtoutzTheme.line);
+            _baudText = OtoutzUI.Text("Baud", baudBtn.transform, "", 13, OtoutzTheme.ink, false, FontStyles.Bold);
+            OtoutzUI.Stretch(_baudText.rectTransform);
+            OtoutzUI.MakeClickable(baudBtn, CycleBaud);
+
+            // connection status
+            _portStatus = OtoutzUI.Text("Status", bar, "", 13, OtoutzTheme.sub, false, FontStyles.Bold, TextAlignmentOptions.Left);
+            _portStatus.rectTransform.anchorMin = _portStatus.rectTransform.anchorMax = new Vector2(0, 0); _portStatus.rectTransform.pivot = new Vector2(0, 0);
+            _portStatus.rectTransform.sizeDelta = new Vector2(150, 32); _portStatus.rectTransform.anchoredPosition = new Vector2(456, 0);
+
+            // dropdown list (built on open), expands upward above the button
+            _portList = OtoutzUI.Rect("PortList", bar);
+            _portList.anchorMin = _portList.anchorMax = new Vector2(0, 0); _portList.pivot = new Vector2(0, 0);
+            _portList.anchoredPosition = new Vector2(0, 38);
+            _portList.sizeDelta = new Vector2(340, 0);
+            _portList.gameObject.SetActive(false);
+
+            RefreshPortUI();
+        }
+
+        void TogglePortList()
+        {
+            _portOpen = !_portOpen;
+            if (_portOpen) BuildPortOptions();
+            if (_portList != null) _portList.gameObject.SetActive(_portOpen);
+        }
+
+        void BuildPortOptions()
+        {
+            if (_portList == null) return;
+            for (int i = _portList.childCount - 1; i >= 0; i--) Destroy(_portList.GetChild(i).gameObject);
+
+            var ports = RfidReader.AvailablePorts();
+            var opts = new List<string> { "" };   // "" = none / simulation
+            opts.AddRange(ports);
+
+            const float rowH = 30f;
+            _portList.sizeDelta = new Vector2(340, opts.Count * rowH + 8);
+            for (int i = 0; i < opts.Count; i++)
+            {
+                string p = opts[i];
+                var row = OtoutzUI.Panel("Opt", _portList, 8, OtoutzTheme.A(OtoutzTheme.panel, 0.96f));
+                row.rectTransform.anchorMin = new Vector2(0, 1); row.rectTransform.anchorMax = new Vector2(1, 1); row.rectTransform.pivot = new Vector2(0.5f, 1);
+                row.rectTransform.sizeDelta = new Vector2(-8, rowH - 2);
+                row.rectTransform.anchoredPosition = new Vector2(0, -4 - i * rowH);
+                var t = OtoutzUI.Text("T", row.transform, string.IsNullOrEmpty(p) ? "없음 (F9/F10 시뮬)" : p, 13, OtoutzTheme.ink, false, FontStyles.Bold, TextAlignmentOptions.Left);
+                OtoutzUI.Stretch(t.rectTransform, 12, 8, 0, 0);
+                string sel = p;
+                OtoutzUI.MakeClickable(row, () => SelectPort(sel));
+            }
+        }
+
+        void SelectPort(string port)
+        {
+            _portOpen = false;
+            if (_portList != null) _portList.gameObject.SetActive(false);
+            if (RfidReader.Instance != null) RfidReader.Instance.Reconnect(port, 0);
+            RefreshPortUI();
+        }
+
+        void CycleBaud()
+        {
+            var rr = RfidReader.Instance; if (rr == null) return;
+            int idx = System.Array.IndexOf(_bauds, rr.baudRate);
+            idx = (idx + 1) % _bauds.Length;
+            rr.Reconnect(rr.portName, _bauds[idx]);
+            RefreshPortUI();
+        }
+
+        void RefreshPortUI()
+        {
+            var rr = RfidReader.Instance;
+            string port = rr != null ? rr.portName : "";
+            if (_portCurrent != null) _portCurrent.text = string.IsNullOrEmpty(port) ? "없음 (F9/F10 시뮬)" : port;
+            if (_baudText != null) _baudText.text = (rr != null ? rr.baudRate : 9600).ToString();
+            bool ok = rr != null && rr.IsConnected;
+            if (_portStatus != null)
+            {
+                _portStatus.text = ok ? "● 연결됨" : "○ 미연결";
+                _portStatus.color = ok ? OtoutzTheme.Hex("#5fe08a") : OtoutzTheme.sub;
+            }
         }
 
         static bool AnyStart()
@@ -616,6 +738,13 @@ namespace Otoutz
         class Card { public RectTransform root; public Image glow; public RectTransform frame; public Image frameBg, frameRing; public RectTransform jacketHolder; public RectTransform genrePill; public TextMeshProUGUI genreText; public Image reflection;
             public Vector2 tPos; public float tScale, tRot, tAlpha; }
         List<Card> _cards = new List<Card>();
+
+        // side leaderboard panels: all 4 difficulties as sections (2 per side); each shows top 5 + your own rank
+        class RankRow { public RectTransform root; public TextMeshProUGUI pos, name, score; }
+        RankRow[][] _secTop;            // [4 difficulties][5 top rows]
+        RankRow[] _secOwn;              // [4] own-rank row
+        TextMeshProUGUI[] _secHeader;   // [4] difficulty header
+        TextMeshProUGUI[] _secEmpty;    // [4] empty/none state
         Coroutine _selectAnim;
         RectTransform _carousel;
         TextMeshProUGUI _selCounter, _metaTitle, _metaArtist, _metaBpm;
@@ -725,6 +854,8 @@ namespace Otoutz
             }
 
             BuildHintBar(root, new[] { ("← →", "곡 선택"), ("Enter", "난이도 선택"), ("Esc", "메뉴") });
+
+            BuildRankPanels(root);
         }
 
         Image AddRaycast(RectTransform rt)
@@ -790,7 +921,141 @@ namespace Otoutz
                 for (int i = 0; i < _cards.Count; i++) ApplyCard(_cards[i], _cards[i].tPos, _cards[i].tScale, _cards[i].tRot, _cards[i].tAlpha);
 
             RefreshMeta();
+            RefreshRanking();
             _selCounter.text = $"{(_songIndex + 1):00} / {_songs.Count:00}";
+        }
+
+        // ---- side leaderboard panels: 4 difficulty sections (2 per side), each top-5 + own rank ----
+        void BuildRankPanels(Transform root)
+        {
+            _secTop = new RankRow[4][];
+            _secOwn = new RankRow[4];
+            _secHeader = new TextMeshProUGUI[4];
+            _secEmpty = new TextMeshProUGUI[4];
+
+            var left = BuildRankPanel(root, -1);
+            var right = BuildRankPanel(root, +1);
+            BuildSection(left, 0, 0);   // diff 0 top-left
+            BuildSection(left, 1, 1);   // diff 1 bottom-left
+            BuildSection(right, 2, 0);  // diff 2 top-right
+            BuildSection(right, 3, 1);  // diff 3 bottom-right
+        }
+
+        RectTransform BuildRankPanel(Transform parent, int side)
+        {
+            const float panelW = 344f, panelH = 540f;
+            var panel = OtoutzUI.Panel("Rank" + (side < 0 ? "L" : "R"), parent, 18, OtoutzTheme.A(OtoutzTheme.panel, 0.82f));
+            panel.rectTransform.anchorMin = panel.rectTransform.anchorMax = new Vector2(side < 0 ? 0 : 1, 0.5f);
+            panel.rectTransform.pivot = new Vector2(side < 0 ? 0 : 1, 0.5f);
+            panel.rectTransform.sizeDelta = new Vector2(panelW, panelH);
+            panel.rectTransform.anchoredPosition = new Vector2(side < 0 ? 26 : -26, 20);
+            OtoutzUI.Ring(panel.transform, 18, 2, OtoutzTheme.line);
+            return panel.rectTransform;
+        }
+
+        // one difficulty section inside a panel at vertical slot 0 (top) or 1 (bottom)
+        void BuildSection(RectTransform panel, int diff, int slot)
+        {
+            const float slotH = 256f, rowH = 28f;
+            float top = -12f - slot * slotH;
+            var dcol = OtoutzTheme.Diffs[diff].color;
+
+            var header = OtoutzUI.Text("Sec" + diff, panel, OtoutzTheme.Diffs[diff].label, 15, dcol, false, FontStyles.Bold, TextAlignmentOptions.Left);
+            header.characterSpacing = 4;
+            header.rectTransform.anchorMin = new Vector2(0, 1); header.rectTransform.anchorMax = new Vector2(1, 1); header.rectTransform.pivot = new Vector2(0, 1);
+            header.rectTransform.sizeDelta = new Vector2(-24, 22); header.rectTransform.anchoredPosition = new Vector2(14, top);
+            _secHeader[diff] = header;
+
+            var empty = OtoutzUI.Text("Empty" + diff, panel, "NO RECORD", 13, OtoutzTheme.sub, false, FontStyles.Bold);
+            empty.rectTransform.anchorMin = empty.rectTransform.anchorMax = new Vector2(0.5f, 1); empty.rectTransform.pivot = new Vector2(0.5f, 1);
+            empty.rectTransform.sizeDelta = new Vector2(300, 22); empty.rectTransform.anchoredPosition = new Vector2(0, top - 80);
+            empty.gameObject.SetActive(false);
+            _secEmpty[diff] = empty;
+
+            _secTop[diff] = new RankRow[5];
+            for (int r = 0; r < 5; r++)
+                _secTop[diff][r] = BuildRankLine(panel, top - 28 - r * rowH, false);
+
+            _secOwn[diff] = BuildRankLine(panel, top - 28 - 5 * rowH - 8, true);
+        }
+
+        RankRow BuildRankLine(RectTransform panel, float y, bool own)
+        {
+            var row = OtoutzUI.Rect("Line", panel);
+            row.anchorMin = new Vector2(0, 1); row.anchorMax = new Vector2(1, 1); row.pivot = new Vector2(0.5f, 1);
+            row.sizeDelta = new Vector2(-24, 26);
+            row.anchoredPosition = new Vector2(0, y);
+
+            if (own)
+            {
+                var bg = OtoutzUI.Panel("Bg", row, 6, OtoutzTheme.A(OtoutzTheme.accent, 0.16f));
+                OtoutzUI.Stretch(bg.rectTransform);
+            }
+
+            var pos = OtoutzUI.Text("Pos", row, "", 15, own ? OtoutzTheme.accent : OtoutzTheme.sub, false, FontStyles.Bold, TextAlignmentOptions.Center);
+            pos.rectTransform.anchorMin = pos.rectTransform.anchorMax = new Vector2(0, 0.5f); pos.rectTransform.pivot = new Vector2(0, 0.5f);
+            pos.rectTransform.sizeDelta = new Vector2(36, 24); pos.rectTransform.anchoredPosition = new Vector2(8, 0);
+
+            var name = OtoutzUI.Text("Name", row, "", 14, OtoutzTheme.ink, false, FontStyles.Bold, TextAlignmentOptions.Left);
+            name.rectTransform.anchorMin = name.rectTransform.anchorMax = new Vector2(0, 0.5f); name.rectTransform.pivot = new Vector2(0, 0.5f);
+            name.rectTransform.sizeDelta = new Vector2(160, 24); name.rectTransform.anchoredPosition = new Vector2(46, 0);
+
+            var score = OtoutzUI.Text("Score", row, "", 14, OtoutzTheme.ink, false, FontStyles.Bold, TextAlignmentOptions.Right);
+            score.rectTransform.anchorMin = score.rectTransform.anchorMax = new Vector2(1, 0.5f); score.rectTransform.pivot = new Vector2(1, 0.5f);
+            score.rectTransform.sizeDelta = new Vector2(120, 24); score.rectTransform.anchoredPosition = new Vector2(-8, 0);
+
+            row.gameObject.SetActive(false);
+            return new RankRow { root = row, pos = pos, name = name, score = score };
+        }
+
+        void RefreshRanking()
+        {
+            if (_secTop == null || _songs.Count == 0) return;
+            var s = _songs[_songIndex];
+
+            for (int d = 0; d < 4; d++)
+            {
+                bool has = s.HasDiff(d);
+                int songId = (s.ids != null) ? s.ids[d] : 0;
+                if (_secHeader[d] != null)
+                    _secHeader[d].color = OtoutzTheme.A(OtoutzTheme.Diffs[d].color, has ? 1f : 0.4f);
+
+                var list = (has && songId != 0) ? RecordStore.GetRanking(songId, d, 5) : new List<RankEntry>();
+
+                for (int r = 0; r < 5; r++)
+                {
+                    var row = _secTop[d][r];
+                    if (r < list.Count) { var e = list[r]; FillLine(row, e.position.ToString(), e.userName, e.score, e.uid); row.root.gameObject.SetActive(true); }
+                    else row.root.gameObject.SetActive(false);
+                }
+
+                // own rank below the top 5 (real position if any, "-" if entered with no record yet)
+                var ownRow = _secOwn[d];
+                if (has && list.Count > 0 && PlayerSession.IsEntered)
+                {
+                    var own = (songId != 0) ? RecordStore.GetUserRank(songId, d, PlayerSession.Uid) : null;
+                    if (own != null) FillLine(ownRow, own.position.ToString(), own.userName, own.score, own.uid);
+                    else FillLine(ownRow, "-", PlayerSession.Name, -1, PlayerSession.Uid);
+                    ownRow.root.gameObject.SetActive(true);
+                }
+                else ownRow.root.gameObject.SetActive(false);
+
+                if (_secEmpty[d] != null)
+                {
+                    _secEmpty[d].text = has ? "NO RECORD" : "없음";
+                    _secEmpty[d].gameObject.SetActive(!has || list.Count == 0);
+                }
+            }
+        }
+
+        void FillLine(RankRow row, string pos, string name, int score, string uid)
+        {
+            bool mine = PlayerSession.IsEntered && uid == PlayerSession.Uid;
+            row.pos.text = pos;
+            row.name.text = name;
+            row.score.text = score >= 0 ? score.ToString("N0") : "-";
+            row.name.color = mine ? OtoutzTheme.accent : OtoutzTheme.ink;
+            row.score.color = mine ? OtoutzTheme.accent : OtoutzTheme.ink;
         }
 
         IEnumerator AnimateSelect()
@@ -1253,7 +1518,9 @@ namespace Otoutz
                     _introChar.rectTransform.anchoredPosition = new Vector2(Mathf.Sin(ti * 0.45f) * 5f, Mathf.Sin(ti * 0.7f) * 9f);
                     _introChar.rectTransform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(ti * 0.5f) * 0.6f);
                 }
-                if (AnyStart()) StartCoroutine(ExitIntro());
+                // Entry is card-driven (RfidReader.CardScanned); no key-to-start. A new card opens
+                // the name-entry overlay, handled here.
+                if (_nameEntry) UpdateNameEntry();
                 return;
             }
 
@@ -1360,6 +1627,8 @@ namespace Otoutz
         void EnterIntro()
         {
             if (_busy || _intro) return;
+            EndNameEntry();                 // clear any name-entry overlay/state
+            PlayerSession.Clear();          // back to the title = log out; a new card tap re-enters
             if (_introRoot != null) { Destroy(_introRoot.gameObject); _introRoot = null; }
             BuildIntro();
             _intro = true;
@@ -1375,6 +1644,128 @@ namespace Otoutz
             float t = 0f; const float dur = 0.4f;
             while (t < dur) { t += Time.unscaledDeltaTime; _introGroup.alpha = Mathf.Clamp01(t / dur); yield return null; }
             _introGroup.alpha = 1f;
+        }
+
+        // ============================ RFID card entry ============================
+        void OnCardScanned(string uid)
+        {
+            Debug.Log($"[Entry] card scanned: '{uid}' (intro={_intro}, busy={_busy}, nameEntry={_nameEntry})");
+            if (!_intro || _busy) return;                   // only react at the title splash
+            if (string.IsNullOrEmpty(uid)) return;
+            if (_nameEntry && uid == _pendingUid) return;   // same card while typing -> ignore
+            if (_nameEntry) EndNameEntry();                 // a different card -> restart fresh
+
+            var user = RecordStore.GetUser(uid);
+            if (user != null && !string.IsNullOrEmpty(user.name))
+            {
+                PlayerSession.Enter(uid, user.name);        // known card -> straight in
+                StartCoroutine(ExitIntro());
+            }
+            else
+            {
+                BeginNameEntry(uid);                        // new card -> set a name first
+            }
+        }
+
+        void BeginNameEntry(string uid)
+        {
+            _pendingUid = uid;
+            _nameBuffer = "";
+            if (_nameRoot != null) { Destroy(_nameRoot.gameObject); _nameRoot = null; }  // always a fresh panel
+            BuildNameEntry();
+            _nameRoot.gameObject.SetActive(true);
+            _nameRoot.SetAsLastSibling();
+            _nameEntry = true;
+            var kb = Keyboard.current;
+            if (kb != null) { kb.onTextInput -= OnNameTextInput; kb.onTextInput += OnNameTextInput; }
+            SetNameText(true);
+        }
+
+        // physical-keyboard handling while the name overlay is up (called from the intro Update branch)
+        void UpdateNameEntry()
+        {
+            var kb = Keyboard.current;
+            if (kb != null)
+            {
+                if ((kb.backspaceKey.wasPressedThisFrame || kb.deleteKey.wasPressedThisFrame) && _nameBuffer.Length > 0)
+                    _nameBuffer = _nameBuffer.Substring(0, _nameBuffer.Length - 1);
+                if (kb.enterKey.wasPressedThisFrame || kb.numpadEnterKey.wasPressedThisFrame) { ConfirmName(); return; }
+                if (kb.escapeKey.wasPressedThisFrame) { EndNameEntry(); return; }   // cancel -> back to "tap your card"
+            }
+            SetNameText(Mathf.Repeat(Time.unscaledTime, 1f) < 0.5f);   // blinking caret
+        }
+
+        void OnNameTextInput(char ch)
+        {
+            if (!_nameEntry) return;
+            if (ch < ' ' || ch == (char)0x7F) return;       // ignore control / backspace / enter chars
+            if (_nameBuffer.Length >= 12) return;
+            _nameBuffer += ch;
+        }
+
+        void SetNameText(bool caret)
+        {
+            if (_nameValue != null) _nameValue.text = _nameBuffer + (caret ? "|" : " ");
+        }
+
+        void ConfirmName()
+        {
+            string name = (_nameBuffer ?? "").Trim();
+            if (name.Length == 0) return;                   // require a non-empty name
+            RecordStore.CreateUser(_pendingUid, name);
+            PlayerSession.Enter(_pendingUid, name);
+            EndNameEntry();
+            StartCoroutine(ExitIntro());
+        }
+
+        void EndNameEntry()
+        {
+            var kb = Keyboard.current;
+            if (kb != null) kb.onTextInput -= OnNameTextInput;
+            _nameEntry = false;
+            if (_nameRoot != null) { Destroy(_nameRoot.gameObject); _nameRoot = null; }
+            _nameValue = null;
+        }
+
+        void BuildNameEntry()
+        {
+            _nameRoot = OtoutzUI.Rect("NameEntry", _root);
+            OtoutzUI.Stretch(_nameRoot);
+
+            // dim the splash behind the modal
+            var back = OtoutzUI.Image("Backdrop", _nameRoot, OtoutzSprites.RoundedRect(2), OtoutzTheme.A(Color.black, 0.62f), Image.Type.Sliced);
+            OtoutzUI.Stretch(back.rectTransform);
+
+            // accent glow behind the card (matches the menu/difficulty screens)
+            var glow = OtoutzUI.Glow("Glow", _nameRoot, OtoutzTheme.accent, 0.5f);
+            glow.rectTransform.sizeDelta = new Vector2(900, 560);
+            glow.rectTransform.anchoredPosition = Vector2.zero;
+
+            var panel = OtoutzUI.Panel("Panel", _nameRoot, 26, OtoutzTheme.A(OtoutzTheme.panel, 0.94f));
+            panel.rectTransform.sizeDelta = new Vector2(760, 380);
+            panel.rectTransform.anchoredPosition = Vector2.zero;
+            OtoutzUI.Ring(panel.transform, 26, 2, OtoutzTheme.A(OtoutzTheme.accent, 0.6f));
+
+            var eyebrow = OtoutzUI.Text("Eyebrow", panel.transform, "NEW PLAYER", 14, OtoutzTheme.accent, false, FontStyles.Bold);
+            eyebrow.characterSpacing = 14;
+            eyebrow.rectTransform.anchorMin = eyebrow.rectTransform.anchorMax = new Vector2(0.5f, 1); eyebrow.rectTransform.pivot = new Vector2(0.5f, 1);
+            eyebrow.rectTransform.sizeDelta = new Vector2(620, 20); eyebrow.rectTransform.anchoredPosition = new Vector2(0, -42);
+
+            var title = OtoutzUI.Text("Title", panel.transform, "이름을 입력하세요", 38, OtoutzTheme.ink, true, FontStyles.Bold);
+            title.rectTransform.anchorMin = title.rectTransform.anchorMax = new Vector2(0.5f, 1); title.rectTransform.pivot = new Vector2(0.5f, 1);
+            title.rectTransform.sizeDelta = new Vector2(680, 52); title.rectTransform.anchoredPosition = new Vector2(0, -66);
+
+            var box = OtoutzUI.Panel("Box", panel.transform, 16, OtoutzTheme.A(OtoutzTheme.ink, 0.10f));
+            box.rectTransform.sizeDelta = new Vector2(600, 92); box.rectTransform.anchoredPosition = new Vector2(0, -8);
+            OtoutzUI.Ring(box.transform, 16, 2, OtoutzTheme.A(OtoutzTheme.accent, 0.7f));
+            _nameValue = OtoutzUI.Text("Value", box.transform, "", 40, OtoutzTheme.ink, true, FontStyles.Bold);
+            OtoutzUI.Stretch(_nameValue.rectTransform, 28, 28, 0, 0);
+
+            var hint = OtoutzUI.Text("Hint", panel.transform, "Enter 확인     Backspace 지우기     Esc 취소", 15, OtoutzTheme.sub, false, FontStyles.Bold);
+            hint.rectTransform.anchorMin = hint.rectTransform.anchorMax = new Vector2(0.5f, 0); hint.rectTransform.pivot = new Vector2(0.5f, 0);
+            hint.rectTransform.sizeDelta = new Vector2(680, 24); hint.rectTransform.anchoredPosition = new Vector2(0, 36);
+
+            _nameRoot.gameObject.SetActive(false);
         }
 
         float _wheelLock;
@@ -1497,6 +1888,12 @@ namespace Otoutz
             }
         }
 
-        void OnDisable() { StopPreview(); }
+        void OnEnable() { RfidReader.CardScanned += OnCardScanned; }
+        void OnDisable()
+        {
+            StopPreview();
+            RfidReader.CardScanned -= OnCardScanned;
+            EndNameEntry();
+        }
     }
 }

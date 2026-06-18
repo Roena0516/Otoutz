@@ -9,7 +9,7 @@
     "defaultLanguage": 0,
     "songInfoLanguage": 0,
     "judgementLineHeight": 0,
-    "sync": 0,
+    "sync": 5,
     "fastSlowExp": 3,
     "musicVolume": 5,
     "sfxVolume": 9,

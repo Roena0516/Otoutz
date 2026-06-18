@@ -82,13 +82,37 @@ namespace Otoutz
             if (OtoutzUI.Display == null) OtoutzUI.Display = TMP_Settings.defaultFontAsset;
             if (OtoutzUI.Body == null) OtoutzUI.Body = OtoutzUI.Display;
 
+            bool realPlay = OtoutzResultData.valid;   // false = opened directly / demo fill
             OtoutzResultData.FillDemoIfEmpty();
 
             BuildCanvas();
             BuildBackground();
             BuildContent();
 
+            if (realPlay) SaveRecordIfEntered();       // persist this play for the entered user
+
             StartCoroutine(Intro());
+        }
+
+        // Save the finished play to the local record store, but only for a real play by an entered
+        // (RFID) user. Rankings/best are derived from these on read.
+        void SaveRecordIfEntered()
+        {
+            if (!PlayerSession.IsEntered) return;
+            var rank = RankFor(OtoutzResultData.acc);
+            RecordStore.AddRecord(new PlayRecord
+            {
+                uid = PlayerSession.Uid,
+                userName = PlayerSession.Name,
+                songId = OtoutzResultData.songId,
+                songName = OtoutzResultData.title,
+                difficulty = OtoutzResultData.diffIndex,
+                score = OtoutzResultData.score,
+                rate = OtoutzResultData.acc,
+                rank = rank.rank,
+                fc = OtoutzResultData.isFC,
+                ap = OtoutzResultData.isAP,
+            });
         }
 
         // ============================ Canvas / background ============================
@@ -317,7 +341,7 @@ namespace Otoutz
 
             // clear banner
             bool fancy = OtoutzResultData.isAP || OtoutzResultData.isFC;
-            string clearText = OtoutzResultData.isAP ? "ALL PERFECT" : OtoutzResultData.isFC ? "FULL COMBO" : "CLEAR";
+            string clearText = OtoutzResultData.isAP ? "ALL BREAK" : OtoutzResultData.isFC ? "FULL COMBO" : "CLEAR";
             Color cgA, cgB;
             if (OtoutzResultData.isAP) { cgA = OtoutzTheme.Hex("#ffe48a"); cgB = OtoutzTheme.Hex("#f5b62e"); }
             else if (OtoutzResultData.isFC) { cgA = OtoutzTheme.accent; cgB = OtoutzTheme.accent2; }
@@ -491,32 +515,22 @@ namespace Otoutz
             bar.anchorMin = bar.anchorMax = new Vector2(0.5f, 0); bar.pivot = new Vector2(0.5f, 0);
             bar.anchoredPosition = new Vector2(0, 88); bar.sizeDelta = new Vector2(600, 54);
 
-            var retry = OtoutzUI.Panel("Retry", bar, 16, OtoutzTheme.A(OtoutzTheme.panel, 0.55f));
-            OtoutzUI.Ring(retry.transform, 16, 2, OtoutzTheme.line);
-            retry.rectTransform.anchorMin = retry.rectTransform.anchorMax = new Vector2(0.5f, 0.5f); retry.rectTransform.pivot = new Vector2(1, 0.5f);
-            retry.rectTransform.sizeDelta = new Vector2(190, 54); retry.rectTransform.anchoredPosition = new Vector2(-9, 0);
-            var ric = OtoutzUI.Image("Icon", retry.transform, OtoutzSprites.Chevron(), OtoutzTheme.accent); // stand-in refresh glyph
-            ric.rectTransform.anchorMin = ric.rectTransform.anchorMax = new Vector2(0, 0.5f); ric.rectTransform.pivot = new Vector2(0, 0.5f);
-            ric.rectTransform.sizeDelta = new Vector2(20, 20); ric.rectTransform.anchoredPosition = new Vector2(26, 0);
-            var rt = OtoutzUI.Text("T", retry.transform, "RETRY", 17, OtoutzTheme.ink, false, FontStyles.Bold);
-            rt.characterSpacing = 2; OtoutzUI.Stretch(rt.rectTransform, 52, 14, 0, 0);
-            OtoutzUI.MakeClickable(retry, Retry);
-
+            // One track per RFID entry: the only action is to leave (logs out, back to the title).
             var next = OtoutzUI.Panel("Next", bar, 16, Color.white);
             OtoutzUI.AddGradient(next, OtoutzTheme.accent, OtoutzTheme.accent2, 100f);
-            next.rectTransform.anchorMin = next.rectTransform.anchorMax = new Vector2(0.5f, 0.5f); next.rectTransform.pivot = new Vector2(0, 0.5f);
-            next.rectTransform.sizeDelta = new Vector2(200, 54); next.rectTransform.anchoredPosition = new Vector2(9, 0);
+            next.rectTransform.anchorMin = next.rectTransform.anchorMax = new Vector2(0.5f, 0.5f); next.rectTransform.pivot = new Vector2(0.5f, 0.5f);
+            next.rectTransform.sizeDelta = new Vector2(240, 54); next.rectTransform.anchoredPosition = new Vector2(0, 0);
             var nglow = OtoutzUI.Image("Glow", bar, OtoutzSprites.Glow(), OtoutzTheme.A(OtoutzTheme.accent, 0.5f));
-            nglow.rectTransform.sizeDelta = new Vector2(280, 130); nglow.rectTransform.anchoredPosition = new Vector2(110, -10);
+            nglow.rectTransform.sizeDelta = new Vector2(320, 130); nglow.rectTransform.anchoredPosition = new Vector2(0, -10);
             nglow.transform.SetAsFirstSibling();
-            var nt = OtoutzUI.Text("T", next.transform, "NEXT ▸", 17, Color.white, false, FontStyles.Bold);
+            var nt = OtoutzUI.Text("T", next.transform, "나가기 ▸", 17, Color.white, false, FontStyles.Bold);
             nt.characterSpacing = 2; OtoutzUI.Stretch(nt.rectTransform);
             OtoutzUI.MakeClickable(next, Next);
         }
 
         void BuildHintBar()
         {
-            var items = new[] { ("R", "재시도"), ("Enter", "다음"), ("Esc", "곡 선택") };
+            var items = new[] { ("Enter", "나가기"), ("Esc", "나가기") };
             var bar = OtoutzUI.Rect("HintBar", _root);
             bar.anchorMin = new Vector2(0.5f, 0); bar.anchorMax = new Vector2(0.5f, 0); bar.pivot = new Vector2(0.5f, 0);
             bar.anchoredPosition = new Vector2(0, 36); bar.sizeDelta = new Vector2(1000, 40);
@@ -654,24 +668,18 @@ namespace Otoutz
         {
             var kb = Keyboard.current;
             if (kb == null || _busy) return;
-            if (kb.rKey.wasPressedThisFrame) Retry();
-            else if (kb.enterKey.wasPressedThisFrame || kb.numpadEnterKey.wasPressedThisFrame) Next();
-            else if (kb.escapeKey.wasPressedThisFrame || kb.backspaceKey.wasPressedThisFrame) Next();
+            if (kb.enterKey.wasPressedThisFrame || kb.numpadEnterKey.wasPressedThisFrame
+                || kb.escapeKey.wasPressedThisFrame || kb.backspaceKey.wasPressedThisFrame)
+                Next();
         }
 
-        void Retry()
-        {
-            if (_busy && _score == 0) { } // allow even mid-anim once input unblocked
-            _busy = true;
-            OtoutzResultData.valid = false; // next play repopulates
-            SceneManager.LoadSceneAsync("InGame");
-        }
-
+        // One track per entry: leaving the result logs the player out and returns to the title/intro.
         void Next()
         {
             _busy = true;
             OtoutzResultData.valid = false;
-            OtoutzFlow.OpenOnSelect = true; // land on the song-select screen, not the main menu
+            PlayerSession.Clear();
+            OtoutzFlow.OpenOnSelect = false;   // Menu opens on the title splash (not song-select)
             SceneManager.LoadSceneAsync("Menu");
         }
     }

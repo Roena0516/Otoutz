@@ -190,6 +190,12 @@ public class Note : MonoBehaviour
         bool inTiming = noteClass.ms - (line.currentTime * 1000f) <= 0
                      && noteClass.ms - (line.currentTime * 1000f) >= -160f;
 
+        // Arrows are hit with a momentary lever flick, which is hard to land inside the narrow
+        // bell window — give them a wider window: a real "early" side plus a slightly longer late
+        // side (kept under Misser's 200ms so it doesn't overlap the miss).
+        double arrowDelta = noteClass.ms - (line.currentTime * 1000f);
+        bool arrowTiming = arrowDelta <= 16f && arrowDelta >= -180f;
+
         if (noteClass.type == "hold" && inTiming)
         {
             if (Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
@@ -231,7 +237,7 @@ public class Note : MonoBehaviour
             return;
         }
 
-        if (noteClass.type == "leftarrow" && inTiming)
+        if (noteClass.type == "leftarrow" && arrowTiming)
         {
             if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Left"
                 && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)
@@ -241,7 +247,7 @@ public class Note : MonoBehaviour
             }
         }
 
-        if (noteClass.type == "rightarrow" && inTiming)
+        if (noteClass.type == "rightarrow" && arrowTiming)
         {
             if (judgement.tsumabuki.GetComponent<LeverController>().leverDirection == "Right"
                 && Math.Abs(judgement.tsumabuki.transform.position.x - gameObject.transform.position.x) <= 3.5f + (1.75f * noteClass.width) + 2.25f)

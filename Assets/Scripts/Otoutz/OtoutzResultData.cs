@@ -19,6 +19,7 @@ namespace Otoutz
         public static float bpm;
         public static Color artA = OtoutzTheme.accent, artB = OtoutzTheme.accent2, artBlob = OtoutzTheme.glow;
         public static int diffIndex = 3;
+        public static int songId;        // chart id for the played difficulty (record key)
 
         // real jacket.png sprite carried from the picked song (null = procedural fallback)
         public static Sprite jacketSprite;
@@ -43,6 +44,7 @@ namespace Otoutz
             bpm = s.bpm;
             artA = s.artA; artB = s.artB; artBlob = s.artBlob;
             diffIndex = diff;
+            songId = (diff >= 0 && diff < 4 && s.ids != null) ? s.ids[diff] : 0;
             jacketSprite = s.jacketSprite;
         }
 
@@ -56,7 +58,10 @@ namespace Otoutz
             OtoutzResultData.miss = miss;
             OtoutzResultData.total = perfect + great + good + miss;
             OtoutzResultData.score = score;
-            OtoutzResultData.acc = (isAP && acc < 101f) ? 101f : acc;
+            // 101% (SSS+) only for a true all-Critical-Break clear (score 1,010,000) — not for ALL
+            // BREAK, which allows 100% Breaks. great = Break count, good = Hit count.
+            bool allCritical = miss == 0 && good == 0 && great == 0 && perfect > 0;
+            OtoutzResultData.acc = (allCritical && acc < 101f) ? 101f : acc;
             OtoutzResultData.isFC = isFC;
             OtoutzResultData.isAP = isAP;
             OtoutzResultData.maxCombo = (isFC || isAP) ? OtoutzResultData.total : Mathf.Clamp(maxCombo, 0, OtoutzResultData.total);

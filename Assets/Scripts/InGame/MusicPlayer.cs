@@ -44,7 +44,7 @@ public class MusicPlayer : MonoBehaviour
 
         // Judge offset no longer shifts the music start; it's applied to each note's input time (ms)
         // in NoteGenerator instead. Music always starts at the fixed base delay.
-        sync = 0.8f;
+        sync = 0.75f;
     }
 
     void OnEnable()
