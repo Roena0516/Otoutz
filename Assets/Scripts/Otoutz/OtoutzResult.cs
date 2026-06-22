@@ -678,6 +678,8 @@ namespace Otoutz
         {
             _busy = true;
             OtoutzResultData.valid = false;
+            if (PlayerSession.IsEntered && SettingsManager.Instance != null && SettingsManager.Instance.settings != null)
+                RecordStore.SetUserSpeed(PlayerSession.Uid, SettingsManager.Instance.settings.speed);  // keep in-game hi-speed
             PlayerSession.Clear();
             OtoutzFlow.OpenOnSelect = false;   // Menu opens on the title splash (not song-select)
             SceneManager.LoadSceneAsync("Menu");

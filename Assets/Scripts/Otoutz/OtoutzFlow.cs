@@ -172,7 +172,7 @@ namespace Otoutz
         void PullSettings()
         {
             if (_sm == null || _sm.settings == null) return;
-            _setSpeed = Mathf.Clamp(_sm.settings.speed, 1f, 10f);
+            _setSpeed = Mathf.Clamp(_sm.settings.speed, 1f, 15f);
             _setOffset = Mathf.Clamp(_sm.settings.sync, -100, 100);
             _setVolume = Mathf.Clamp(_sm.settings.musicVolume * 10, 0, 100);
             _setSe = Mathf.Clamp(_sm.settings.sfxVolume * 10, 0, 100);
@@ -186,6 +186,7 @@ namespace Otoutz
             _sm.settings.musicVolume = Mathf.RoundToInt(_setVolume / 10f);
             _sm.settings.sfxVolume = Mathf.RoundToInt(_setSe / 10f);
             try { _sm.SaveSettings(); } catch { }
+            if (PlayerSession.IsEntered) RecordStore.SetUserSpeed(PlayerSession.Uid, _setSpeed);   // per-player speed
         }
 
         // ============================ Canvas / background ============================
@@ -1326,7 +1327,7 @@ namespace Otoutz
         readonly string[] _setLabels = { "NOTE SPEED", "JUDGE OFFSET", "MASTER VOLUME", "SE VOLUME" };
         readonly string[] _setSubs = { "노트 낙하 속도", "판정 타이밍 보정", "전체 음량", "효과음 음량" };
         readonly float[] _setMin = { 1, -100, 0, 0 };
-        readonly float[] _setMax = { 10, 100, 100, 100 };
+        readonly float[] _setMax = { 15, 100, 100, 100 };
         readonly float[] _setStep = { 0.5f, 1, 5, 5 };
 
         void BuildSettings()
@@ -1658,12 +1659,26 @@ namespace Otoutz
             var user = RecordStore.GetUser(uid);
             if (user != null && !string.IsNullOrEmpty(user.name))
             {
-                PlayerSession.Enter(uid, user.name);        // known card -> straight in
+                EnterUser(user);                            // known card -> straight in (+ load their speed)
                 StartCoroutine(ExitIntro());
             }
             else
             {
                 BeginNameEntry(uid);                        // new card -> set a name first
+            }
+        }
+
+        // Enter a session for this user and load their saved per-player note speed (if any).
+        void EnterUser(UserEntry u)
+        {
+            if (u == null) return;
+            PlayerSession.Enter(u.uid, u.name);
+            if (u.speed > 0f && _sm != null && _sm.settings != null)
+            {
+                _sm.settings.speed = Mathf.Clamp(u.speed, 1f, 15f);
+                _setSpeed = _sm.settings.speed;
+                try { _sm.SaveSettings(); } catch { }
+                RefreshSettings();
             }
         }
 
@@ -1712,8 +1727,8 @@ namespace Otoutz
         {
             string name = (_nameBuffer ?? "").Trim();
             if (name.Length == 0) return;                   // require a non-empty name
-            RecordStore.CreateUser(_pendingUid, name);
-            PlayerSession.Enter(_pendingUid, name);
+            var u = RecordStore.CreateUser(_pendingUid, name);
+            EnterUser(u);                                   // new user: no saved speed yet -> keeps current
             EndNameEntry();
             StartCoroutine(ExitIntro());
         }

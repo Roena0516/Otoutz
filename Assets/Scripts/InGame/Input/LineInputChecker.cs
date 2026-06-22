@@ -137,12 +137,13 @@ public class LineInputChecker : MonoBehaviour
 
     public void SetSpeed(float duration)
     {
-        if (settings.settings.speed + duration >= 1.0 && settings.settings.speed + duration <= 10.0)
+        if (settings.settings.speed + duration >= 1.0 && settings.settings.speed + duration <= 15.0)
         {
             settings.SetSpeed($"{settings.settings.speed += duration}");
             noteGenerator.speed = 12f * settings.settings.speed;
             noteGenerator.fallTime = noteGenerator.distance / noteGenerator.speed * 1000f;
             UIManager.SetSpeedText();
+            if (PlayerSession.IsEntered) RecordStore.SetUserSpeed(PlayerSession.Uid, settings.settings.speed);  // per-player
         }
     }
 

@@ -12,6 +12,7 @@ public class UserEntry
     public string uid;
     public string name;
     public string createdAt;   // ISO-8601 UTC
+    public float speed;        // per-player note speed (0 = unset)
 }
 
 [Serializable]
@@ -110,6 +111,17 @@ public static class RecordStore
         _users.users.Add(u);
         SaveUsers();
         return u;
+    }
+
+    /// <summary>Persist a user's preferred note speed (loaded back at their next entry).</summary>
+    public static void SetUserSpeed(string uid, float speed)
+    {
+        if (string.IsNullOrEmpty(uid)) return;
+        EnsureLoaded();
+        var u = _users.users.FirstOrDefault(x => x.uid == uid);
+        if (u == null) return;
+        u.speed = speed;
+        SaveUsers();
     }
 
     // ---- records ----

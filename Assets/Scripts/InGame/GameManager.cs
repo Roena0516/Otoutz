@@ -95,6 +95,8 @@ public class GameManager : MonoBehaviour
                 return;
             }
             // Exit mid-game → abandon the track: log out and return to the title/intro (1 track per entry).
+            if (PlayerSession.IsEntered && SettingsManager.Instance != null && SettingsManager.Instance.settings != null)
+                RecordStore.SetUserSpeed(PlayerSession.Uid, SettingsManager.Instance.settings.speed);  // keep in-game hi-speed
             PlayerSession.Clear();
             Otoutz.OtoutzFlow.OpenOnSelect = false;
             SceneManager.LoadSceneAsync("Menu");
